@@ -50,42 +50,45 @@ Orin Nano/NX Core Modules (Orin Nano 4G/8G,Orin NX 8G/16G)fit to carrier board, 
 </div>
 
 
-1. 确认开发套件所需的清单是否齐全，包括核心模组，载板，风扇及其它周边配件
-2. 将风扇装配到Orin Nano/NX模组上 
-   - 装配前确认风扇与SoC连接处理涂有导热硅脂
-   - 风扇散热器有器件避让槽，安装时注意和模组对齐
-   - 风扇固定支架方向要对，且坚固时注意不要磕坏模组上的器件
-   - 确认风扇用固定支架锁紧，四个固定螺丝不会松
-3. 将装好风扇的Orin Nano/NX模组,插扣进260 Pins SO-DIMM SOCKET,确认紧扣后，再通过两个螺比，将模组锁到Carried Board。最后风扇电子线接插到PWM FAN Connector
-4. 将4个支撑铜柱分别固定到四个固定孔位上，以支撑DemoKit。或将DemoKit通过外壳套件进行防护
-5. 翻到Carried Board 的底面，将所需的组件装配上去 
-   - 将 RTC Battery CR1220固定到 BT1的 Holder上（Optional） 
-   - 将SSD固定到 J11(x4 Lane) 或 J13 (x1 Lane)的M.2 Key M 2280插槽。建议系统盘装到J11,存储拓展装到J13(可选) 
-   - 将WiFi&BT模组固定到J19的 M.2 Key E 2230（Optional）
-   - 将4G/5G模组固定到J15的M.2 Key B 2242, or M.2 Key B 2252 ,并将Sim卡插到J18的Sim卡槽 （Optional）
-   - 将树莓派镜头模组，或其它可用镜头模组连接到J9或J10 的CSI接口 （Optional）
-   - 若有外接按键需求，可将电源按键连接到 J31的Wafer Connector, 将复位按键连接到 J32的Wafer Connector
-   - 若有音频功能需求，可以将外部音源连接到 J25 , J24 Audio Line IN接口，将 J38 Audio Line Output 连接到外部音频设备，将J34, J26 Speaker Out 连接到外部喇叭，或通过音频线接入到 J27的 3.5 Audio Phone Jack 上，实现音频输入输出
-   - 若有其它模组或报警设备，可通过板载的Terminals 连接，包括RS485,RS232，CAN, DI，DO及外部5V供电
-   - 若有其它模组或报警设备，可通过 J37 FFC Connector 拓展GPIO, SPI, I2C及3V3供电,来实现外部模组的拓展
-   - 将调式串口工具连接到 J33的 UART2 接口
-6. HDMI接口连接到外部显示器
-7. 将有线鼠标和键标连接到USB Type-A接口中任意两个
-8. 将网线连接到 LAN 口中任意一个
-9. 将USB Type-C 接口连接到调试电脑
-10. 确认以上操作无误后，将电源适配器连接到 DC-JACK，即可开始进行套件开发调试
+1. Verify all required components in the development kit are complete, including the core module, carrier board, fan, and other peripheral accessories.
+2. Assemble the fan onto the Orin Nano/NX module:
+   - Before assembly, confirm thermal grease is applied between the fan and SoC
+   - Align the fan heatsink with the module, noting the component clearance slots
+   - Ensure correct orientation of fan bracket and avoid damaging components during tightening
+   - Confirm the fan is securely locked with bracket and all four screws are tightened
+3. Insert the fan-equipped Orin Nano/NX module into the 260-pin SO-DIMM socket. After securing the latch, fasten the module to the carrier board using two screws. Finally, connect the fan cable to the PWM FAN connector.
+4. Install four support standoffs in the mounting holes to elevate the DemoKit. Alternatively, protect the DemoKit using the enclosure kit.
+5. Flip the carrier board and assemble components on the bottom side:
+   - Mount RTC Battery CR1220 into BT1 holder (Optional)
+   - Install SSD in J11 (x4 Lane) or J13 (x1 Lane) M.2 Key M 2280 slot. Recommend system disk in J11, storage expansion in J13 (Optional)
+   - Install WiFi/BT module in J19 M.2 Key E 2230 slot (Optional)
+   - Mount 4G/5G module in J15 M.2 Key B 2242/2252 slot, and insert SIM card into J18 slot (Optional)
+   - Connect Raspberry Pi camera or compatible module to J9/J10 CSI interface (Optional)
+   - For external buttons: Connect power button to J31 wafer connector, reset button to J32 wafer connector
+   - For audio functions: Connect external audio source to J25/J24 Line IN, J38 Line OUT to audio devices, J34/J26 Speaker OUT to external speakers, or use J27 3.5mm audio jack
+   - For additional modules/alarms: Use onboard terminals (RS485, RS232, CAN, DI, DO, 5V power)
+   - For peripheral expansion: Use J37 FFC connector for GPIO, SPI, I2C, and 3.3V power
+   - Connect debug serial tool to J33 UART2 interface
+6. Connect HDMI interface to external display
+7. Connect wired mouse and keyboard to any two USB Type-A ports
+8. Insert Ethernet cable into any LAN port
+9. Connect USB Type-C interface to debug computer
+10. After verifying all steps, connect power adapter to DC-JACK to begin development and debugging
 
- **软件烧录和操作参考**：[System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
+ **Software burning and operation reference**：[System Flashing](../Software%20Guide/System%20Flashing%20and%20Initialization)
  ## **Interfaces  and instructions**
 There are related interafces detailed decription,which are using on the Board and product. More information please refer "Jetson Orin NX Series and Jetson Orin Nano Series Pinmux". 
- **NVMe** 协议：Non-Volatile Memory Express，是一种高性能、高并发的存储协议，专为 SSD 设计。        
-**PCIe**: （Peripheral Component Interconnect Express）是用于高速串行通信的标准接口，广泛应用于计算机内部的各种扩展卡和设备。PCIe传输通过一对差分信号线进行数据传输，每个通道包含两对差分信号线（一个用于发送，一个用于接收）。支持多通道配置，如 x1、x2、x4、x8 等，表示使用的通道数量。如M.2 Key M Port1支持x4, M.2 Key M port2支持x1。
-| 特性       | Data Rate     | Orin Nano | Orin NX |
+
+ **NVMe** Protocol: Non-Volatile Memory Express, a high-performance, high-concurrency storage protocol designed specifically for SSDs.         
+ 
+**PCIe**: （Peripheral Component Interconnect Express）is a standard interface for high-speed serial communication, widely used in various expansion cards and devices inside computers. PCIe transmission uses a pair of differential signal lines for data transmission, and each channel contains two pairs of differential signal lines (one for sending and one for receiving). It supports multi-channel configurations, such as x1, x2, x4, x8, etc., indicating the number of channels used. For example, M.2 Key M Port1 supports x4, and M.2 Key M port2 supports x1.
+
+| Feature        | Data Rate     | Orin Nano | Orin NX |
 |:-------- | ------------- |:---------:|:-------:|
 | PCIe 3.0 | 1 GB/s @ Lane | Y         | Y       |
 | PCIe 4.0 | 2GB/s @ Lane  | X         | X       |
 ### J11: M.2 Key M (4 Lanes)
-此接口支持4Lanes PCIe,可用于连接SSD。
+This interface supports 4-Lanes PCIe and can be used to connect SSD.
 | Pin # | Signal Name   | Description                              | Direction | Pin Type          |
 |:----- | ------------- |:----------------------------------------:|:---------:|:-----------------:|
 | 131   | PCIE0_RX0_N   | PCIe 0 Receive 0– (PCIe Ctrl #4 Lane 0)  | Input     | PCIe PHY          |
@@ -113,7 +116,7 @@ There are related interafces detailed decription,which are using on the Board an
 | 234   | I2C2_SDA      | General I2C 2 Data                       | Bidir     | Open Drain – 1.8V |
 
 ### J12: M.2 Key M  (1 Lanes)
-此接口支持1Lanes PCIe,可用于连接SSD。
+This interface supports 1 Lanes PCIe and can be used to connect SSD.
 | Pin # | Signal Name   | Description                              | Direction | Pin Type          |
 |:----- | ------------- |:----------------------------------------:|:---------:|:-----------------:|
 | 40    | PCIE2_RX0_N   | PCIe 2 Receive 0– (PCIe Ctrl #7 Lane 0)  | Input     | PCIe PHY          |
@@ -129,7 +132,7 @@ There are related interafces detailed decription,which are using on the Board an
 | 234   | I2C2_SDA      | General I2C 2 Data                       | Bidir     | Open Drain – 1.8V |
 
 ### J15: M.2 Key B
-此接口用于连接4G/5G模组。
+This interface is used to connect to the 4G/5G module.
 | Pin # | Signal Name | Description                            | Direction | Pin Type    |
 | ----- | ----------- | -------------------------------------- | --------- | ----------- |
 | /     | USB2_HUB2_P | from usb hub                           | Bidir     |             |
@@ -152,7 +155,7 @@ There are related interafces detailed decription,which are using on the Board an
 | /     | USIM_DET    | Connect to Sim Card for card detection | Input     |             |
 
 ### J19: M.2 Key E
-此接口用于连接WiFi/BT模组
+This interface is used to connect the WiFi/BT module.
 | Pin #  | Signal Name   | Description                                                              | Direction | Pin Type          |
 | ----- | ------------- | ------------------------------------------------------------------------ | --------- | ----------------- |
 | /     | USB2_HUB1_P   | from usb hub                                                             | Bidir     |                   |
@@ -172,7 +175,7 @@ There are related interafces detailed decription,which are using on the Board an
 | 210   | CLK_32K_OUT   | M2E_SubClk_32KHz                                                         | Output    | Clk Soure         |
 
 ### J9: Camera Interface
-此接口为CSI0支持4lanes MIPI,用于连接Camera Module。
+This interface is CSI0, which supports 4 lanes MIPI and is used to connect to the Camera Module.
 | Pin # | Signal Name | Description                                            | Direction | Pin Type          |
 | ----- | ----------- | ------------------------------------------------------ | --------- | ----------------- |
 | 4     | CSI0_D0_N   | Camera, CSI 0 Data 0–                                  | Input     | MIPI D-PHY        |
@@ -192,7 +195,7 @@ There are related interafces detailed decription,which are using on the Board an
 | 130   | GPIO06      | I2C Channel selection, Low for CSI0                    | Output    | CMOS – 1.8V       |
 
 ### J10: Camera Interface
-此接口为CSI1支持4lanes MIPI,用于连接Camera Module。
+This interface is CSI1, which supports 4 lanes MIPI and is used to connect to the Camera Module.
 | Pin # | Signal Name | Description                                            | Direction | Pin Type          |
 | ----- | ----------- | ------------------------------------------------------ | --------- | ----------------- |
 | 24    | CSI2_D0_P   | Camera, CSI 2 Data 0+                                  | Input     | MIPI D-PHY        |
@@ -224,7 +227,7 @@ There are related interafces detailed decription,which are using on the Board an
 
 
 ### 14 Pins Expansion IOs
-此接口可以配拓展板来连接外围设备。
+This interface can be equipped with an expansion board to connect peripheral devices.
 | Pin # | Signal Name | Description                                               | Direction | Pin Type          |
 | ----- | ----------- | --------------------------------------------------------- | --------- | ----------------- |
 | 103   | UART0_RTS*  | UART #0 Request to Send                                   | Output    | CMOS – 3.3V       |
