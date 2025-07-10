@@ -1,146 +1,146 @@
 # Quick Start
 
-## 概述
+## Overview
 
-本章主要帮助您快速使用NG4500系列产品。
+This chapter mainly helps you to use NG4500 series products quickly.
 
-## 硬件准备
+## Hardware Preparation
 
-- **硬件概述**，请参阅[硬件组件说明](NG4500-CB01%20Development%20Board/Hardware%20Guide/Components%20Overview)
+- **Hardware Guide**, please reference to [Hardware Component Overview](NG4500-CB01%20Development%20Board/Hardware%20Guide/Components%20Overview)
 
-- **设备组装** 
+- **Assembly** 
   
-  拿到整机后，若非预装版本，须拆开底板后盖进行配件相关装配后才可使用。
+  After receiving the NG4500 edge AI box, users should dismantle the back cover of the device and add the corresponding accessories before use, if it is not a pre-installed version.
   
-  1. 拿到样机后，拆包装后确认样机外观无缺损
+  1. Unbox it and confirm that there is no defect in the appearance of the device;
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart1.png)
   
-  2. 拆开底部盖板
+  2. Remove the back cover;
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart2.png)
   
-  3. 将SSD装配 J11 的M.2 Key M PCIex4 接口（建议），或 J13 的M.2 Key M PCIex1接口
+  3. Mount the SSD in the M.2 Key M PCIex4 interface of J11 (recommended), or the M.2 Key M PCIex1 interface of J13;
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart3.png)
   
-  4. 将WiFi&BT模组固定到J19的 M.2 Key E 2230，并连接到外接天线（Optional）
+  4. Mount the Wi-Fi & BT module to the M.2 Key E 2230 of J19 and connect it to the external antenna (Optional);
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart4.png)
   
-  5. 将4G/5G模组固定到J15的M.2 Key B 2242 ,并将Sim卡插到J18的Sim卡槽 ，并连接到外置天线（Optional）
+  5. Mount the 4G/5G module to the M.2 Key B 2242 of J15, insert the SIM card into the SIM card slot of J18, and connect it to the external antenna (Optional);
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart5.png)
   
-  6. 将 RTC Battery CR1220固定到 BT1的 Holder上（Optional）
+  6. Fix RTC Battery CR1220 to the Holder of BT1 (Optional);
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart6.png)
   
-  7. 确认安装完毕后，重新锁好底部盖板
+  7. After confirming that the installation is complete, re-lock the back cover;
   
   ![](/img/NG45XX_SOFTWARE/Quickstart/NG4500_QucikStart7.png)
   
-  8. HDMI接口连接到外部显示器
+  8. Use the HDMI interface to connect to an external monitor;
   
-  9. 将有线鼠标和键标连接到USB Type-A接口中任意两个
+  9. Connect the wired mouse and keypad to any two of the USB Type-A interfaces;
   
-  10. 将网线连接到 LAN 口中任意一个
+  10. Connect the network cable to any one of the LAN ports;
   
-  11. 将USB Type-C 接口连接到调试电脑
+  11. Connect the USB Type-C interface to the debugging computer;
   
-  12. 确认以上操作无误后，将电源适配器连接到 DC-JACK，即可开始进行套件开发调试       
+  12. After confirming that the above operations are correct, connect the power adapter to DC-JACK and start kit development and debugging.       
       
       > [!WARNING]
       > 
-      > 1、请使用原装标配的适配器
+      > 1、Please use the original standard adapter;
       > 
-      > 2、Orin Nano 4/8G 模组内部只支持5V输入， 请保证“Power Mode Switch” 在OFF状态 
+      > 2、Orin Nano 4/8G only supports 5V voltage input, please make sure that the “Power Mode Switch” remains OFF. 
 
-## 软件部署
+## Software Deployment
 
-如果设备尚未烧录固件，请参考以下链接以完成固件烧录步骤；如果您已经完成固件烧录，可直接进行部署。
+If the device has not yet flashed firmware, please refer to the following link to complete the firmware flashing steps; if you have completed firmware flashing, you can deploy it directly.
 
-- **环境搭建**，软件开发环境，请参阅[开发环境搭建](NG4500-CB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup)
+- **Environment Setup**, software development environment, please refer to [Development Environment Setup](NG4500-CB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup)
 
-- **固件烧录**，详细固件烧录步骤，请参阅[系统固件烧录](NG4500-CB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
+- **Firmware Flashing**,, for detailed firmware flashing steps, please refer to [System Firmware Flashing](NG4500-CB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
-## 首次系统启动引导配置
+## First-time System Boot Configuration
 
-在确认设备已完成固件烧录后，为NG4500设备通电，并根据屏幕提示，依次完成首次系统初始化配置。
+After confirming that the device has completed firmware flashing, power on the NG4500 device and follow the on-screen prompts to complete the first-time system initialization configuration.
 
-### 1. 系统初始化配置
+### 1. System Initialization Configuration
 
-1. 勾选 `接受许可协议`，点击下一步
+1. Click `Accept License Agreement`, then click next step;
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Licenses_1.png)
 
-2. 设置语言，点击下一步
+2. Select language, then click next step;
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Language_1.png)
 
-3. 设置键盘布局，点击下一步
+3. Set up the keyboard layout, then click next step;
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Keyboard_1.png)
 
-4. 设置时区（例如：`Asia/Shanghai`），点击下一步
+4. Set up time zone（for example：`Asia/Shanghai`）, then click next step;
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_Local_1.png)
 
-5. 配置“您的姓名”和“密码”，点击下一步
+5. Set up “your name” and “password”, then click next step;
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_System_Configuration_1.png)
 
-6. 最后，等待系统安装，自动重启
+6. Finally, wait for the system installation and restart.
 
-### 2. 系统运行状态&版本确认
+### 2. System Operation Status & Version Confirmation
 
-请按照以下步骤安装 Jtop 工具，以监控当前设备的资源使用情况：
+Please follow the steps below to install the Jtop tool to monitor the current device resource usage:
 
-安装并运行 Jtop 后，界面将显示如下图所示的信息。您可以通过键盘操作，实时查看当前 Jetson 设备的资源使用状况，包括 CPU、内存、GPU、磁盘、风扇等。同时，还可以确认当前系统所安装的 TensorRT、CUDA 等版本信息。
+After installing and running Jtop, the interface will display the information shown in the screenshot below. Users can use the keyboard to view the current resource usage of the Jetson device in real-time, including CPU, memory, GPU, disk, fan, etc. At the same time, users can also confirm the current version of TensorRT, CUDA installed on the current system.
 
 ```shell
-# 安装 Jtop 工具
+# Install Jtop tool
 sudo apt update
 sudo apt install python3-pip
 sudo pip3 install -U jetson-stats
 
-# 重启服务
+# Reboot
 sudo systemctl restart jtop.service
 
-#运行 Jtop
+#Run Jtop
 sudo jtop
 ```
 
-运行后如下图所示，通过键盘查看当前 Jetson 设备的各种资源使用情况，包括 CPU、内存、GPU、磁盘、风扇等，以及确认目前系统所安装TensorRT、CUDA等版本。
+After running, as shown in the screenshot below, use the keyboard to check the resource usages of the current Jetson device, including CPU, memory, GPU, disk, fan, etc., and confirm the versions of TensorRT, CUDA, etc. currently installed on the system.
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_JTOP.png)
 
-## 模型部署
+## Model Deployment
 
-下面将会介绍如何在AIBOX上部署运行NanoOWL实时视觉推理模型，以NG4511为例，使用imx219摄像头。
+The introduction of how to deploy and run the NanoOWL real-time visual reasoning model on CamThink NeoEdge NG4500 Edge AI Box is shown below. Take NG4511 as an example and use the imx219 camera.
 
-### 硬件需求
+### Hardware Requirements
 
-| 组件   | 要求                     |
+| Components   | Requirements                     |
 | ---- | ---------------------- |
-| 设备   | Jetson Orin（Nano / NX） |
-| 内存   | ≥ 8GB（更大模型需更高内存）       |
-| 存储空间 | ≥ 10GB（取决于模型大小）        |
-| GPU  | 支持 CUDA 的 NVIDIA GPU   |
+| Device   | Jetson Orin（Nano / NX） |
+| Memory   | ≥ 8GB（Larger models demand for high-capacity memory）       |
+| Storage  | ≥ 10GB（Depends on the model size）        |
+| GPU  | NVIDIA GPU supports CUDA  |
 
-### 软件环境
+### Software Environment
 
-- **支持​​JetPack版本**​​：
+- **Supported ​​JetPack versions**​​：
   - [JetPack 5 (L4T r35.x)](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack/tags)
-  - [JetPack 6 (L4T r36.x)](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack/tags) （系统默认版本）
+  - [JetPack 6 (L4T r36.x)](https://catalog.ngc.nvidia.com/orgs/nvidia/containers/l4t-jetpack/tags) （by default）
 
-### 环境准备
+### Environment Preparation
 
-1. 将 IMX219 摄像头连接至设备（注意：请确保摄像头排线的金属片朝上）。
+1. Connect the IMX219 camera to the device (Note: Please ensure that the metal piece of the camera cable is facing upwards).
    
    ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
 
-2. 请按照以下步骤安装所需依赖项，以确保模型能够正常运行。
+2. Please follow the steps below to install the required dependencies to ensure the model runs properly.
 
 ```shell
 sudo apt update
@@ -149,48 +149,48 @@ sudo apt-get install -y nvidia-container-toolkit
 sudo apt-get install nvidia-jetpack
 ```
 
-2. 安装jetson-containers
+2. Install jetson-containers
 
 ```shell
-# 获取源码
+# Access the source code
 git clone https://github.com/dusty-nv/jetson-containers
 
-# 安装依赖
+# Install dependencies
 bash jetson-containers/install.sh
 ```
 
-3. 开始部署，自动拉取/构建nanoowl容器。（注：容器下载或构建完成后，系统会自动启动该容器。）
+3. Start deployment and automatically pull/build nanoowl containers. (Note: After the container is downloaded or built, the system will automatically start the container.)
 
 ```shell
 cd jetson-containers/
 jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
 ```
 
-该命令将自动检测您的硬件配置，并拉取或构建适配的容器镜像。
+This command will automatically detect your hardware configuration and pull or build the appropriate container image.
 
-### 运行示例
+### Run the Sample
 
-1. 检查摄像头设备
+1. Check the camera
    
-   请确认摄像头已正确连接至设备，并可被系统识别。您可以使用以下命令检查当前已连接的摄像头设备：
+   Please make sure that the camera is connected to the device correctly and can be recognized by the system. Users can check the currently connected camera devices using the following command:
 
 ```shell
 ls /dev/video*
 ```
 
-2. 运行 NanoOWL 容器并完成以下配置
+2. Run NanoOWL container and finish the following configuration.
    
-   - 启动 Docker 容器，并进入测试用例目录：
+   - Start Docker container and enter the sample test directory
    
    ```shell
    cd jetson-containers/
    jetson-containers run --workdir /opt/nanoowl $(autotag nanoowl)
    
-   # 进入测试案例路径
+   # Enter the test case route
    cd /opt/nanoowl/examples/tree_demo
    ```
    
-   - 安装依赖
+   - Install dependencies
    
    ```shell
    apt update
@@ -198,16 +198,16 @@ ls /dev/video*
    pip install aiohttp
    ```
    
-   - 修改`/opt/nanoowl/examples/tree_demo`文件
+   - Modify`/opt/nanoowl/examples/tree_demo`document
    
    ```shell
-   # 打开文件，修改完成后，使用crtl+0回车保存，crtl+X退出
+   # Open the file, after modification, use crtl+0 and press Enter to save, crtl+X to exit.
    $ nano tree_demo.py
    
-   # 屏蔽下面这句代码
+   # Block the following code
    camera = cv2.VideoCapture(CAMERA_DEVICE)
    
-   # 修改替换为下述内容
+   # And replace with the following description
    gst_pipeline = (
        "nvarguscamerasrc ! "
        "video/x-raw(memory:NVMM), width=(int)1280, height=(int)720, format=(string)NV12, framerate=(fraction)30/1 ! "
@@ -220,16 +220,16 @@ ls /dev/video*
    camera = cv2.VideoCapture(gst_pipeline, cv2.CAP_GSTREAMER)
    ```
 
-3. 启动终端，运行测试案例
+3. Start the device and run the test case
    
    ```shell
     python3 tree_demo.py --camera 0 --resolution 1920x1080 --port 8080 ../../data/owl_image_encoder_patch32.engine
    ```
 
-4. 查看识别结果
+4. Check the recognition performance
    
-   - 在浏览器地址栏输入当前 NG4511 设备的 IP 地址和端口号（例如：`http://<ip address>:8080`），访问 NanoOWL 的 Web 界面。
-   - 在输入框中输入你希望识别的内容，例如：
+   - Enter the IP address and port number of the current NG4511 device in the browser address bar (for example: `http://<ip address>:8080`) to access the NanoOWL web interface.
+   - Enter the content you wish to identify in the input box, for example:
      - [a face [a nose, an eye, a mouth]]
      - [a table [a keyboard, a pen, a mouse]]
 
