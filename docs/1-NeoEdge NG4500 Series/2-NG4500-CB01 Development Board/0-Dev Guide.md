@@ -1,111 +1,111 @@
 import Link from "@docusaurus/Link";
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## 开发板概述
+## Development Kit Overview
 
-NG4500-CB01 是为 NeoEdge NG4500 系列 AI 边缘计算设备设计的高性能开发载板。该载板适用于 NVIDIA Jetson Orin 系列模块（Orin Nano/NX），适用于机器视觉、工业自动化、机器人和 AIoT 等应用场景。
+NG4500-CB01 is a high-performance development carrier board designed for NeoEdge NG4500 series AI edge computing devices. This carrier board is suitable for NVIDIA Jetson Orin series modules (Orin Nano/NX) and is suitable for application scenarios such as machine vision, industrial automation, robotics, and AIoT.
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
-  <img src={useBaseUrl('/img/Board/NG4500-CB01_1.png')} alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
-  <img src={useBaseUrl('/img/Board/NG4500-CB01_2.png')} alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Board/NG4500-CB01_1.png')} alt="front view of the carrier board" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
+  <img src={useBaseUrl('/img/Board/NG4500-CB01_2.png')} alt="back view of the carrier board" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-## 核心特性
+## Key Features
 
-- **兼容NVIDIA Jetson Orin系列模块**：支持Jetson Orin Nano 4GB/8GB和Orin NX 8GB/16GB
-- **丰富的接口资源**：
-  - 双千兆以太网接口
-  - 4×Type-A (USB 3.1)  和  1×Type-C (USB 3.2)
-  - RS232、RS485、CAN总线接口
-  - 数字量输入/输出接口(DI/DO)
-  - HDMI 4K视频输出
-  - 音频输入输出接口
-- **扩展能力**：
-  - M.2 Key M PCIe 4.0 NVMe SSD接口（2280规格）
-  - M.2 Key M PCIe 1.0扩展接口
-  - M.2 Key B接口支持4G/5G/Wi-Fi Halow（2242/2252规格）
-  - M.2 Key E接口支持Wi-Fi 6/蓝牙5.0（2230规格）
-  - 4lanes MIPI×2摄像头接口
-- **工业级设计**：宽压输入（12V-36V DC），无风扇被动散热设计，工作温度-25°C至60°C
+- **Compatible with NVIDIA® Jetson Orin™  series modules**: supporting Jetson Orin Nano 4GB/8GB and Orin NX 8GB/16GB
+- **Rich interfaces**:
+  - Dual Gigabit Ethernet ports
+  - 4×Type-A (USB 3.1) and 1×Type-C (USB 3.2)
+  - RS232, RS485, CANbus
+  - Digital input/output interfaces (DI/DO)
+  - HDMI 4K video output
+  - Audio input and output interfaces
+- **Expansion capabilities**：
+  - M.2 Key M PCIe 4.0 NVMe SSD interface（2280 spec.）
+  - M.2 Key M PCIe 1.0 expansion interface
+  - M.2 Key B interface supports 4G/5G/Wi-Fi Halow（2242/2252 spec.）
+  - M.2 Key E interface supports Wi-Fi 6/Bluetooth 5.0（2230 spec.）
+  - 4 lanes MIPI×2 camera interface
+- **Industrial-grade design**: wide voltage input(12V-36V DC), fanless passive cooling design, operating temperature ranges from -25°C to 60°C.
 
-## 技术规格
+## Specifications
 
-| 参数类别 | 规格 |
+| Category | Specifications |
 |---------|------|
-| 模块支持 | Jetson Orin Nano 4GB/8GB，Jetson Orin NX 8GB/16GB |
-| 处理器 | 6/8核Arm® Cortex® A78AE v8.2 (64-bit) |
-| GPU | 512/1024 NVIDIA® CUDA® cores，16/32 Tensor核心 |
-| AI性能 | 最高157 INT8 TOPS（SUPER模式） |
-| 内存 | 4GB/8GB/16GB LPDDR5 |
-| 存储扩展 | 支持NVMe SSD（2280），预装128GB-1TB |
-| 网络接口 | 2×RJ45千兆以太网 |
-| 无线扩展 | Wi-Fi 6/蓝牙5.0，4G/5G/Wi-Fi Halow |
-| 视频接口 | HDMI输出，2×MIPI CSI摄像头接口 |
-| 串行接口 | RS232，RS485，CAN |
-| 电源输入 | DC 12V-36V，峰值功率120W |
-| 尺寸 | 160mm × 125mm × 75mm（整机尺寸） |
-| 操作系统 | Ubuntu Linux（JetPack 6.0+） |
+| Compatible modules | Jetson Orin Nano 4GB/8GB, Jetson Orin NX 8GB/16GB |
+| CPU | 6/8 core Arm® Cortex® A78AE v8.2 (64-bit) |
+| GPU | 512/1024 NVIDIA® CUDA® cores，16/32 Tensor cores |
+| AI performance | Up to 157 INT8 TOPS（SUPER mode） |
+| Memory | 4GB/8GB/16GB LPDDR5 |
+| Storage expansion | Supports NVMe SSD(2280), pre-install 128GB-1TB |
+|Ethernet | Gigabit Ethernet with 2×RJ45 connectors |
+| Wireless Connectivity | Wi-Fi 6/Bluetooth 5.0，4G/5G/Wi-Fi Halow |
+| Video | HDMI output, 2×MIPI CSI(Camera Serial Interface)|
+| Serial interface | RS232, RS485, CAN |
+| Power input | DC 12V-36V, peak rate 120W |
+| Dimension | 160mm × 125mm × 75mm（Edge AI Box） |
+| Operating system | Ubuntu Linux（JetPack 6.0+） |
 
-## 开发资源
+## Development Resources
 
-NG4500-CB01开发板提供了全面的开发资源和文档支持，以下是相关开发资源的链接：
+NG4500-CB01 carrier board provides comprehensive development resources and documentation support. The following are links to relevant development resources:
 
-### 硬件资源
-- [硬件组件说明](./1-Hardware%20Guide/0-Components%20Overview.md) - 详细介绍开发板各组件功能和规格
-- [硬件连接指南](./1-Hardware%20Guide/1-Hardware%20Connection.md) - 提供开发板接口使用和连接方法
+### Hardware Resources
+- [Hardware components overview](./1-Hardware%20Guide/0-Components%20Overview.md) - Detailed introduction to the functions and specifications of each component of the development board.
+- [Hardware connection guide](./1-Hardware%20Guide/1-Hardware%20Connection.md) - Explanation on how to use and connect the interfaces on the carrier board.
 
-### 软件资源
-- [系统烧录指南](./2-Software%20Guide/0-System%20Flashing%20and%20Initialization.md) - 提供Jetson模块系统烧录的详细步骤
-- [开发环境搭建](./2-Software%20Guide/1-Development%20Environment%20Setup.md) - 指导如何配置开发环境和开发工具
-- [驱动安装与更新](./2-Software%20Guide/1-Driver%20Installation%20and%20Updates/0-Interface&modules%20configure.md) - 包含各类硬件接口的驱动安装说明
-- [软件框架与工具](./2-Software%20Guide/3-Software%20Frameworks%20and%20Tools/0-Docker.md) - 支持的开发框架和工具列表
+### Software Resources
+- [System Flashing Guide](./2-Software%20Guide/0-System%20Flashing%20and%20Initialization.md) - Provides step-by-step instruction for flashing the Jetson module system.
+- [Development Environment Set-up](./2-Software%20Guide/1-Development%20Environment%20Setup.md) - Guides on how to configure the development environment and development tools.
+- [Driver Installation and Update](./2-Software%20Guide/1-Driver%20Installation%20and%20Updates/0-Interface&modules%20configure.md) - Contains driver installation instructions for various hardware interfaces.
+- [Software Framework and Tools](./2-Software%20Guide/3-Software%20Frameworks%20and%20Tools/0-Docker.md) - List of supported development frameworks and tools.
 
-### 应用开发
-- [DeepSeek大语言模型部署](../3-Application%20Guide/1-Deepseek-r1.md) - 在NG4500上部署大语言模型的教程
-- [MediaPipe框架应用](../3-Application%20Guide/2-mediapipe.md) - 使用MediaPipe开发视觉应用的示例
-- [目标检测应用实现](../3-Application%20Guide/3-Object%20Detection.md) - 基于TensorRT的目标检测应用开发
+### Application Development
+- [DeepSeek LLM Deployment](../3-Application%20Guide/1-Deepseek-r1.md) - Tutorial guide of deploying LLMs on NG4500
+- [MediaPipe Framework Deployment](../3-Application%20Guide/2-mediapipe.md) - Example of using MediaPipe to develop visual-related applications.
+- [Object Detection Application](../3-Application%20Guide/3-Object%20Detection.md) - Object detection application developed based on TensorRT.
 
-## 开发工作流程
+## Development Process
 
-1. **硬件准备**
-   - 安装Jetson Orin模块到开发板
-   - 连接电源和外设（显示器、键盘、鼠标）
-   - 根据需要安装扩展模块（存储、通信模块等）
+1. **Hardware preparation**
+   - Install the Jetson Orin module to the development board
+   - Connect power and peripherals (monitor, keyboard, mouse)
+   - Install expansion modules (storage, communication modules, etc.) as needed
 
-2. **系统初始化**
-   - 烧录JetPack操作系统
-   - 完成系统初始设置
-   - 安装必要的驱动和更新
+2. **System initialization**
+   - Flash JetPack OS
+   - Complete system initial setup
+   - Install necessary drivers and updates
 
-3. **开发环境配置**
-   - 安装CUDA、cuDNN、TensorRT等开发工具
-   - 配置开发框架（PyTorch、TensorFlow等）
-   - 设置IDE和开发工具链
+3. **Development environment configuration**
+   - Install development tools such as CUDA, cuDNN, TensorRT
+   - Configure development framework (PyTorch, TensorFlow etc.)
+   - Set up the IDE and development toolchain
 
-4. **应用开发与测试**
-   - 开发AI应用程序
-   - 使用JetsonStats监控系统资源
-   - 优化性能和功耗
+4. **Application development and testing**
+   - Develop AI applications
+   - Monitor system resources with JetsonStats
+   - Optimize performance and power consumption
 
-5. **部署与优化**
-   - 应用程序打包和系统集成
-   - 性能调优和稳定性测试
-   - 工业环境适配和测试
+5. **Deployment and optimization**
+   - Application packaging and system integration
+   - Performance tuning and stability testing
+   - Industrial environment adaptation and testing
 
-## 快速入门
+## Quick Start
 
-新用户可以参考[快速入门指南](../1-Quick%20Start.md)，快速了解并上手NG4500设备。这份指南将帮助您完成初始设置，并指导您进行系统初始配置。
+New users can refer to [Quick Start Guide](../1-Quick%20Start.md) to quickly understand and get started with the NG4500 edge AI box. This guide will help you with the initial setup and guide you through the initial configuration of your system.
 
-## 技术支持与资源
+## Technical Support and Resource
 
-- [NVIDIA Jetson开发者论坛](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/70) - NVIDIA官方技术支持论坛
-- [Jetson Linux API参考](https://docs.nvidia.com/jetson/l4t/) - Jetson Linux开发参考文档
-- [Jetson Orin开发者套件文档](https://developer.nvidia.com/embedded/jetson-orin-nano-devkit) - NVIDIA官方开发者套件文档
-- [NVIDIA NGC目录](https://catalog.ngc.nvidia.com/) - NVIDIA预训练模型和容器仓库
-- [Jetson社区项目](https://github.com/dusty-nv/jetson-inference) - Jetson平台开源项目和示例
+- [NVIDIA Jetson developer community](https://forums.developer.nvidia.com/c/agx-autonomous-machines/jetson-embedded-systems/70) - NVIDIA® official technical support and forum
+- [Jetson Linux API reference](https://docs.nvidia.com/jetson/l4t/) - Jetson Linux reference document for development
+- [Jetson Orin dev kit document](https://developer.nvidia.com/embedded/jetson-orin-nano-devkit) - NVIDIA® official dev kit document
+- [NVIDIA NGC contents](https://catalog.ngc.nvidia.com/) - NVIDIA® pre-train models and containers
+- [Jetson community project](https://github.com/dusty-nv/jetson-inference) - Jetson platform open-source projects and examples
 
-如需进一步的技术支持，请联系我们的技术支持团队。
+For further technical support, please contact our technical support team.
 
 ---
 
-完整的产品信息请参阅[NG4500系列产品概述](../0-Overview.md)。
+For complete product information please see [NG4500 series product overview](../0-Overview.md).
