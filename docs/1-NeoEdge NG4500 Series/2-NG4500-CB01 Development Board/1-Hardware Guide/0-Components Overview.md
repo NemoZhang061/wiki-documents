@@ -1,28 +1,28 @@
 ## **Jetson Modules Brief**
-本产品支持的核心模组包括Orin Nano/NX, 及对应的Super版本。Jetson Orin 系列模组因配置不同，性能存在差异。
+The core modules supported by NG4500-CB01 include Orin Nano/NX, and the corresponding Super version. Jetson Orin series modules have different performance due to different configurations.
 ![Orin_Parameters_Comparation](/img/Orin_Parameters_Comparation.png)
-模组的主要差异，如下几点：  
+The main differences between the modules are as follows:  
 
-- Cores数量不同带来的性能差别
-- CPU/GPU主频差异对性能的影响
-- DRAM大小及带宽性能对数据处理能力的影响
-- DLA/PVA功能模块：Orin Nano 4/8G 不支持， Orin NX 8G/16G 支持
-- 供电要求（如Orin Nano只支持5V供电），及对应功耗和散热的差异 
+- Performance differentiations caused by different numbers of Cores.
+- The variation of the CPU/GPU main frequency will has impact on the performance. 
+- The capacity of DRAM and it's bandwidth will has impact on the data processing performance.
+- DLA/PVA function modules: supports Orin NX 8G/16G, Orin Nano 4/8G(not supported).
+- Power supply requirements: for example, Orin Nano only supports 5V power supply, and corresponding differences in power consumption and heat dissipation.
 ## Carrier Board Overview 
-**Main features**:
+**Key features**:
 - DC-Jack 12-36 V input
-- 100M/1000M 双网口
-- Type-A*4 USB3.1+; Type-C *1  USB3.2
-- HDMI*1
+- 100M/1000M Ethernet ports x 2
+- Type-A x 4 USB3.1+; Type-C x 1  USB3.2
+- HDMI x 1
 - Audio Input/Output 
-- DI *4  DO *4 with isolation, RS232 *1, RS485 *1, 5V output
-- M.2 Key M  *2 for storage, Key B for Cellular, Key E for Wifi/BLE
+- DI x 4  DO x 4 with isolation, RS232 x 1, RS485 x 1, 5V output
+- M.2 Key M  x 2 for storage, Key B for Cellular, Key E for Wi-Fi/BLE
 - Support RTC
-- Camera Input Interfaces *2 （4 Lanes MIPI）
-- 14Pins FFC可拓展IO接口    
+- Camera Input Interfaces x 2 （4 Lanes MIPI）
+- 14Pins FFC extendable I/Os    
  ## **Support Accessories Overview**
  ### Camera modules 
-  兼容树莓派镜头模组，“Camera Module V2” 和 "HQ Camera"可选
+  Compatible with Raspberry Pi camera module, “Camera Module V2” and "HQ Camera" optional
 - Camera Module V2: IMX219 4K resolution with fixed Lens
 
   - More Information: [Raspberry Pi Camera Module 2](https://www.raspberrypi.com/products/camera-module-v2/)
@@ -32,13 +32,13 @@
 
   - More information: [Raspberry Pi High Quality Camera](https://www.raspberrypi.com/products/raspberry-pi-high-quality-camera/)
 
-- 可通过DI/DO，及RS485,RS232, GPIO来外接各种传感器
+- It can connect to various external sensors through DI/DO, RS485, RS232, and GPIO.
 
   
- ### Expansion modules
-- 4G 模组：[4G Module](../../../Hardware%20Dev%20Resources/3-4G%20Module)
-- 5G 模组：[5G Module](../../../Hardware%20Dev%20Resources/4-5G%20Module)
-- WiFi/BT 模组
- ### Mounts and enclosures
+ ### Expansion Modules
+- 4G module：[4G Module](../../../Hardware%20Dev%20Resources/3-4G%20Module)
+- 5G module：[5G Module](../../../Hardware%20Dev%20Resources/4-5G%20Module)
+- Wi-Fi/BT module
+ ### Mounts and Enclosures
 
-  可以依Carrier Board的固定孔，自行设计外壳或固定支架
+  Users can customize own housing or fixing bracket based on the fixing holes of the Carrier Board.
