@@ -1,12 +1,12 @@
 # Interface
 
-本节介绍 NG4500系列设备常用接口（GPIO/I2C/SPI/CAN/USB/UART）的驱动与控制方法，重点说明硬件资源分配、典型应用场景及基础操作指令。
+This guide introduces the driver and control methods for common interfaces of the NG4500 series devices, including GPIO, I2C, SPI, CAN, USB, and UART. It focuses on hardware resource allocation, typical application scenarios, and basic operation commands.
 
 ## GPIO
 
-详细引脚分配参考官方文档：：[Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
+For the detailed configuration, please refer to [Jetson Orin NX Series and Jetson Orin Nano Series Pinmux](https://developer.nvidia.com/downloads/jetson-orin-nx-and-orin-nano-series-pinmux-config-template)
 
-- **GPIO硬件接口资源分配:**
+- IO Board Configuration Table：
 
 | Pin # | Signal Name    | Description                                       | Direction | Pin Type    |
 | ----- | -------------- | ------------------------------------------------- | --------- | ----------- |
@@ -27,13 +27,13 @@
 | 193   | I2S0_SDOUT_1V8 | OUT4: GPIO=Low for short, high for open.          | Output    | dry contact |
 |       |                | OUT4_COM: COM pin                                 |           |             |
 
-**软件操作方法**
+**Usage**
 
-- 使用 `gpioinfo` 查询 GPIO 映射关系和状态：
+- Run `gpioinfo` command to query the GPIO mapping and status：
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_GPIO.png)
 
-- 使用 `gpioset` 控制 GPIO 输出：
+- Run `gpioset` as below to control GPIO output：
 
 ```shell
 # To set GPIO12 to HIGH
@@ -44,7 +44,7 @@ sudo gpioset --mode=wait gpiochip0 144=0
 
 ## UART
 
-**UART硬件接口资源分配:**
+**UART Instances Table**
 
 | Usage on Orin nano/NX | UART Instance | Base Address | Ball Name | Bus Name | DTS status | DTS alias |
 | --------------------- | ------------- | ------------ | --------- | -------- | ---------- | --------- |
@@ -52,33 +52,33 @@ sudo gpioset --mode=wait gpiochip0 144=0
 | RS485                 | UARTA         | 0x03100000   | UART1     | ttyTHS1  | OK         | serial1   |
 | RS232                 | UARTB         | 0x03110000   | UART0     | ttyTHS3  | OK         | serial3   |
 
-- Debug
+- Debug（ttyTCU0）
   
-  - **硬件连接**：将 Debug 线连接至 PC。
+  - **Hardware Connection**：Connect to  computer by using debug cable.
   
-  - **串口参数**：波特率 115200，数据位 8，停止位 1，无奇偶校验，无流控。
+  - **Serial Port Settings**：Baud rate 115200, 8-bits data, 1 stop bit, no parity bit, no flow control.
   
-  - **常用终端工具**：Windows 下可用 PuTTY、Xshell，Linux 下可用 minicom、screen。
+  - **Common terminal tools**：PuTTY and Xshell for **Windows** ； minicom and screen for  **Linux**.
 
 - RS232
   
-  - 硬件接口定义
+  - Hardware Pin Definition
   
   | Pin | Signal Name | Description                                    | Direction | Pin Type    |
   | --- | ----------- | ---------------------------------------------- | --------- | ----------- |
   | 99  | UART0_TXD   | Use for uart Ransmit (with 3.3 level shifter)  | Output    | CMOS – 1.8V |
   | 101 | UART0_RXD   | Use for uart  Receive (with 3.3 level shifter) | Input     | CMOS – 1.8V |
   
-  - 硬件连接
+  - Hardware Connection 
     
-    - 使用接头1连接 PC，接头2连接 Jetson RS232 的 TX/RX。
-    - 确保电平转换正确，避免损坏硬件。
+    - Use Connector 1 to connect to the PC, and Connector 2 to connect to the Jetson RS232 TX/RX.
+    - Ensure proper voltage level shifting is applied to prevent hardware damage.
   
   ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_RS232.png)
 
 - RS485
   
-  - 硬件接口定义
+  - Hardware Pin Definition
   
   | Pin | Signal Name | Description       | Direction | Pin Type     |
   | --- | ----------- | ----------------- | --------- | ------------ |
@@ -86,33 +86,33 @@ sudo gpioset --mode=wait gpiochip0 144=0
   | 205 | UART1_RXD   | Use for RS_485    | Input     | CMOS    1.8V |
   | 207 | UART1_RTS*  | RS_485 enable pin | Output    | CMOS    1.8V |
   
-  - 依赖安装
+  - Install dependencies
   
   ```shell
   sudo apt-get update
   sudo apt-get install gpiod libgpiod-dev
   ```
   
-  - 编译测试程序
+  - Type the following command to testing RS458
   
   ```shell
   gcc -o rs485_test rs485_test.c -lgpiod
   ```
   
-  - 运行&验证示例
+  - Run the following command
   
   ```shell
   sudo ./rs485_test [TTY_DIR] [DE_CHIP] [DE_LINE]
-  # 运行
+  # Run
   sudo ./rs485_test /dev/ttyTHS1 /dev/gpiochip0 112
   ```
   
-  - 功能说明
-    - 启动后输入 `send` 切换到发送模式，输入内容后回车发送。
-    - 输入 `recv` 切换到接收模式，显示串口接收内容。
-    - 输入 `quit` 退出程序。
+  - Function Description
+    - After startup, enter `send` to switch to send mode. Type your message and press Enter to send.
+    - Enter `recv` to switch to received mode，display the content received via the serial port
+    - Enter `quit` to exit the program.
 
-- 参考代码
+- Sample Code
 
 ```c
 #include <stdio.h>
@@ -265,7 +265,7 @@ int main(int argc, char* argv[]) {
 
 ## SPI
 
-- 硬件接口定义
+- Hardware Pin Definition
 
 | Pin | Signal Name | Description                 | Direction | Pin Type    |
 | --- | ----------- | --------------------------- | --------- | ----------- |
@@ -275,129 +275,129 @@ int main(int argc, char* argv[]) {
 | 110 | SPI1_CS0*   | SPI 1 Chip Select 0         | Bidir     | CMOS – 3.3V |
 | 112 | SPI1_CS1*   | SPI 1 Chip Select 1         | Bidir     | CMOS – 3.3V |
 
-- 硬件连接：短接 `MOSI` 和 `MISO`，用于回环测试。
+- **Hardware Connection**：Shorting MOSI and MISO for loopback testing.
 
-- SPI 使能
+- **Enabling and Configuring SPI**
   
-  - 运行指令，启动配置工具：` sudo python /opt/nvidia/jetson-io/jetson-io.py`
+  - To start the configuration tool, run this commands：` sudo python /opt/nvidia/jetson-io/jetson-io.py`
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI1.png)
   
-  - 选择 `Configure Jetson 40pin Header`
+  -Select `Configure Jetson 40pin Header`
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI2.png)
   
-  - 选择 `Configure header pins manually`  
+  - Select `Configure header pins manually`  
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI3.png)
   
-  - 按空格选择 SPI1 和 SPI3，启用 SPI
-    
+  - Click Spacebar and then select SPI1 and SPI3，after which SPI will be enabled
+
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI4.png)
   
-  - 返回并选择 `Save and reboot to reconfigure pins`，重启后生效
+  - Return and select `Save and reboot to reconfigure pins`，take effect after reboot.
       ![](/img/NG45XX_SOFTWARE/NG45XX_40PIN_SPI5.png)
 
-- 运行&验证示例
+- Testing SPI Communication ：
 
 ```shell
-# 获取spi源码
+# Get spi code
 git clone https://github.com/rm-hull/spidev-test
 cd spidev-test/
 gcc spidev_test.c -o spidev_test
 
-# 测试
+# testing
 ./spidev_test -v -D /dev/spidev0.0 -p "Test"
 ```
 
 ## CAN
 
-- 硬件接口定义
+- Hardware Pin Definition
 
 | Pin | Signal Name | Description     | Direction | Pin Type    |
 | --- | ----------- | --------------- | --------- | ----------- |
 | 145 | CAN_TX      | FD CAN Transmit | Output    | CMOS – 3.3V |
 | 143 | CAN_RX      | FD CAN Receive  | Input     | CMOS – 3.3V |
 
-- 硬件连接：两台设备 CAN 的 D+ 对 D+，D- 对 D-。
+- **Hardware Connection**：Connect two CAN bus systems with D+ to D+ and D- to D-.
 
-**软件安装与测试**
+**Software Installation**
 
-- 安装`can-utils`工具
+- Install`can-utils` 
 
 ```shell
 sudo apt update
 sudo apt-get install can-utils
 ```
 
-- 运行&验证示例
+- Refer to the code below for testing：
 
 ```shell
-# 查看接口状态
+# Check the connection status
 ip link show can0
 
-# 配置接口，设置波特率为 100kbps
+# Configure the interface and set the baud rate to 100kbps
 sudo ip link set can0 up type can bitrate 100000
 
-# 监听数据
+# Check the can0 data
 candump can0
 
-# 发送数据
+# send data
 cansend can0 123#11.22.33.44
 ```
 
 ## RTC
 
-基本使用操作方法如下：
+RTC Setting
 
-- 设置 RTC 时间
+- Set the time and date
 
 ```shell
 sudo hwclock --set --date="2000-01-01 12:00:00"
 ```
 
-- 查询RTC时间
+- Verify the RTC Time
 
 ```shell
 sudo hwclock -r
 ```
 
-- 系统时间与 RTC 同步
+- Update the system time to match the RTC time
 
 ```shell
-# 系统时间 → RTC
+# system time → RTC
 sudo hwclock --systohc
 
-# RTC → 系统时间
+# RTC → system time
 sudo hwclock --hctosys
 ```
 
-- 查询系统时间
+- Verify the system time
 
 ```shell
 date
 ```
 
-- 网络时钟同步
+- Update the Network time to match the RTC time
 
 ```shell
-# 如无法设置RTC，需要确认是否打开了NTP服务
-# 禁用NTP服务
+# If unable to set the RTC, check if the NTP service is running and properly configured
+# Disable the NTP service
 sudo systemctl stop systemd-timesyncd.service
 sudo timedatectl set-ntp false
 ```
 
 ## Camera
 
-- 下述内容主要描述启动和配置摄像头模块的方法，以`imx219`为例，硬件连接如下：
+- The following section describes how to initialize and configure the camera module, using `imx219` as an example. The hardware connection is shown below：
   
   ![](/img/NG45XX_SOFTWARE/NG45XX_IMX219.png)
 
-- 通过`config-by-hardware.py`脚本启动摄像头，重启后生效
+- Use the `config-by-hardware.py` to enable the camera，The changes will take effect after a reboot.
   
-  - 列出当前支持的硬件模块
+  - List Available Hardware Modules
 
 ```shell
-# 列出当前支持的硬件模块
+# List Available Hardware Modules
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -l
-#输出如下：
+#Example Output：
 Header 1 [default]: Jetson 40pin Header
   Available hardware modules:
   1. Adafruit SPH0645LM4H
@@ -421,21 +421,21 @@ Header 3: Jetson M.2 Key E Slot
   No hardware configurations found!
 ```
 
-- 列出当前支持的硬件模块，以 IMX219 Dual CamThink 为例
+- Select and Configure the IMX219 Dual CamThink Module
 
 ```shell
-# 选择并配置 IMX219 Dual CamThink 摄像头模块。 
-# -n 选择Header编号，Camera IMX219 Dual CamThink 是dtbo的overlay-name
+# Select and Configure the IMX219 Dual CamThink Module
+# -n specifies Header Number，Camera IMX219 Dual CamThink is the dtbo overlay-name
 sudo python /opt/nvidia/jetson-io/config-by-hardware.py -n 2='Camera IMX219 Dual CamThink'
 ```
 
-- 运行&验证示例，硬件接入USB鼠标键盘，启动终端运行以下指令：
+- Connect a USB keyboard and mouse, launch a terminal, and run the following commands:
 
 ```shell
-# 安装摄像头必要依赖
+# Install required multimedia packages
 sudo apt update
 sudo apt install -y nvidia-l4t-gstreamer nvidia-l4t-jetson-multimedia-api
 
-# 启动摄像头
+# Launch the camera
 nvgstcapture-1.0    
 ```
