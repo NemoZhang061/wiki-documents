@@ -1,104 +1,104 @@
-# usb video streaming
+# USB Video Streaming
 
-## 概述
+## Overview
+This section describes how to using UVC to Implement live Video Streaming via the UVC Protocol Based on the ESP32-S3.
 
-本示例展示如何通过UVC协议实现视频流实时传输，基于ESP32-S3开发平台。
+### Key Features
 
-### 技术背景
+**UVC(USB Video Class)** is a protocol defined and maintained by the USB Implementers Forum (USB-IF).
+Key features include:：
 
-**UVC(USB Video Class)**是USB-IF制定的标准协议，主要特点包括：
+- Support for High-resolution image captuure
+- Driverless operation with true plug-and-play functionality
+- Standardized interface for seamless cross-device integration
+- Broad host compatibility across major operating systems
 
-- 支持高分辨率图像采集
-- 即插即用兼容性
-- 标准化控制接口
-- 简化硬件设计
+## Preparation
 
-## 准备工作
+### Hardware
 
-### 硬件需求
+- NE100-MB01 Dev Board
+- UVC USB Camera Module 
 
-- NE100-MB01开发板
-- 兼容UVC协议的摄像头模组
+### Software 
 
-### 软件资源
+#### 1. Firmware
 
-#### 1. 快速体验固件
+- Download pre-compiled firmware for use：[lowpower_camera/bin/NE_101_UVC](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
-- 预编译生产固件下载：[lowpower_camera/bin/NE_101_UVC](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
+#### 2. Environment Requirements
 
-#### 2. 开发环境配置
+- **IDE Software**：Visual Studio Code（v1.99.2+）
+- **Development Framework**：ESP-IDF Extension（v5.1.6）
+- **Example Repository**： [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
 
-- **IDE工具**：Visual Studio Code（v1.99.2+）
-- **开发框架**：ESP-IDF插件（v5.1.6）
-- **示例代码库**： [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
+## Verify the video stream
 
-## 功能验证
+### Using Precompiled Firmware
 
-### 使用预编译固件
-
-1. **设备连接**：
+1. **Hardware Connection**：
    
-   - 开发板连接UVC摄像头模组
-   - 参考[硬件连接说明](../Hardware%20Guide/Hardware%20Connection)
+   - Connect the UVC camera module to the development board
+   - For More details please refer to [the Hardware Connection Guide](../Hardware%20Guide/Hardware%20Connection)
 
-2. **固件烧录**：
-   遵循标准烧录流程：
+2. **Firmware flashing**：
+   Refer to the below to flash the firmware：
    
-    [系统烧录与初始化指南](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+    [the System Flashing and Initialization Guide](./../Software%20Guide/System%20Flashing%20and%20Initialization)
 
-3. **功能测试**：
+3. **Check the video streaming output**：
    
-   - 长按功能键进入配置模式
-   - 访问设备Web管理界面 http://192.168.1.1
-   - 验证视频流显示
+   - Press and hold the camera button to enter configuration mode.
+   - Access the web management interface at http://192.168.1.1, as shown in the figure below.
+   - Check if the video streaming displays correctly.
    
-   ![设备WiFi连接示意图](/img/NE101_wifi_connect.png)
-   ![设备管理界面概览](/img/NE101_web.png)
-   ![UVC视频流](/img/NE101_web_cam.png)
+   ![Wifi Connection](/img/NE101_wifi_connect.png)
+   ![device Interface](/img/NE101_web.png)
+   ![UVC Video Streaming](/img/NE101_web_cam.png)
 
-### 源码开发验证流程
+### Using Source Code Development
 
-#### 1. 获取代码库
+#### 1. Clone the repository using the following command
 
 ```bash
 git clone https://github.com/camthink-ai/lowpower_camera.git
 ```
 
-#### 2. 工程配置
+#### 2.Project setup ：
 
-使用VS Code打开项目目录：
+Open the directory in VS Code
 
-![工程目录结构示意图](/img/NE101_code_dir.png)
+![Project Root Directory](/img/NE101_code_dir.png)
 
-#### 3. 关键配置项
+#### 3. Configuration ：
 
-打开/main/camera.h文件，使能uvc。
+Open the `camera.h file` located in the `/main` directory and enable the UVC feature.
 
-![灵敏度参数配置](/img/NE101_example_uvc1.png)
+![Sensitivity Settings](/img/NE101_example_uvc1.png)
 
-#### 4. 编译与部署
+#### 4. Compile and deploy the source code
 
-1. 选择ESP32-S3目标芯片：
+1. Select esp32s3 as the target chip.：
 
-![芯片选择界面](/img/NE101_idf_IC.png)
+![Esp32s3 selection](/img/NE101_idf_IC.png)
 
-2. 执行工程编译：
+2. Select the build button to compile the source code. 
 
-![编译过程界面](/img/NE101_idf_build.png)
+![Showing build output](/img/NE101_idf_build.png)
 
-3. 烧录生成固件：
+3. Select the flash button to upload the generated firmware to the device：
 
-![固件烧录界面](/img/NE101_idf_flash.png)
+![screenshot showing flashing process](/img/NE101_idf_flash.png)
 
-#### 5. 功能验证
+#### 5. Check the video streaming output
 
-测试方法与预编译固件相同。
+Same with using precompiled firmware
 
-## 注意事项
+## Notes
 
-**协议限制**：
+**Protocol Limitations:**：
 
-- ESP32-S3仅支持USB 1.1
-- 确保摄像头兼容USB 1.1标准
+- The ESP32-S3 only supports USB 1.1.
+- Ensure that the camera is compatible with the USB 1.1 standard.
 
-> 提示：开发过程中建议保持串口监控，及时捕获异常信息。
+> Tip: During development, it is recommended to keep serial port monitoring enabled to capture any abnormal information in a timely manner.
