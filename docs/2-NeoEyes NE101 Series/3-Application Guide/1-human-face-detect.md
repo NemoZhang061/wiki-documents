@@ -1,119 +1,119 @@
-# Human Face Detect
+# Human Face Detection
 
-## 概述
+## Overview
 
-本示例实现基于深度学习的人脸检测功能，为开发者提供了一个可扩展的基础框架，可用于开发各种人脸识别相关应用。
+This example demonstrates human face detection based on deep learning and provides a lightweight, extensible framework for face-related applications.
 
-本项目基于[ESP-DL](https://github.com/espressif/esp-dl)深度学习库开发，该库为ESP-WHO提供了强大的深度学习接口，结合各类外设可实现丰富的AIoT应用场景。
+The project is developed using the[ESP-DL](https://github.com/espressif/esp-dl) library,which offers deep learning capabilities within the ESP-WHO framework. With support for different hardware modules, it can be used in various AIoT scenarios.
 
-## 准备工作
+## Development Preparation
 
-### 硬件需求
+### Hardware
 
-- NE100-CM01开发板
+- NE100-MB01 Development Board
 
-### 软件准备
+### Software
 
-#### 1. 预编译固件
+#### 1. Firmware：
 
-可直接下载最新预编译固件进行快速体验：
+Download pre-compiled firmware for use：
 
 - [human_face_detect.zip](https://github.com/camthink-ai/esp-who/blob/master/bin)
 
-#### 2. 源码开发环境
+#### 2. Environment Requirements
 
-如需进行二次开发，需准备以下环境：
+To perform secondary development, make sure the following：
 
-- **开发工具**：Visual Studio Code（1.99.2或更高版本）
-- **开发框架**：ESP-IDF插件（v5.4.0或更高版本）
-- **示例代码**：[camthink-ai/esp-who](https://github.com/camthink-ai/esp-who)
+- **IDE Software**：Visual Studio Code（v1.99.2+）
+- **Development Framework**：ESP-IDF Extension（v5.1.6）
+- **Example Repository**：[camthink-ai/esp-who](https://github.com/camthink-ai/esp-who)
 
-> **重要提示**：请务必按照[开发环境配置指南](./../NE100-MB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup)完成环境配置。
+> **Important**：Please follow the [Development Environment Setup Guide](./../NE100-MB01%20Development%20Board/Software%20Guide/Development%20Environment%20Setup) to complete the initial configuration.
 
-## 功能验证
+## Functionality Verification
 
-### 预编译固件测试流程
+### Using Precompiled Firmware
 
-#### 1. 设备连接
+#### 1. Hardware Connection
 
-使用Type-C数据线将开发板连接至PC
+Connect the development board to PC using a Type-C cable.
 
-![NE101主板接口示意图](/img/NE101_Main_Board2.png)
+![NE101 interface](/img/NE101_Main_Board2.png)
 
-#### 2. 固件烧录
+#### 2. Firmware flashing
 
-参考详细烧录指南：
+Refer to the detailed flashing guide：
 
-- [系统烧录与初始化](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
+- [System Flashing and Initialization](./../NE100-MB01%20Development%20Board/Software%20Guide/System%20Flashing%20and%20Initialization)
 
-#### 3. 串口输出解析
+#### 3. UART Output Analysis
 
-设备将通过串口输出人脸检测结果（波特率：115200）：
+The device outputs face detection results via the serial port (baud rate: 115200)：
 
-示例输出：
+Example Code:
 
 ```
 WhoDetect: 0, bbox: [0.826712, 47, 40, 169, 195], left_eye: [80, 105], left_mouth: [90, 151], nose: [101, 125], right_eye: [123, 99], right_mouth: [126, 146]
 ```
 
-**数据字段说明**：
+**Field Descriptions**：
 
-- **bbox**：人脸边界框信息
-  - 格式：[置信度, 左上角x坐标, 左上角y坐标, 宽度, 高度]
-- **left_eye**：左眼坐标(x,y)
-- **right_eye**：右眼坐标(x,y) 
-- **nose**：鼻子坐标(x,y)
-- **left_mouth**：左嘴角坐标(x,y)
-- **right_mouth**：右嘴角坐标(x,y)
+- **bbox**：Face bounding box information
+  - Format：[confidence, top-left x, top-left y, width, height]
+- **left_eye**：Coordinates of the left eye(x,y)
+- **right_eye**： Coordinates of the right eye (x,y) 
+- **nose**：Coordinates of the nose(x,y)
+- **left_mouth**：Coordinates of the left mouth corner(x,y)
+- **right_mouth**：Coordinates of the right mouth corner(x,y)
 
-#### 4. 功能验证
+#### 4. Performance Test
 
-1. 将摄像头对准人脸或人脸照片
-2. 观察串口输出的人脸特征点数据
-3. 可尝试移动摄像头，验证动态检测效果
+1. Point the camera at a real human face or a face image.
+2. Observe the serial output for facial landmark data.
+3. Move the camera around to test dynamic face detection performance.
 
-![人脸检测静态示意图](/img/NE101_example_human_detect_1.png)
+![Static Illustration of Face Detection](/img/NE101_example_human_detect_1.png)
 
-![人脸检测动态效果图](/img/NE101_example_human_detect.gif)
+![Real-Time Face Detection Example](/img/NE101_example_human_detect.gif)
 
-### 源码开发验证流程
+### Source Code Development
 
-#### 1. 获取源码
+#### 1. Clone the repository using the following command
 
 ```bash
 git clone https://github.com/camthink-ai/esp-who
 ```
 
-#### 2. 工程配置
+#### 2. Project setup
 
-1. 使用VS Code打开工程：`examples/human_face_detect`
+1. Open the directory in VS Code：`examples/human_face_detect`
    
-   ![工程目录结构](/img/NE101_human_face_detect_dir.png)
+   ![Project Root Directory](/img/NE101_human_face_detect_dir.png)
 
-2. 设置目标芯片为ESP32-S3
+2. Select esp32-s3 as the target chip：
    
    ![芯片选择界面](/img/NE101_idf_IC.png)
 
-#### 3. 编译与烧录
+#### 3. Compile and deploy the source code
 
-1. 编译工程
+1. Select the build button to compile the source code：
    
-   ![编译界面](/img/NE101_idf_build.png)
+   ![Esp32s3 selection](/img/NE101_idf_build.png)
 
-2. 烧录固件
+2. Select the flash button to upload the generated firmware to the device：
    
-   ![烧录界面](/img/NE101_idf_flash.png)
+   ![Showing build output](/img/NE101_idf_flash.png)
 
-#### 4. 功能验证
+#### 4. Performance Test
 
-验证方法与预编译固件相同，参考前述步骤。
+Same with using precompiled firmware
 
-## 参考资源
+## References
 
-1. ESP-DL模型量化文档：
+1. ESP-DL Model Quantization Documentation：
    
    - [GitHub - espressif/esp-dl](https://github.com/espressif/esp-dl?tab=readme-ov-file)
 
-2. 官方示例仓库：
+2. Official Example Repository：
    
    - [GitHub - espressif/esp-who](https://github.com/espressif/esp-who/tree/master)
