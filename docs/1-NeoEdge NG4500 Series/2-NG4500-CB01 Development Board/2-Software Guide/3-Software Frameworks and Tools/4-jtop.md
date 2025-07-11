@@ -1,52 +1,52 @@
 # jtop
 ---
-## 1. 概览
+## 1. Overview
 
-**jtop** 是由 Raffaello Bonghi 开发的 Jetson 专用命令行监控工具，基于 Python 编写，提供类似 `htop` 的交互式界面，实时显示 Jetson 系统的 CPU、GPU、内存、风扇、功耗等状态信息。
+This guide describes the installation, configuration, and advanced usage of jtop on Jetson platforms. **jtop** is a Jetson-specific command-line monitoring tool developed by Raffaello Bonghi. Written in Python, it offers an htop-like interactive interface for real-time monitoring of system resources such as CPU, GPU, memory, fan speed, and power consumption.
 
-主要功能包括：
+**Key Features include：**
 
-- 实时监控 CPU、GPU、内存、风扇、功耗等系统资源
-- 控制 NVPModel、电源模式、风扇速度、`jetson_clocks` 等
-- 支持 Python API 接入，便于集成到自定义应用中
-- 支持 Docker 环境运行
-- 无需超级用户权限即可运行
+- Monitoring of CPU, GPU, Memory, Engines, fan
+- Control NVP model, fan speed, jetson_clocks
+- Importable in a python script
+- Dockerizable in a container
+- No super user privileges required
 
 ---
 
-## 2. 系统要求
+## 2. Requirements
 
-| 组件             | 要求                                 |
+| Component             | Requirement                              |
 |------------------|--------------------------------------|
-| Jetson 硬件      | Orin Nano / NX / AGX                 |
-| 操作系统         | Ubuntu 20.04 或 22.04（基于 JetPack） |
-| JetPack 版本     | 建议 JetPack ≥ 5.1.1                  |
-| Python 版本      | Python 3.x                            |
-| pip              | 已安装                                |
-| 网络连接         | 用于安装 jetson-stats                  |
+| Jetson Hardware      | Orin Nano / NX                 |
+| Operating System         | Ubuntu 20.04 or 22.04(JetPack-based) |
+| JetPack Version     | JetPack ≥ 5.1.1 (recommended)                |
+| Python Version   | Python 3.x                            |
+| pip              | Required to installed                            |
+| Network        | Required to install jetson-stats                |
 
 ---
 
-## 3. 安装 jtop
+## 3. Installation
 
-### A. 安装前准备
+### A. Prerequisites
 
-确保系统已更新，并安装了 pip：
+Ensure the system is up to date and that `pip` is installed：
 
 ```bash
 sudo apt update
 sudo apt install python3-pip -y
 ```
 
-### B. 安装 jetson-stats（包含 jtop）
+### B. Installing jetson-stats (includes jtop)
 
-使用 pip 安装 jetson-stats：
+Using `pip` to install the `jetson-stats`：
 
 ```bash
 sudo pip3 install -U jetson-stats
 ```
 
-安装完成后，建议重启系统或重新登录以使配置生效：
+After installation, it is recommended to reboot the system or log out and re-login to apply environment changes：
 
 ```bash
 sudo reboot
@@ -54,9 +54,9 @@ sudo reboot
 
 ---
 
-## 4. 运行 jtop
+## 4. Launching jtop
 
-在终端中输入以下命令启动 jtop：
+Execute the following command to start `jtop` ：
 
 ```bash
 jtop
@@ -64,45 +64,45 @@ jtop
 
 ![jtop](/img/jtop.gif)
 
-jtop 提供多个页面，使用方向键或 Tab 键切换：
+The interface provides multiple views, navigable via arrow keys or the`Tab` key：
 
-- **ALL**：显示所有系统信息
-- **GPU**：GPU 使用情况
-- **CPU**：CPU 使用情况
-- **MEM**：内存和交换空间
-- **ENG**：各引擎状态
-- **CTRL**：控制 jetson_clocks、nvpmodel、风扇等
-- **INFO**：系统和库信息
+- **ALL**：Displays an overview of system metrics
+- **GPU**：Monitors GPU utilization
+- **CPU**：Displays CPU usage
+- **MEM**：Displays memory and swap usage
+- **ENG**：Reports the status of compute engines
+- **CTRL**：Control of jetson_clocks、nvpmodel、fan settings
+- **INFO**：System information and library versions
 
 ---
 
-## 5. 高级用法
+## 5. Advanced Usage
 
-### A. 检查 jtop 状态
+### A. Check jtop Status
 
-如果遇到问题，可使用以下命令检查并修复 jtop 状态：
+To verify the integrity and status of `jtop`  and its associated components:
 
 ```bash
 sudo jtop --health
 ```
 
-### B. 恢复默认配置
+### B. Reset Jetson Configuration
 
-重置 Jetson 配置（包括 jetson_clocks、风扇、nvpmodel 等）：
+To restore key runtime parameters (including jetson_clocks, power mode, and fan settings）to default values：
 
 ```bash
 jtop --restore
 ```
 
-### C. 更改颜色主题
+### C. Customizing Color Themes
 
-更改 jtop 的颜色主题：
+To enable enhanced color filters for better terminal visibility：
 
 ```bash
 jtop --color-filter
 ```
 
-或在 `.bashrc` 中添加：
+Or add the following to `.bashrc` ：
 
 ```bash
 export JTOP_COLOR_FILTER=True
@@ -110,9 +110,9 @@ export JTOP_COLOR_FILTER=True
 
 ---
 
-## 6. Python API 使用示例
+## 6. Python API Integration
 
-jtop 提供 Python API，便于在自定义应用中集成：
+`jtop` provides a simple Python API to access real-time system information from your Jetson device. It’s useful for monitoring, automation scripts, or integrating into your own applications:
 
 ```python
 from jtop import jtop
@@ -124,12 +124,12 @@ with jtop() as jetson:
 
 ---
 
-## 7. Docker 中使用 jtop
+## 7. Running jtop in Docker
 
-在 Docker 容器中运行 jtop：
+To use jtop inside a Docker container：
 
-1. 在主机和容器中都安装 jetson-stats。
-2. 运行容器时挂载 `/run/jtop.sock`：
+1. Make sure jetson-stats is installed both on the host and inside the container.
+2. Mount the socket file `/run/jtop.sock`when starting the container：
 
 ```bash
 docker run --rm -it -v /run/jtop.sock:/run/jtop.sock rbonghi/jetson_stats:latest
@@ -137,21 +137,21 @@ docker run --rm -it -v /run/jtop.sock:/run/jtop.sock rbonghi/jetson_stats:latest
 
 ---
 
-## 8. 故障排查
+## 8. Troubleshooting
 
-| 问题                 | 解决方法                                         |
+| Issue                 | Solution                                        |
 |----------------------|--------------------------------------------------|
-| jtop 无法启动         | 确保已安装 jetson-stats，并重启系统               |
-| 权限错误             | 使用 `sudo` 运行 jtop，或检查用户权限             |
-| 无法获取 GPU 信息     | 确认已安装 NVIDIA 驱动，并正确配置环境             |
-| Docker 中无法运行 jtop | 确保正确挂载 `/run/jtop.sock`，并在容器中安装 jetson-stats |
+| jtop fails to launch         | Ensure jetson-stats is installed and reboot the system  |
+| Permission denied errors            | Run with`sudo` or verify user permissions       |
+| Unable to retrieve GPU metrics    | Confirm NVIDIA drivers are installed and environment are correctly configured  |
+| jtop not working in Docke| Check that `/run/jtop.sock`，is correctly mounted and jetson-stats is installed inside the container |
 
 ---
 
-## 9. 参考链接
+## 9. References
 
-- 官方文档：[https://rnext.it/jetson_stats](https://rnext.it/jetson_stats)
-- GitHub 仓库：[https://github.com/rbonghi/jetson_stats](https://github.com/rbonghi/jetson_stats)
-- NVIDIA 开发者论坛：[https://forums.developer.nvidia.com](https://forums.developer.nvidia.com)
+- Official Docs：[https://rnext.it/jetson_stats](https://rnext.it/jetson_stats)
+- GitHub Repo：[https://github.com/rbonghi/jetson_stats](https://github.com/rbonghi/jetson_stats)
+- NVIDIA Developer Forum：[https://forums.developer.nvidia.com](https://forums.developer.nvidia.com)
 
 ---
