@@ -1,78 +1,80 @@
 # JupyterLab  
 ---
 
-**JupyterLab** 是一个基于 Web 的下一代交互式开发环境，支持 Python、数据可视化与 AI 应用开发，非常适合 Jetson 平台使用。
+**JupyterLab** is a next-generation, web-based interactive development environment that supports Python, data visualization, and AI application development. It is especially well-suited for use on the Jetson platform. This guide provides step-by-step instructions on how to install, launch, and configure JupyterLab on Jetson.
 
 ![overview](/img/jupyter_overview.png)
 
 ---
 
-## 1. 概览
+## 1. Overview
+JupyterLab offers an interactive development environment with the following features:
 
-- 可交互执行 Python / C++ / CUDA 等代码  
-- 支持 Markdown 文本与可视化图表  
-- 多标签页界面，支持终端、文本编辑、图形并行操作  
-- 兼容 ARM64 架构，适用于 Jetson 平台  
-- 可通过浏览器远程访问  
+- Execute Python, C++, and CUDA code interactively  
+- Support for Markdown and data visualizations  
+- Multi-tab interface with integrated terminal, text editor, and graphical tools  
+- Compatible with ARM64 architecture — ideal for Jetson platforms  
+- Remote access via web browser  
 
-本指南内容包括：
+This guide covers：
 
-- 基于 pip 的安装方法  
-- 配置文件及远程访问设置  
-- 自启动服务设置  
-- 卸载与故障排查  
+- Installation via `pip`  
+- Configuration and remote access setup  
+- Enabling autostart as a service  
+- Uninstallation and troubleshooting  
 
 ---
 
-## 2. 系统要求
+## 2. Requirements
 
-### 硬件要求
+### Hardware
 
-| 组件 | 最低要求 |
+| Component | Minimum Requirement |
 |------|----------|
-| 设备 | Jetson Orin Nano / NX / AGX |
-| 内存 | ≥ 4GB（推荐 8GB） |
-| 存储空间 | ≥ 1GB 可用空间 |
+| Device  | Jetson Orin Nano / NX  |
+| Memory  | ≥ 4GB (8GB recommended)           |
+| Storage  | ≥ 1GB available space |
 
-### 软件要求
+### Software
 
-- JetPack 5.x（基于 Ubuntu 20.04 或 22.04）  
-- Python 3.8 或更高版本  
-- pip / venv 工具  
-- 可选：conda / virtualenv  
+- JetPack 5.x (based on Ubuntu 20.04 or 22.04)  
+- Python 3.8 or higher  
+- `pip` and `venv` tools  
+- (Optional) Conda / virtualenv for environment management  
 
 ---
 
-## 3. 安装 JupyterLab
+## 3.Installation 
 
-### 方法 A：使用 pip 安装（推荐）
+### Method A: Install via pip (Recommended)
 
 ```bash
 sudo apt update
 
-# 安装 jupyterlab
+# Upgrade pip and install jupyterlab
 pip install --upgrade pip
 pip install jupyterlab
 
-# 验证安装
-jupyter-lab --version  # 应输出版本号
+# Verify installation
+jupyter-lab --version  # Should return a version number
 ```
 
-✅ pip 安装方式最灵活，兼容 Jetson 系统。
+✅ The pip method is the most flexible and fully compatible with Jetson systems.
 
 ---
 
-## 4. 启动与访问
+## 4. Launching and Accessing JupyterLab
 
-### 启动 JupyterLab
+### Start JupyterLab
 
 ```bash
 jupyter-lab --ip=0.0.0.0 --port=8888 --no-browser
 ```
 
-默认会输出带 token 的访问链接。
+This will output an access URL with a token in the terminal.
 
-### 通过浏览器访问：
+### Access via Browser
+Launch a web browser and navigate to the following address:
 
 ```
 http://<Jetson-IP>:8888/lab
@@ -82,40 +84,40 @@ http://<Jetson-IP>:8888/lab
 
 ---
 
-## 5. 创建配置文件（可选）
+## 5. Create Configuration File (Optional)
 
-自动化配置：
+To customize and persist JupyterLab settings, generate a configuration file：
 
 ```bash
 jupyter lab --generate-config
 ```
 
-编辑配置文件：
+Edit the file using a text editor：
 
 ```bash
 nano ~/.jupyter/jupyter_lab_config.py
 ```
 
-推荐配置项：
+Recommended configuration options：
 
 ```python
-c.ServerApp.ip = '0.0.0.0'          # 允许远程访问
-c.ServerApp.port = 8888             # 端口设置
-c.ServerApp.open_browser = False    # 不自动打开浏览器
-c.ServerApp.root_dir = '/home/your_username/notebooks'  # 可自定义路径
+c.ServerApp.ip = '0.0.0.0'          # Allow remote access
+c.ServerApp.port = 8888             # Set port number
+c.ServerApp.open_browser = False    # Do not auto-launch browser
+c.ServerApp.root_dir = '/home/your_username/notebooks'  # Default working directory
 ```
 
 ---
 
-## 6. 设置自启动服务（可选）
+## 6.Set Up Auto-Start Service (Optional)
 
-创建 systemd 服务文件：
+To enable JupyterLab to launch automatically at system startup, create a systemd service file：
 
 ```bash
 sudo nano /etc/systemd/system/jupyter.service
 ```
 
-内容如下：
+Insert the following configuration (replace `your_username` with your actual username):
 
 ```ini
 [Unit]
@@ -133,7 +135,7 @@ RestartSec=10
 WantedBy=multi-user.target
 ```
 
-启用服务：
+Start the service：
 
 ```bash
 sudo systemctl daemon-reexec
@@ -143,40 +145,40 @@ sudo systemctl start jupyter
 
 ---
 
-## 7. 常用命令
+## 7. Common Commands
 
-| 操作       | 命令 |
+| Action       | Command |
 |------------|------|
-| 启动服务   | `sudo systemctl start jupyter` |
-| 停止服务   | `sudo systemctl stop jupyter` |
-| 查看状态   | `systemctl status jupyter` |
-| 查看日志   | `journalctl -u jupyter -f` |
+| Start the service   | `sudo systemctl start jupyter` |
+| Stop the service   | `sudo systemctl stop jupyter` |
+| Check service status | `systemctl status jupyter` |
+| View real-time logs   | `journalctl -u jupyter -f` |
 
 ---
 
-## 8. 故障排查
+## 8. Troubleshooting
 
-| 问题                 | 解决方案 |
+| Issue                | Solution |
 |----------------------|----------|
-| 无法访问页面         | 检查 Jetson 是否开放 8888 端口 |
-| Token 丢失或未知     | 使用 `jupyter lab list` 查看 |
-| 无法保存文件         | 检查 notebooks 目录是否具有写权限 |
-| 页面加载异常         | 清除浏览器缓存或重启服务 |
+Unable to access the web page        | Ensure port 8888 is open on the Jetson device |
+| Lost or unknown token     |Run `jupyter lab list` to view active instances and tokens |
+| Unable to save files         | Check if the notebooks directory has proper write permissions |
+| Web interface not loading properly       | Clear browser cache or restart the Jupyter service |
 
 ---
 
-## 9. 附录
+## 9. Appendix
 
-### 默认文件路径
+### Default Paths
 
-| 用途        | 路径 |
+|Purpose        | Path |
 |-------------|------|
-| 笔记本默认目录 | `/home/jetson/notebooks` |
-| 配置文件     | `~/.jupyter/jupyter_lab_config.py` |
-| Web UI 地址 | `http://<Jetson-IP>:8888/lab` |
+| Default notebooks directory | `/home/jetson/notebooks` |
+| Configuration file     | `~/.jupyter/jupyter_lab_config.py` |
+| Web UI address | `http://<Jetson-IP>:8888/lab` |
 
-### 推荐资源
+### Resources
 
-- [JupyterLab 官方文档](https://jupyterlab.readthedocs.io/)
-- [Jetson 开发者论坛](https://forums.developer.nvidia.com/)
-- [Jupyter GitHub 仓库](https://github.com/jupyterlab/jupyterlab)
+- [JupyterLab Official Documentation](https://jupyterlab.readthedocs.io/)
+- [NVIDIA Jetson Developer Forum](https://forums.developer.nvidia.com/)
+- [Jupyter GitHub Repository](https://github.com/jupyterlab/jupyterlab)
