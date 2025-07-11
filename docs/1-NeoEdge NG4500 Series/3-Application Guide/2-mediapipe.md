@@ -2,36 +2,36 @@
 
 ---
 
-## 1. 概览
+## 1. Overview
 
-本文介绍如何在 **Jetson Orin** 平台（Nano / NX / AGX）上使用 **MediaPipe Python API** 实现实时 **姿态估计（Pose Estimation）**，同时启用 GPU 加速（如支持）。
+This guide demonstrates how to perform **real-time pose estimation** on the **Jetson Orin** platform (Nano / NX / AGX) using the **MediaPipe Python API**, with GPU acceleration enabled (if supported).
 
-姿态估计广泛应用于手势识别、健身追踪、人机交互等领域。
+Pose estimation is widely used in applications such as gesture recognition, fitness tracking, and human-computer interaction.
 
 ![mediapipe-series-solutions](/img/mediapipe-series-solutions.gif)
 
 ---
 
-## 2. 系统要求
+## 2. System Requirements
 
-### 硬件
+### Hardware
 
-- Jetson Orin 系列（Nano、NX、AGX）  
-- USB / CSI 摄像头（可选但推荐）
+- Jetson Orin series (Nano，NX）  
+- USB or CSI camera (Optional but recommended)
 
-### 软件
+### Software
 
-- **操作系统**：Ubuntu 20.04 / 22.04 LTS（基于 JetPack）  
-- **JetPack**：官方镜像（包含 CUDA、cuDNN、TensorRT）  
-- **Python**：建议 3.8+  
-- **MediaPipe（Python 版本）**：通过 pip 安装  
-- **依赖项**：OpenCV、FFmpeg、GStreamer（用于摄像头/视频支持）
+- **Operating System**：Ubuntu 20.04 / 22.04 LTS（Base on JetPack）  
+- **JetPack**：Official NVIDIA image (includes CUDA, cuDNN, TensorRT)  
+- **Python**：Version 3.8 or higher recommended  
+- **MediaPipe（Python）**：Install via `pip`  
+- **Dependencies**：OpenCV，FFmpeg，GStreamer(for camera/video support)
 
 ---
 
-## 3. 环境配置
+## 3. Environment Setup
 
-### 步骤 1：更新系统并安装依赖
+### Step 1: Update the System and Install Dependencies
 
 ```bash
 sudo apt update && sudo apt upgrade
@@ -42,14 +42,14 @@ sudo apt install -y \
     libavcodec-dev libavformat-dev libswscale-dev
 ```
 
-### 步骤 2：安装 Python 包
+### Step 2：Install Required Python Packages
 
 ```bash
 python3 -m pip install --upgrade pip
 pip3 install mediapipe opencv-python
 ```
 
-如需使用 Jetson 的 GPU 进行加速，可启用 JetPack 附带的 TensorRT、CUDA，并确保系统资源配置最大性能：
+To enable GPU acceleration using TensorRT and CUDA (included with JetPack), and to maximize system performance:
 
 ```bash
 sudo nvpmodel -m 0
@@ -58,7 +58,7 @@ sudo jetson_clocks
 
 ---
 
-## 4. 运行姿态估计
+## 4. Running Pose Estimation
 
 ![pose](/img/mediapipe_pose_0.png)
 
@@ -90,7 +90,7 @@ cv2.destroyAllWindows()
 ![mediapipe_pose_1](/img/mediapipe_pose_1.png)
 ---
 
-## 5. 手部追踪
+## 5. Hand Tracking
 
 ![hand](/img/mediapipe_hand_0.png)
 
@@ -129,35 +129,35 @@ cv2.destroyAllWindows()
 
 ---
 
-## 6. 性能与优化建议
+## 6. Performance and Optimization Tips
 
-| 模式       | FPS（AGX Orin） | GPU 使用率 | 是否加速   |
+| Mode       | FPS（AGX Orin） | GPU Usage | Acceleration   |
 | ---------- | --------------- | ----------- | -------- |
-| 默认 CPU   | ~5–10 FPS       | 低           | ❌        |
-| JetPack GPU | ~25–40 FPS      | 中等         | ✅        |
+| Default (CPU)  | ~5–10 FPS       | Low           | ❌        |
+| JetPack GPU | ~25–40 FPS      |  Moderate  | ✅        |
 
-### 优化建议
+### Tips
 
-- 启动 `jetson_clocks` 和设置 `nvpmodel` 为最大性能  
-- 使用 OpenCV 多线程读取摄像头帧  
-- 减小图像尺寸以提升帧率（如 640x480）
+- Use `jetson_clocks` and set`nvpmodel` to maximum performance mode  
+- Use multithreaded frame capture with OpenCV  
+- Reduce input resolution (e.g., 640×480) to improve frame rate
 
 ---
 
-## 7. 故障排查
+## 7. Troubleshooting
 
-| 问题           | 建议                                  |
+| Issue           | Solution                                  |
 | -------------- | ----------------------------------- |
-| 导入错误         | 确保 `mediapipe` 已通过 pip 安装         |
-| 摄像头无法打开     | 使用 `cv2.VideoCapture(0)` 手动测试摄像头 |
-| 低 FPS         | 启用 GPU、降低图像分辨率、关闭图像绘制        |
-| 无法显示窗口     | SSH 使用需加 `export DISPLAY=:0` 或使用 VNC |
+| Import error        | Ensure `mediapipe`  is installed via ` pip`         |
+| Camera not detected     | Manually test with  `cv2.VideoCapture(0)` |
+| Low FPS         | Enable GPU acceleration, lower image resolution, disable drawing       |
+| Cannot display window   | For SSH users, run `export DISPLAY=:0` or use VNC |
 
 ---
 
-## 8. 附录
+## 8. Appendix
 
-### 参考资源
+### References
  
 - [MediaPipe GitHub](https://github.com/google/mediapipe)
 - [MediaPipe Samples](https://github.com/google-ai-edge/mediapipe-samples)
