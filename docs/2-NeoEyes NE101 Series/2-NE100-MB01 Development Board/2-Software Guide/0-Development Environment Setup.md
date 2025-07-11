@@ -1,118 +1,118 @@
 # Development Environment Setup
 
-## 文档概述
+## Overview
 
-本指南详细介绍了在Windows操作系统下搭建ESP32-S3开发环境的完整流程，基于乐鑫官方ESP-IDF v5.1.6开发框架。文档提供了两种主流开发方式的选择：VSCode扩展安装方案和命令行工具链配置方案，并重点推荐使用VSCode作为开发环境。
+This guide provides a complete walkthrough for setting up the ESP32-S3 development environment on Windows, based on Espressif’s official ESP-IDF v5.1.6 framework. It offers two mainstream development options: using the VS Code extension (recommended) or configuring the command-line toolchain. We strongly recommend using Visual Studio Code for an optimal development experience.
 
-官方参考文档：[ESP-IDF v5.1 编程指南](https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32s3/get-started/index.html)
+Official Reference：[Programming Guide](https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32s3/get-started/index.html)
 
-## 开发工具选择
+## Development Tools Options
 
-我们提供两种集成开发环境(IDE)的安装方案：
+Two installation methods are available for setting up the IDE tools：
 
-1. [Eclipse插件方案](https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md)（适合熟悉Eclipse的开发者）
-2. [VSCode扩展方案](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md)（推荐方案，提供更好的开发体验）
+1. [Eclipse Plugin](https://github.com/espressif/idf-eclipse-plugin/blob/master/README.md)（Suitable for developers already familiar with the Eclipse environment.）
+2. [VSCode Extension](https://github.com/espressif/vscode-esp-idf-extension/blob/master/docs/tutorial/install.md)（Recommended for a smoother and more user-friendly development experience.）
 
-## 命令行开发方式（可选）
+## Command-Line Development (Optional)
 
-对于偏好命令行操作的高级开发者，可参考：[Windows平台工具链标准配置指南](https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32s3/get-started/windows-setup.html)
+For advanced users who prefer CLI-based workflows, refer to：[Standard Toolchain Setup for Windows](https://docs.espressif.com/projects/esp-idf/en/release-v5.1/esp32s3/get-started/windows-setup.html)
 
-## VSCode开发环境配置（推荐）
+## Setting Up VS Code (Recommended)
 
-### 开发环境安装步骤
+### Setup Steps
 
-1. **安装Visual Studio Code**
+1. **Install Visual Studio Code**
    
-   - 从[VSCode官网](https://code.visualstudio.com/)下载并安装最新版本
-   - 启动VSCode，在扩展市场搜索并安装"Espressif IDF"扩展
+   - Download and install the latest version from the [VSCodewebsite](https://code.visualstudio.com/).
+   - Launch VSCode, search for and install the "Espressif IDF" extension from the extension marketplace.
    
-   ![VSCode扩展安装示意图](/img/NE101_Setup_idf1.png)
+   ![VSCode extension](/img/NE101_Setup_idf1.png)
 
-2. **配置ESP-IDF开发环境**
+2. **Configure the ESP-IDF Development Environment**
    
-   - 使用快捷键`Ctrl+Shift+P`调出命令面板
-   - 输入并选择"Configure ESP-IDF extension"命令
+   - Press `Ctrl+Shift+P` to open the command palette.
+   - Type and select the command `Configure ESP-IDF extension`.
    
-   ![命令面板操作示意图](/img/NE101_Setup_idf2.png)
+   ![command palette](/img/NE101_Setup_idf2.png)
 
-### 安装模式选择
+### Installation Modes
 
-系统提供三种灵活的安装方式：
+Three installation modes are available to suit different setup preferences：
 
-![安装模式选择界面](/img/NE101_Setup_idf3.png)
+![Installation Modes ](/img/NE101_Setup_idf3.png)
 
-1. **快速安装(EXPRESS)**（推荐方案）
+1. **EXPRESS**（Recommended）
    
-   - 自动下载并安装指定版本的ESP-IDF（建议选择v5.1.6）
-   - 自动创建Python虚拟环境
-   - 默认安装路径：`X:\Espressif`
-   - 注意：此方式依赖GitHub下载速度，国内用户可能需要配置代理
+   - Automatically downloads and installs the specified ESP-IDF version (recommended: v5.1.6)
+   - Automatically creates a Python virtual environment
+   - Default installation path：`X:\Espressif`
+   - Note: This method relies on GitHub for downloading components. Users in mainland China may need to configure a proxy.
 
-2. **高级安装(ADVANCED)**
+2. **ADVANCED**
    
-   - 支持自定义ESP-IDF版本和Python环境配置
-   - 可实现多版本共存管理
-   - 允许指定工具链安装目录
+   - Allows custom selection of ESP-IDF version and Python environment
+   - Supports managing multiple ESP-IDF versions
+   - Allows setting a custom toolchain installation directory
 
-3. **使用现有环境(USE EXISTING SETUP)**
+3. **USE EXISTING SETUP**
    
-   - 自动识别系统中已安装的开发环境
-   - 适合已经配置过开发环境的用户
+   - Detects an existing ESP-IDF environment on your system
+   - Recommended for users who have already configured the development environment
 
-建议选择**快速安装**模式，并指定v5.1.6版本开始安装：
+It is recommended to choose the **EXPRESS** and and start with version v5.1.6.
 
-![版本选择界面](/img/NE101_Setup_idf4.png)
-![安装过程示意图](/img/NE101_Setup_idf5.png)
+![selecting](/img/NE101_Setup_idf4.png)
+![setup process](/img/NE101_Setup_idf5.png)
 
-安装成功后的界面显示：
+The following screen will be displayed upon successful installation:
 
-![安装完成界面](/img/NE101_Setup_idf6.png)
+![successful installation](/img/NE101_Setup_idf6.png)
 
-## 项目开发流程
+## Project Development
 
-### 获取项目代码
+### Get the Project Code
 
-通过Git命令克隆项目仓库：
+Clone the project repository using Git：
 
 ```bash
 git clone https://github.com/camthink-ai/lowpower_camera.git
 ```
 
-### 编译与烧录流程
+### Flash the Firmware
 
-1. **打开项目**
+1. **Open the Project**
    
-   - 在VSCode中使用"文件 > 打开文件夹"功能
-   - 导航至项目所在目录
+   - In Visual Studio Code, go to File > Open Folder.
+   - Navigate to the folder where the project is located.
    
    ![项目目录结构](/img/NE101_CodeList.png)
    ![项目文件浏览](/img/NE101_CodeList1.png)
 
-2. **设备配置**
+2. **Project setup**
    
-   - 在底部状态栏选择正确的COM端口
-   - 确保芯片类型选择为"esp32s3"
+   - Select the correct COM port from the bottom status bar.
+   - Select esp32s3 as the target chip.
    
-   ![芯片选择示意图](/img/NE101_idf_IC.png)
+   ![target chip](/img/NE101_idf_IC.png)
 
-3. **编译与烧录操作**
+3. **Compile and deploy the source code**
    
-   - （可选）运行"menuconfig"命令修改项目配置
-   - 点击工具栏的"build"按钮进行项目编译
+   - (Optional) Run the"menuconfig"command to modify project configuration.
+   - Select the build button to compile the source code：
    
-   ![编译过程示意图](/img/NE101_idf_build.png)
+   ![Compile process](/img/NE101_idf_build.png)
    
-   - 点击"flash"按钮烧录固件到设备
+   - Select the flash button to upload the generated firmware to the device：
    
-   ![烧录过程示意图](/img/NE101_idf_flash.png)
+   ![Showing build output](/img/NE101_idf_flash.png)
 
-## 环境验证
+## Environment Verification
 
-成功烧录后，设备将自动重启。开发者可以通过VSCode集成的串口监视器查看设备启动日志，确认固件是否正常运行。
+After flashing is complete, the device will reboot automatically. You can use the integrated Serial Monitor in Visual Studio Code to view the startup logs and verify that the firmware is running correctly.
 
-> 重要提示：
-> 1. 首次使用时建议先运行官方示例程序验证环境配置
-> 2. 如遇网络问题导致组件下载失败，可配置国内镜像源加速下载
-> 3. 开发过程中请确保使用稳定的USB连接，避免烧录中断
+> Important Notes：
+> 1. For first-time users, it's recommended to run an official example to verify the environment setup.
+> 2. If you experience network issues during component downloads, consider configuring a local mirror for faster access.
+> 3. During development, ensure a stable USB connection to avoid flashing interruptions.
 
-本指南已涵盖ESP32-S3开发环境搭建的主要流程，如需更高级的配置选项，请参考乐鑫官方文档或联系技术支持。
+This guide covers the essential steps for setting up the ESP32-S3 development environment. For advanced configuration options, please refer to the official Espressif documentation or contact technical support.
