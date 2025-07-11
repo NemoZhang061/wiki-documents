@@ -1,117 +1,118 @@
-# Low-power capture based on cellular
+# Low-Power Image Capture Base on Cellular (LTE Cat 1)
 
-## 概述
+## Overview
 
-本方案展示了如何利用**LTE Cat 1**技术实现户外环境下的低功耗图像抓拍与传输，特别适用于无WiFi覆盖且缺乏网关设备的应用场景。
+This section describes how to achieve low-power image capture and transmission in outdoor environments using LTE Cat 1 technology. It is particularly suitable for scenarios without Wi-Fi coverage or gateway devices.
 
-### 技术背景
+### Key Features
 
-**LTE Cat 1**作为3GPP专为物联网设计的通信标准，具有以下核心优势：
+**LTE Cat 1** is a 3GPP standard designed for IoT, offers the following key advantages:
 
-- **高效传输**：支持最大10Mbps下行速率和5Mbps上行速率
-- **全功能支持**：具备移动性管理和VoLTE语音通信能力
-- **节能设计**：优化的功耗表现，适合电池供电的长期工作设备
-- **广泛覆盖**：可直接接入现有4G网络基础设施，部署便捷
+- **Efficient Data Transmission**：Supports up to 10 Mbps downlink and 5 Mbps uplink
+- **Full Feature Support**：including VoLTE and mobility, making it suitable for various IoT and M2M applications
+- **Power Efficiency**：Optimized for battery-powered, long-term deployments
+- **Global Coverage**：Leverages existing 4G LTE networks, providing widespread coverage in many regions. 
 
-## 开发准备
+## Preparation
 
-### 硬件需求
+### Hardware
 
-- NE100-MB01开发板
-- LTE Cat 1无线模组
-- 已激活的4G SIM卡
+- NE100-MB01 Development Board
+- LTE Cat 1 Module
+- Activated 4G SIM Card
 
-![Cat1模组硬件连接示意图](/img/Overview/NE101/cat1PCBA.png)
+![Cat1Module](/img/Overview/NE101/cat1PCBA.png)
 
-### 软件资源
+### Software
 
-#### 1. 快速体验固件
+#### 1. Firmware
 
-- 预编译生产固件下载：[lowpower_camera/bin/NE_101_FCC.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
+- Download pre-compiled firmware for use：[lowpower_camera/bin/NE_101_FCC.zip](https://github.com/camthink-ai/lowpower_camera/tree/main/bin)
 
-#### 2. 开发环境配置
+#### 2. Environment Requirements
 
-- **IDE工具**：Visual Studio Code（v1.99.2+）
-- **开发框架**：ESP-IDF插件（v5.1.6）
-- **示例代码库**：
+- **IDE Software**：Visual Studio Code（v1.99.2+）
+- **Development Framework**：ESP-IDF Extension（v5.1.6）
+- **Example Repository**： 
   [lowpower_camera](https://github.com/camthink-ai/lowpower_camera.git)
 
-## 功能验证
+## Functionality Verification
 
-### 预编译固件使用指南
+### Using Precompiled Firmware
 
-#### 1. 硬件准备
+#### 1. Hardware Setup
 
-1. 正确安装Cat1通信模组
-2. 插入已激活的4G SIM卡
+1. Ensure the Cat 1 module is properly installed.
+2. Insert an activated 4G SIM card.
 
-> 详细连接说明参考：
-> [硬件连接指南](.././Hardware%20Guide/Hardware%20Connection)
+> For More details please refer to [the Hardware Connection Guide](.././Hardware%20Guide/Hardware%20Connection)
 
-#### 2. 固件烧录
+#### 2. **Firmware flashing**：
 
-遵循标准烧录流程：
-[系统烧录与初始化指南](./../Software%20Guide/System%20Flashing%20and%20Initialization)
+   Refer to the below to flash the firmware：
+   
+    [the System Flashing and Initialization Guide](./../Software%20Guide/System%20Flashing%20and%20Initialization)
 
-#### 3. 网络状态验证
+#### 3. Verify Network Status
 
-1. 长按功能键进入配置模式
-2. 访问设备Web管理界面 http://192.168.1.1
-3. 查看"蜂窝网络"状态信息
+1. Long-press the function button to enter Network configuration mode
+2. Access the Web UI at http://192.168.1.1
+3. Check the “Cellular Network” status panel
 
-![网络状态显示界面1](/img/NE101_example_cat1_1.png)
-![网络状态显示界面2](/img/NE101_example_cat1_2.png)
+![status panel1](/img/NE101_example_cat1_1.png)
+![status panel2](/img/NE101_example_cat1_2.png)
 
-#### 4. 数据传输测试
+#### 4. Data Transmission Test
 
-1. 配置MQTT服务器连接参数
-2. 执行测试抓拍及图片上传功能
+1. Configure MQTT server parameters
+2. Test image capture and upload functionality
 
-> 完整操作指引详见：
-> [快速入门手册](./../Quick%20Start)
+> Refer to the complete testing procedure in：
+> [Quick Start Guide](./../Quick%20Start)
 
-### 源码开发验证流程
+### Developing from Source
 
-#### 1. 获取代码库
+#### 1. Clone the repository using the following command
 
 ```bash
 git clone https://github.com/camthink-ai/lowpower_camera.git
 ```
 
-#### 2. 工程配置
+#### 2. Project setup
 
-使用VS Code打开项目目录：
+Open the directory in VS Code：
 
-![工程目录结构示意图](/img/NE101_code_dir.png)
+![Project Root Directory](/img/NE101_code_dir.png)
 
-#### 3. 编译与部署
+#### 3. Compilation and Deployment
 
-1. 执行工程编译：
+1. Select the build button to compile the source code：
 
-![编译过程界面](/img/NE101_idf_build.png)
+![Showing build output](/img/NE101_idf_build.png)
 
-2. 烧录生成固件：
+2. Select the flash button to upload the generated firmware to the device：
 
-![固件烧录界面](/img/NE101_idf_flash.png)
+![screenshot showing flashing firmware](/img/NE101_idf_flash.png)
 
-#### 4. 功能验证
+#### 4. Verify Network and Data Transmission
 
-网络状态检查与数据传输测试方法同预编译固件章节。
+Same with using precompiled firmware
 
-## 注意事项
+## Notes
 
-### SIM卡管理
+### SIM Card Management
 
-- 确认SIM卡已开通4G数据服务
+- Ensure the SIM card has active 4G data service
 
-### 信号质量评估
+### Signal Quality Guidelines
 
-- **优良信号**：RSSI > -85dBm
-- **一般信号**：-85dBm > RSSI > -95dBm  
-- **弱信号**：RSSI < -95dBm
+- **Good**：RSSI > -85dBm
+- **Fair**：-85dBm > RSSI > -95dBm  
+- **Weak**：RSSI < -95dBm
 
-> **开发建议**：
+> **Development Tips**：
 > 
-> 1. 使用串口工具监控AT指令交互，便于快速排查通信问题
-> 2. 网络注册过程通常需要30-60秒，属正常现象
-> 3. 在弱信号环境下调整设备位置
+> 1. Use a serial tool to monitor AT command responses for troubleshooting
+> 2. Network registration may take 30–60 seconds, which is normal
+> 3. In low-signal environments, try repositioning the device for better coverage
+
