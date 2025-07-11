@@ -4,70 +4,70 @@
 
 ---
 
-本指南将完整演示如何在 **NVIDIA Jetson Orin** 系列设备上安装并配置 **Docker 和 NVIDIA Container Runtime**。这是运行基于 GPU 加速的容器（如 Ollama、n8n、ROS 等 AI 推理应用）的关键步骤。
+This guide demonstrates how to install and configure **Docker** and **NVIDIA Container Runtime** on  Jetson Orin series devices.This setup is essential for running GPU-accelerated containers, such as Ollama, n8n, ROS, and other AI inference applications.
 
 ---
 
-## 1. 概览
+## 1. Overview
 
-- 安装 Docker CE 支持容器化应用
-- 配置 NVIDIA 运行时以启用 GPU 加速
-- 设置非 `sudo` 模式运行 Docker
-- 配置持久默认运行时为 NVIDIA
+- Install Docker CE to support containerized applications
+- Configure the NVIDIA runtime to enable GPU acceleration
+- Set up non-root (non- `sudo` )access to Docker
+- Set the NVIDIA runtime as the default for persistent usage
 
-本指南涵盖：
+This guide covers：
 
-- Docker 安装
-- NVIDIA 运行时配置
-- 运行时测试
-- 常见问题排查
+- Docker installation
+- NVIDIA runtime configuration
+- Runtime validation
+- Common troubleshooting
 
 
 ---
 
-## 2. 系统要求
+## 2. System Requirements
 
-| 组件         | 要求                               |
+| Component       | Requirement                              |
 | ---------- | -------------------------------- |
-| Jetson 硬件  | Orin Nano / NX / AGX             |
-| 操作系统       | Ubuntu 20.04 或 22.04（基于 JetPack） |
-| Docker 版本  | 建议 Docker CE ≥ 20.10             |
-| NVIDIA 运行时 | `nvidia-container-toolkit`       |
-| CUDA 驱动    | 已包含在 JetPack（需 JetPack ≥ 5.1.1）  |
+| Jetson Device  | Jetson Orin Nano / NX              |
+| Operating System      | Ubuntu 20.04 or 22.04（based on JetPack） |
+| Docker Version  |Docker CE ≥ 20.10  recommended           |
+| NVIDIA Runtime | `nvidia-container-toolkit`       |
+| CUDA  Driver    | Included in JetPack（JetPack ≥ 5.1.1 required）  |
 
 ---
 
-## 3. 安装 Docker CE
+## 3. Installation  Docker CE
 
-从 Ubuntu 官方源安装 Docker：
+Install Docker from the Ubuntu Official Repository:
 
 ```bash
 sudo apt-get update
 sudo apt-get install -y docker.io
 ```
 
-> ⚠️ 如需安装最新版本，也可以使用 Docker 官方 APT 源。
+> ⚠️ To install the latest Docker version, consider using the official Docker APT repository.
 
-检查 Docker 是否安装成功：
+Verify Docker Installation：
 
 ```bash
 docker --version
-# 示例输出：Docker version 20.10.17, build 100c701
+# Example：Docker version 20.10.17, build 100c701
 ```
 
 ---
 
-## 4. 非 `sudo` 模式运行 Docker（可选）
+## 4. Run Docker Without `sudo`（Optional）
 
-若希望以普通用户身份运行 Docker 命令：
+To allow a non-root user to run Docker commands：
 
 ```bash
-sudo groupadd docker         # 创建 docker 用户组（若已存在可跳过）
+sudo groupadd docker         # Create the docker group (skip if it already exists)
 sudo usermod -aG docker $USER
 sudo systemctl restart docker
 ```
 
-> 🔁 重启系统或重新登录使变更生效：
+> 🔁 Reboot or re-login to apply group membership changes:
 
 ```bash
 newgrp docker
@@ -75,9 +75,9 @@ newgrp docker
 
 ---
 
-## 5. 安装 NVIDIA 容器运行时
+## 5. Install NVIDIA Container Runtime
 
-安装容器运行时以便容器访问 Jetson GPU：
+Install the runtime that enables GPU access from within containers:：
 
 ```bash
 sudo apt-get install -y nvidia-container-toolkit
@@ -85,29 +85,29 @@ sudo apt-get install -y nvidia-container-toolkit
 
 ---
 
-## 6. 配置 NVIDIA Docker 运行时
+## 6.Configure NVIDIA Docker Runtime
 
-### A. 注册 NVIDIA 为 Docker 运行时
+### A. Register NVIDIA as a Docker Runtime
 
-运行以下配置命令：
+Run the following command to configure the NVIDIA runtime:
 
 ```bash
 sudo nvidia-ctk runtime configure --runtime=docker
 ```
 
-确保 NVIDIA 被注册为有效容器运行时。
+Ensure that the NVIDIA runtime is registered as a valid container runtime.
 
 ---
 
-### B. 设置 NVIDIA 为默认运行时
+### B. Set NVIDIA as the Default Runtime
 
-编辑 Docker 守护进程配置文件：
+Edit the Docker daemon configuration:
 
 ```bash
 sudo nano /etc/docker/daemon.json
 ```
 
-粘贴或确认以下 JSON 内容存在：
+Paste or confirm the following JSON content:
 
 ```json
 {
@@ -121,32 +121,32 @@ sudo nano /etc/docker/daemon.json
 }
 ```
 
-保存并退出编辑器。
+Save and exit the editor.
 
 ---
-### C. 重启 Docker 服务
+### C. Restart Docker Service
 
-应用配置更改：
+Apply the configuration changes:
 
 ```bash
 sudo systemctl restart docker
 ```
 
-验证 Docker 是否启用了 NVIDIA 运行时：
+Verify that the NVIDIA runtime is active:
 
 ```bash
 docker info | grep -i runtime
 ```
 
-输出示例应包含：
+Expected output should include:
 
 ```
  Runtimes: io.containerd.runc.v2 nvidia runc
  Default Runtime: nvidia
 ```
 ---
-### D. 登陆nvcr.io
-获取 [NGC_API_KEY](https://org.ngc.nvidia.com/setup)
+### D. Log in to nvcr.io (NVIDIA NGC Container Registry)
+  Pulling containers from nvcr.io requires a valid [NGC_API_KEY](https://org.ngc.nvidia.com/setup)
 - Generate API Key
 ![NCG_API_KEY](/img/NGC_API_KEY.png)
 - Generate Personal Key
@@ -154,29 +154,29 @@ docker info | grep -i runtime
 - docker login
   ```shell
   sudo docker login nvcr.io
-  #用户固定:$oauthtoken
+  #Username:$oauthtoken
   Username: "$oauthtoken"
-  #密码token
+  #Passwordtoken
   Password: "YOUR_NGC_API_KEY"
   ```
 ---
 
-## 7. 测试容器中 GPU 访问
+## 7. GPU Access Test
 
-运行官方 CUDA 容器测试 GPU 可用性：
+Run the official CUDA container to verify GPU availability:
 
 ```bash
 docker run --rm --runtime=nvidia nvcr.io/nvidia/l4t-base:r36.2.0 nvidia-smi
 ```
 
-期望输出：
+Expected Output：
 
-- 显示 CUDA 版本与 Jetson GPU 信息
-- 确认容器已成功访问 GPU
+- Displays CUDA version and Jetson GPU details
+- Confirms that the container has successfully accessed the GPU
 
 ![docker_nvidia-smi](/img/docker_nvidia-smi.png)
 
-**你也可以使用社区维护的 [jetson-containers](https://github.com/dusty-nv/jetson-containers)，快速搭建你的开发环境（推荐）**
+**You can also use the community-maintained [jetson-containers](https://github.com/dusty-nv/jetson-containers) project to quickly set up your development environment (recommended).**
 
 |||
 |---|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -195,31 +195,31 @@ docker run --rm --runtime=nvidia nvcr.io/nvidia/l4t-base:r36.2.0 nvidia-smi
 
 ---
 
-## 8. 使用技巧与故障排查
+## 8. Troubleshooting
 
-| 问题               | 解决方法                                |
+| Issue              | Solution                               |
 | ---------------- | ----------------------------------- |
-| 找不到 `nvidia-smi` | Jetson 使用 `tegrastats` 替代           |
-| 容器中无 GPU         | 确保默认运行时设置为 `nvidia`                 |
-| 权限错误             | 检查用户是否加入了 `docker` 用户组              |
-| 容器崩溃             | 查看日志：`journalctl -u docker.service` |
+|  `nvidia-smi` not found| Jetson devices use `tegrastats` instead of `nvidia-smi`        |
+| No GPU access in container        | Ensure the default runtime is set to `nvidia`                 |
+| Permission denied errors           | Verify that the user is in the`docker` group             |
+| Container crashes            | Check logs via`journalctl -u docker.service` |
 
 ---
 
-## 9. 附录
+## 9. Appendix
 
-### 关键文件路径
+### Key File Paths
 
-| 文件                                  | 用途              |
+| File                               | Purpose            |
 | ----------------------------------- | --------------- |
-| `/etc/docker/daemon.json`           | Docker 运行时配置    |
-| `/usr/bin/nvidia-container-runtime` | NVIDIA 运行时二进制路径 |
-| `~/.docker/config.json`             | Docker 用户配置（可选） |
+| `/etc/docker/daemon.json`           | Docker runtime configuration    |
+| `/usr/bin/nvidia-container-runtime` | Path to NVIDIA runtime binary|
+| `~/.docker/config.json`             | (Optional) Docker user-specific config|
 
-### 参考链接
+### References
 
-- [Jetson Docker Runtime 官方文档](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
-- [NVIDIA 开发者论坛](https://forums.developer.nvidia.com/)
-- [JetPack SDK 下载](https://developer.nvidia.com/embedded/jetpack)
+- [Jetson Docker Runtime Official Docs](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html)
+- [NVIDIA Developer Forum](https://forums.developer.nvidia.com/)
+- [JetPack SDK  Download](https://developer.nvidia.com/embedded/jetpack)
 
 
