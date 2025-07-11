@@ -2,36 +2,36 @@
 
 ---
 
-## 1. 概览
+## 1. Overview
 
-YOLO11 是 Ultralytics 推出的全新一代目标检测模型，具备出色的速度与精度。在 NVIDIA Jetson 设备（如 Orin Nano / NX / AGX）上本地部署 YOLO11，可实现高效、低延迟的 AI 推理。
+YOLOv11 is the latest-generation object detection model released by Ultralytics, delivering an exceptional balance between speed and accuracy. When deployed locally on NVIDIA Jetson devices (such as Orin Nano, NX, or AGX), YOLOv11 enables efficient, low-latency AI inference optimized for edge environments.
 
 ![yolo_overview](/img/yolo_overview.png)
 
-本指南将介绍：
+This guide covers:
 
-- 环境准备与 JetPack 安装  
-- 通过 Docker 快速运行 YOLO11  
-- 本地安装 YOLO11 与依赖项  
-- 使用 TensorRT 加速模型推理  
-- DLA 加速与性能基准测试  
+- Preparing the environment and installing JetPack  
+- Running YOLOv11 quickly using Docker  
+- Installing YOLOv11 and its dependencies locally  
+- Accelerating inference with TensorRT  
+- Leveraging DLA acceleration and benchmarking performance  
 
-> YOLO11 可在 Jetson Orin Nano 等设备上以超高性能运行，特别适合边缘 AI 应用场景。
+> YOLOv11 runs exceptionally well on devices such as the Jetson Orin Nano, offering a powerful solution for real-time edge AI deployment.
 
 ---
 
-## 2. 环境准备
+## 2. Environment Preparation
 
-### 硬件支持
+### Hardware Support
 
-| 设备                     | 支持 JetPack 版本 | AI 性能   |
+| Device                    | 	Supported JetPack Version | AI Performance   |
 |------------------------|------------------|-----------|
 | Jetson Nano            | JetPack 4.6.x    | 472 GFLOPS |
 | Jetson Xavier NX       | JetPack 5.1.x    | 21 TOPS   |
 | Jetson Orin NX 16GB    | JetPack 6.x      | 100 TOPS  |
 | Jetson Orin Nano Super | JetPack 6.x      | 67 TOPS   |
 
-> 推荐使用 JetPack ≥ 5.1 版本，建议开启最大性能模式：
+> For optimal results, it is recommended to use JetPack 5.1 or later and enable maximum performance mode：
 
 ```bash
 sudo nvpmodel -m 0
@@ -40,24 +40,24 @@ sudo jetson_clocks
 
 ---
 
-## 3. Docker 快速启动 YOLO11（推荐）
+## 3. Quick Start via Docker（Recommended）
 
-最快方式：使用 Ultralytics 提供的预构建镜像。
+The fastest way to get started is by using the prebuilt Docker image provided by Ultralytics. Run the following commands:
 
 ```bash
 sudo docker pull ultralytics/ultralytics:latest-jetson-jetpack6
 sudo docker run -it --ipc=host --runtime=nvidia ultralytics/ultralytics:latest-jetson-jetpack6
 ```
 
->  内含 YOLO11、PyTorch、Torchvision、TensorRT 等依赖。
+>   Includes YOLOv11, PyTorch, Torchvision, TensorRT, and other required dependencies.
 
 ---
 
-## 4. 本地安装 YOLO11（可选）
+## 4. Local Installation YOLOv11 (Optional)
 
-适合需要自定义环境的用户。
+This option is intended for users who need a customized environment.
 
-### 步骤一：准备 Python 环境
+### Step 1: Set Up the Python Environment
 
 ```bash
 sudo apt update
@@ -65,23 +65,24 @@ sudo apt install python3-pip -y
 pip install -U pip
 ```
 
-### 步骤二：安装 YOLO11 软件包
+### Step 2: Install the YOLOv11 Package
 
 ```bash
 pip install ultralytics[export]
 ```
 
-### 步骤三：安装兼容的 PyTorch 与 Torchvision
+### Step 3: Install Compatible PyTorch and Torchvision
 
-上述ultralytics 安装程序将安装Torch 和 Torchvision。但是，通过 pip 安装的这两个软件包无法兼容在基于 ARM64 架构的 Jetson 平台上运行。因此，我们需要手动安装预编译的PyTorch pip wheel，并从源代码编译/安装 Torchvision。
-以 JetPack 6.1 + Python 3.10 为例：
+While `ultralytics` automatically installs PyTorch and Torchvision, the pip-installed versions are not compatible with ARM64-based Jetson platforms.Instead, you need to manually install a prebuilt PyTorch wheel and build Torchvision from source.
+
+Example: JetPack 6.1 + Python 3.10
 
 ```bash
 pip install https://github.com/ultralytics/assets/releases/download/v0.0.0/torch-2.5.0a0+872d972e41.nv24.08-cp310-cp310-linux_aarch64.whl
 pip install https://github.com/ultralytics/assets/releases/download/v0.0.0/torchvision-0.20.0a0+afc54f7-cp310-cp310-linux_aarch64.whl
 ```
 
-安装 cuSPARSELt 以解决torch 2.5.0依赖问题：
+Install cuSPARSELt to Resolve Torch 2.5.0 Dependency:
 ```bash
 wget https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2204/arm64/cuda-keyring_1.1-1_all.deb
 sudo dpkg -i cuda-keyring_1.1-1_all.deb
@@ -90,25 +91,25 @@ sudo apt-get -y install libcusparselt0 libcusparselt-dev
 ```
 ---
 
-检查torch版本及GPU支持
+Verify PyTorch Version and GPU Availability:
 ```bash
 python3 -c "import torch; print(torch.__version__)" # 2.5.0a0+872d972e41.nv24.08
 python3 -c "import torch; print(torch.cuda.is_available())" # True
 ```
 
-### 步骤四：安装 onnxruntime-gpu
+### Step 4: Install ONNX Runtime (GPU)
 
-您可以找到所有可用的 onnxruntime-gpu 包--按 JetPack 版本、Python 版本和其他兼容性细节组织--在 Jetson ZooONNX 运行时兼容性矩阵.在此，我们将下载并安装 onnxruntime-gpu 1.20.0 与 Python3.10 支持。
+To find all available ` onnxruntime-gpu packages` —organized by JetPack version, Python version, and other compatibility details—in the Jetson Zoo ONNX Runtime Compatibility Matrix. In this example, we will download and install `onnxruntime-gpu 1.20.0 `with support for Python 3.10.
 
 ```bash
 pip install https://github.com/ultralytics/assets/releases/download/v0.0.0/onnxruntime_gpu-1.20.0-cp310-cp310-linux_aarch64.whl
 ```
 
-## 5. 使用 TensorRT 加速 YOLO11 推理
+## 5. Accelerating YOLOv11 Inference with TensorRT
 
-Ultralytics 支持将模型导出为 TensorRT 引擎文件（`.engine`），以提升推理性能。
+Ultralytics supports exporting YOLOv11 models to TensorRT engine files （`.engine`），to significantly improve inference performance.
 
-### Python 示例
+### Python Example
 
 ```bash
 from ultralytics import YOLO
@@ -119,7 +120,7 @@ model.export(format="engine")  # 生成 yolo11n.engine
 trt_model = YOLO("yolo11n.engine")
 results = trt_model("https://ultralytics.com/images/bus.jpg")
 ```
-### CLI 示例
+### CLI Example
 ```bash
 # Export a YOLO11n PyTorch model to TensorRT format
 yolo export model=yolo11n.pt format=engine # creates 'yolo11n.engine'
@@ -128,14 +129,14 @@ yolo predict model=yolo11n.engine source='https://ultralytics.com/images/bus.jpg
 ```
 ---
 
-## 6. 使用 DLA（深度学习加速器）
+## 6. Using DLA (Deep Learning Accelerator)
 
-Jetson 部分设备内建 DLA，可进一步降低功耗并提高并发推理效率。
-### Python 示例
+Some Jetson devices feature built-in DLA (Deep Learning Accelerator) cores that enable lower power consumption and improved parallel inference.
+### Python Example
 ```python
 model.export(format="engine", device="dla:0", half=True)
 ```
-### CLI 示例
+### CLI Example
 ```bash
 # Export a YOLO11n PyTorch model to TensorRT format with DLA enabled (only works with FP16 or INT8)
 # Once DLA core number is specified at export, it will use the same core at inference
@@ -144,9 +145,9 @@ yolo export model=yolo11n.pt format=engine device="dla:0" half=True # dla:0 or d
 yolo predict model=yolo11n.engine source='https://ultralytics.com/images/bus.jpg'
 ```
 
->  部分模型层可能无法全部在 DLA 上运行，会回退至 GPU。
+>  Note: Some model layers may not run entirely on the DLA and will fall back to GPU execution if unsupported.
 
-## 7、object detection 示例
+## 7、object detection Example
 
 ```python
 import cv2
@@ -203,43 +204,43 @@ cv2.destroyAllWindows()
 ![yolo_od](/img/yolo_od.png)
 ---
 
-## 7. 基准测试性能对比
+## 7. Benchmark Performance Comparison
 
-| 模型格式         | Orin Nano（ms） | mAP50-95 | Orin NX（ms） |
+| Model  Format      | Orin Nano（ms） | mAP50-95 | Orin NX（ms） |
 |------------------|----------------|----------|----------------|
 | PyTorch          | 21.3           | 0.6176   | 19.5           |
 | TorchScript      | 13.4           | 0.6100   | 13.03          |
 | TensorRT (FP16)  | **4.91**       | 0.6096   | **4.85**       |
 | TensorRT (INT8)  | **3.91**       | 0.3180   | 4.37           |
 
-> 💡 TensorRT INT8 模式速度最快，FP16 精度更优。
+> ✅ TensorRT (FP16) achieves the best balance between speed and accuracy. ⚠️ INT8 offers the fastest inference speed but with a significant accuracy drop.
 
 ---
 
-## 8. 性能调优建议
+## 8. Optimization Tips
 
-| 优化项       | 建议命令或方法                |
+| Optimization     | Recommended Command                |
 |------------|---------------------------|
-| 电源模式     | `sudo nvpmodel -m 0`       |
-| CPU/GPU频率 | `sudo jetson_clocks`       |
-| 系统监控     | `sudo pip install jetson-stats` → `jtop` |
-| 内存管理     | 合理分配 swap、释放缓存         |
+| Power Mode    | `sudo nvpmodel -m 0`       |
+| CPU/GPU Frequency | `sudo jetson_clocks`       |
+| System Monitoring    | `sudo pip install jetson-stats` → `jtop` |
+| Memory Management     | Use swap efficiently, clean cache when needed      |
 
 ---
 
-## 9. 常见问题
+## 9. Troubleshooting
 
-| 问题                           | 解决方法                                 |
+| Issues                          | Solution                               |
 |--------------------------------|------------------------------------------|
-| 安装 PyTorch 后无法导入       | 确保使用为 Jetson 提供的 `.whl` 包           |
-| TensorRT 模型推理速度不如预期 | 检查是否开启 `jetson_clocks` + 使用 FP16 模式 |
-| 无法拉取 Docker 镜像           | 确保 Docker 正确安装并使用 `--runtime=nvidia` |
-|虚拟环境下No module named 'tensorrt'|拷贝主机tensorrt到虚拟环境cp -r /usr/lib/python3.10/dist-packages/tensorrt your_venv/lib/python3.10/site-packages/
+| Cannot import PyTorch after installation       | Make sure you're using the  `.whl` package specifically built for Jetson          |
+| TensorRT  inference is slower than expected | Check if `jetson_clocks` is enabled and use FP16 mode |
+| Failed to pull Docker image         | Ensure Docker is properly installed and run with `--runtime=nvidia` |
+|No module named 'tensorrt' in virtual env|Copy the package from host to venv: `cp -r /usr/lib/python3.10/dist-packages/tensorrt your_venv/lib/python3.10/site-packages/`
 
 ---
 
-## 附录与参考资源
+## References
 
-- [Ultralytics YOLO11 文档](https://docs.ultralytics.com/)
-- [Jetson 开发者论坛](https://forums.developer.nvidia.com/)
-- [PyTorch for Jetson 支持](https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-14-now-available/72048)
+- [Ultralytics YOLO11 Documentation](https://docs.ultralytics.com/)
+- [NVIDIA Jetson Developer Forum](https://forums.developer.nvidia.com/)
+- [PyTorch for Jetson Support](https://forums.developer.nvidia.com/t/pytorch-for-jetson-version-1-14-now-available/72048)
