@@ -1,124 +1,122 @@
 ## **Product Brief**
 
-本开发板适用于款低功耗无线电池版本抓拍相机方案。基于乐鑫的ESP32-S3模组进行开发，支持2.4G WiFi 和BLE。搭配OV5640 Cameras模组，可拓展Cat-1或WiFi-Halow通讯方式。适用于无线布署的图片抓拍相关场景，并有灵活安装的支架可选。
+This development board is designed for low-power wireless battery-powered snapshot camera solutions. Based on Espressif's ESP32-S3 module, it supports 2.4GHz WiFi and BLE. Paired with an OV5640 camera module, it can be expanded with Cat-1 or WiFi-Halow communication. Suitable for wirelessly deployed image capture scenarios with optional flexible mounting brackets.
 
 ## **Main Board Overview**
 
-主板搭配乐鑫的ESP32-S3-WROOM-1-N16R8模组，Flash 支持16MB, PSRAM支持8MB。支持 IEEE 802.11b/g/n (2.4 GHz Wi-Fi) 和 Bluetooth® 5 (LE)。支持拓展Cat-1或WiFi-Halow无线模组，及拓展其它GPIOs适用于二次开发。标配OV5640 Camera模组，并可选配USB Camera模组（UVC协议）。
-主要特性： 
+The main board features Espressif's ESP32-S3-WROOM-1-N16R8 module with 16MB Flash and 8MB PSRAM. Supports IEEE 802.11b/g/n (2.4GHz Wi-Fi) and Bluetooth® 5 (LE). Expandable with Cat-1 or WiFi-Halow wireless modules, plus additional GPIOs for secondary development. Comes standard with OV5640 camera module, with optional USB camera module (UVC protocol).
 
-- 搭配ESP32-S3模组，Xtensa双核@240MHz
-
-- Flash 16MB， PSRAM 8MB
-
-- 支持 IEEE 802.11b/g/n (2.4 GHz Wi-Fi) 和 Bluetooth® 5 (LE)
-
-- 支持Cat-1或WiFi-Halow无线模组拓展
-
-- 搭配OV5640 DCMI 接口 Camear模组，并可选USB 镜头模组
-
-- 支持暖光灯补光，且带光敏传感器 
-
-- 一键抓拍功能
-
-- 支持外部Alarm IO 输入，或PIR Module 输入
-
-- 拓展GPIOs,适用于二次开发
-
-- 支持基于Type-C的调试UART
+Key Features:  
+- ESP32-S3 module with Xtensa dual-core @240MHz  
+- 16MB Flash, 8MB PSRAM  
+- IEEE 802.11b/g/n (2.4GHz Wi-Fi) & Bluetooth® 5 (LE)  
+- Expandable with Cat-1 or WiFi-Halow wireless modules  
+- OV5640 DCMI interface camera module + optional USB camera  
+- Warm light fill flash with photosensitive sensor  
+- One-touch snapshot function  
+- External Alarm IO input or PIR Module input  
+- Expansion GPIOs for secondary development  
+- Type-C based debug UART  
 
 ## **Camera Module Overview**
 
-模组搭配OV5640,分辨率为2592*1944，靶面尺寸为1/4。镜头有D-FOV 120和77度两种可选。并可依场景需求提供微距抓拍及正常抓拍两种对焦版本。
+### OV5640 Module
 
-|           Module      | OV5640  Module                  |          |
-| --------------------- | ------------------------------- | -------- |
-| Items                 | Description                     |          |
-| CMOS Sensor           | OV5640PLCC, 1/4"                |          |
-| Max.Resolution        | 2592*1944                       |          |
-| F.No                  | 2.4                             |          |
-| Focal Length          | 1.79mm ro3.97mm                 | Optional |
-| Focusing distance     | Micro or Normal                 | Optional |
-| FOV(D)                | 59                              |          |
-| FPC Connector         | 38.5*12.5mm，24Pins 0.5mm        |          |
-| Dimensions            | 8.5 x 8.5 x 6.5mm (without FPC) |          |
-| Operation Temperature | -10° -- 65°                     |          |
+OV5640 sensor with a maximum resolution of 2592×1944 and a 1/4-inch optical format. It offers two lens options with D-FOV 120° and 77°, and supports two focus configurations: macro capture and standard focus, selectable based on application needs.
 
-USB镜头模组:搭配Smartsens的SC200AI，分辨率为1920*1080， 靶面尺寸为1/2.8“， 镜头接口为M12，可配多种FOV镜头可选。
+| Item                 | Description                       | Note       |
+| :------------------- | :-------------------------------- | :--------- |
+| CMOS Sensor          | OV5640 PLCC, 1/4"                 |            |
+| Max. Resolution      | 2592×1944                         |            |
+| F.No                 | 2.4                               |            |
+| Focal Length         | 1.79mm to 3.97mm                  | Optional   |
+| Focusing Distance    | Macro or Normal                   | Optional   |
+| FOV(D)               | 59°                               |            |
+| FPC Connector        | 38.5×12.5mm, 24Pins 0.5mm pitch   |            |
+| Dimensions           | 8.5×8.5×6.5mm (without FPC)       |            |
+| Operating Temperature| -10°C to 65°C                     |            |
 
-|        Module            | USB Camera Module |               |
-| ------------------------ | ----------------- | ------------- |
-| Items                    | Description       |               |
-| CMOS Sensor              | SC200AI, 1/2.8"   |               |
-| Max.Resolution           | 1920*1080         |               |
-| Focal Length             | 2.5mm/3mm/6mm     | Optional LENS |
-| Focusing distance        | Normal            |               |
-| FOV(D)                   | 165/97/59         |               |
-| Communication Interfaces | USB               |               |
-| Operation Temperature    | -20°-- 60°        |               |
-| Storage Temperature      | -40°-- 85°        |               |
-| Dimensions               | 25mm x 23.86mm    |               |
+### USB Camera Module (SC200AI)
 
+USB camera module is Equipped with the Smartsens SC200AI sensor, offering a resolution of 1920×1080 and a 1/2.8-inch optical format.
+It features an M12 lens mount, supporting multiple FOV options to accommodate a variety of application scenarios.
+
+| Item                 | Description               | Note          |
+| :------------------- | :------------------------ | :------------ |
+| CMOS Sensor          | SC200AI, 1/2.8"           |               |
+| Max. Resolution      | 1920×1080                 |               |
+| Focal Length         | 2.5mm/3mm/6mm             | Optional LENS |
+| Focusing Distance    | Normal                    |               |
+| FOV(D)               | 165°/97°/59°              |               |
+| Communication        | USB                       |               |
+| Operating Temperature| -20°C to 60°C             |               |
+| Storage Temperature  | -40°C to 85°C             |               |
+| Dimensions           | 25×23.86mm                |               |
 
 ## **Cat-1 Module Overview**
 
-全球版本（除北美）采用 Quectel的EG912系列模组，通过UART与主板进行通讯。
-| Module                   | Quectel EG912UGL                                             |
-| ------------------------ | ------------------------------------------------------------ |
-| LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |
-| LTE-TDD                  | B34/ 38/ 39/ 40/ 41                                          |
-| GSM                      | B2/ 3/ 5/ 8                                                  |
-| Antenna                  | PCB Antenna                                                  |
-| Communication Interfaces | UART                                                         |
-| Power Supply             | DC 4 -- 6 V                                                  |
-| Operation Temperature    | -20°-- 60°                                                   |
-| Storage Temperature      | -40°-- 85°                                                   |
-| Dimensions               | 60mm x 60mm                                                 |
-| Certifications           | CE                                                           |
+### Global Version (Non-North America)  
 
-北美版本采用Quectel的EG915Q-NA模组，通过UART与主板进行通讯
-| Module                   | Quectel EG915Q-NA                                             |
-|:------------------------:|:------------------------------------------------------------:|
-| LTE-FDD                  | B2/B4/B5/B12/B13/B14/B66/B71B2/B4/B5/B12/B13/B14/B66/B71 |
-| Antenna                  | PCB Antenna                                                  |
-| Communication Interfaces | UART                                                         |
-| Power Supply             | DC 4-6V                                                      |
-| Operation Temperature    | -20℃ ~ +60℃                                                  |
-| Storage Temperature      | -40℃ ~ +85℃                                                  |
-| Dimensions               | 60 x 60 mm                                                   |
-| Certifications           | FCC                                                           |
+The global version (excluding North America) uses the Quectel EG912 series module, which communicates with the main board via UART.
+
+| Module               | Quectel EG912UGL                                   |
+| :------------------- | :------------------------------------------------- |
+| LTE-FDD              | B1/2/3/4/5/7/8/12/13/17/18/19/20/25/26/28/66      |
+| LTE-TDD              | B34/38/39/40/41                                    |
+| GSM                  | B2/3/5/8                                           |
+| Antenna              | PCB Antenna                                        |
+| Communication        | UART                                               |
+| Power Supply         | 4-6V DC                                            |
+| Operating Temp       | -20°C to 60°C                                      |
+| Storage Temp         | -40°C to 85°C                                      |
+| Dimensions           | 60×60mm                                            |
+| Certifications       | CE                                                 |
+
+### North America Version  
+
+The North American version uses the Quectel EG915Q-NA module, which communicates with the main board via UART.
+
+| Module               | Quectel EG915Q-NA                                   |
+| :------------------- | :-------------------------------------------------- |
+| LTE-FDD              | B2/B4/B5/B12/B13/B14/B66/B71                        |
+| Antenna              | PCB Antenna                                         |
+| Communication        | UART                                                |
+| Power Supply         | 4-6V DC                                             |
+| Operating Temp       | -20°C to 60°C                                       |
+| Storage Temp         | -40°C to 85°C                                       |
+| Dimensions           | 60×60mm                                             |
+| Certifications       | FCC                                                 |
+
 ## **WiFi Halow Module Overview**
 
-采用 Quectel的FGH100M模组，支持868MHz, 915MHz两个频段。通过SPI接口与主板进行通讯。
-| Module                   | Quectel FGH100M            |
-| ------------------------ | -------------------------- |
-| WiFi Protocol            | IEEE 802.11 ah             |
-| Operating Modes          | AP/STA                     |
-| Operation Frequencey     | Sub-1 G: 850–950 MHz       |
-| Channel Width            | 1 MHz, 2 MHz, 4 MHz, 8 MHz |
-| Antenna                  | PCB Antenna                |
-| Communication Interfaces | SPI                        |
-| Power Supply             | DC 4 -- 6 V                |
-| Operation Temperature    | -20°-- 60°                 |
-| Storage Temperature      | -40°-- 85°                 |
-| Dimensions               | 60mm x 60mm                |
-| Certifications           | CE/FCC                     |
+WiFi Halow module is built with the Quectel FGH100M, supporting both 868 MHz and 915 MHz frequency bands. It communicates with the main board via an SPI interface.
+
+| Module               | Quectel FGH100M             |
+| :------------------- | :-------------------------- |
+| WiFi Protocol        | IEEE 802.11ah               |
+| Operating Modes      | AP/STA                      |
+| Frequency            | Sub-1GHz: 850-950MHz        |
+| Channel Width        | 1/2/4/8 MHz                 |
+| Antenna              | PCB Antenna                 |
+| Communication        | SPI                         |
+| Power Supply         | 4-6V DC                     |
+| Operating Temp       | -20°C to 60°C               |
+| Storage Temp         | -40°C to 85°C               |
+| Dimensions           | 60×60mm                     |
+| Certifications       | CE/FCC                      |
 
 ## **Accessories and Brackets**
 
-### Camera modules
+### Camera Modules
+- UVC-compliant USB camera module with SC200AI image sensor
 
-基于UVC协议的USB镜头模组,搭配SC200AI图像传感器
+### Sensor Modules
+- External sensors (e.g., PIR) via DI/DO, RS485, RS232, GPIO interfaces
 
-### Sensor modules
-
-可通过DI/DO，及RS485,RS232, GPIO来外接各种传感器，如PIR传感器
-
-### Expansion modules
-
-- WiFi Halow  Module
+### Expansion Modules
+- WiFi Halow Module
 - Cat-1 Module
 
 ### Mounts and enclosures
 
-提供灵活安装的支架配件,具体参考：[产品安装](../../Overview#产品安装)
+"Provides flexible installation bracket accessories, please refer to: [Product Installation](../../Overview#产品安装)
