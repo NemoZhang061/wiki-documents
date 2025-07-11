@@ -1,127 +1,127 @@
 # Quick Start
 
-## 产品概述
+## Product Overview
 
-NE100系列是专为物联网应用设计的高性能智能相机产品线，其中NE101标准固件提供了定时抓拍与数据上报等核心功能。本指南将帮助您快速掌握产品使用方法。
+The NeoEyes NE100 series is a high-performance smart camera product line specially designed for IoT (Internet of Things) applications. The NE101 event-triggered camera provides key functions such as scheduled image capture and data reporting. This guide will help you master the product quickly.
 
-## 硬件准备
+## Hardware Preparation
 
-### 硬件组件
+### Hardware Components
 
-- NE100-CM01开发板
-- 具体模组板（可选），详细参考[硬件组件说明](./Hardware%20Guide/Components%20Overview)
+- NE100-MB01 development kit
+- Specific module board (optional), please refer to [Hardware Component Overview](./Hardware%20Guide/Components%20Overview)
 
-## 操作指南
+## Operation Guide
 
-### 设备连接
+### Device Connection
 
-![NE101主板正面图](/img/NE101_Main_Board.png)  
-![NE101主板接口图](/img/NE101_Main_Board2.png)  
+![NE101 main board1](/img/NE101_Main_Board.png)  
+![NE101 main board2](/img/NE101_Main_Board2.png)  
 
-**使用要点**：
+**Notes**：
 
-1. 通过Type-C接口供电（5V/1A以上）
-2. 接口采用防呆设计
-3. 预留调试串口（115200bps）
+1. Powered by Type-C interface (5V/1A or above)
+2. The interface adopts fool-proof design
+3. Reserve debugging serial port (115200bps)
 
-详细硬件连接请参阅：[硬件连接指南](./Hardware%20Guide/Hardware%20Connection)
+For detailed hardware connections, please refer to: [Hardware Connection Guide](./Hardware%20Guide/Hardware%20Connection)
 
-### 快速启动流程
+### Quick Start Process
 
-1. **设备上电**
+1. **Power on the device**
    
-   - 连接USB电源
+   - Connect USB power
 
-2. **状态确认**
+2. **Confirm the status**
    
-   - 电源指示灯亮起1秒表示启动成功
-   - 系统初始化约需1分钟
+   - The power indicator light lights up for 1 second to indicate successful startup.
+   - System initialization takes about 1 minute.
 
-3. **进入配置模式**
+3. **Enter configuration mode**
    
-   - 长按功能键，等到灯亮后松开（约3-4秒）。
+   - Press and hold the function button, wait until the light turns on and then release it (about 3-4 seconds).
 
-4. **连接管理界面**
+4. **Connect to management interface**
    
-   - 设备热点名称显示为NE101_XXXXXX
-   - 手机/电脑连接设备WiFi
-   - 访问 http://192.168.1.1
+   - The device hotspot name is displayed as NE101_XXXXXX
+   - Use mobile phone/computer to connect the device Wi-Fi
+   - Visit http://192.168.1.1
 
-![设备WiFi连接示意图](/img/NE101_wifi_connect.png)
-![设备管理界面概览](/img/NE101_web.png)
+![wifi connect](/img/NE101_wifi_connect.png)
+![web interface](/img/NE101_web.png)
 
-### 核心功能配置
+### Core Function Configuration
 
-#### 图像采集设置
+#### Image Collection Setup
 
-![实时画面预览](/img/NE101_web_cam.png)
+![real-time web](/img/NE101_web_cam.png)
 
-**关键参数**：
+**Key Parameters**：
 
-- **闪光模式**：
+- **Flash Mode**：
   
-  - 智能自动（默认）
-  - 定时开启
-  - 强制关闭
+  - Auto (default)
+  - Scheduled on
+  - Force shut down
 
-- **图像调节**：
+- **Image Adjustment**：
   
-  - 亮度分级调节：0-90级
-  - 图像调节：亮度/对比度/饱和度（使用USB模组时无该选项）
-  - 画面镜像功能（使用USB模组时无该选项）
+  - Brightness level adjustment: 0-90.
+  - Image adjustment: brightness/contrast/saturation (this option is not available when using USB module).
+  - Screen mirroring function (this option is not available when using USB module).
 
-![图像调节界面](/img/NE101_web_ImageAdjustment.png)
+![imageadjustment](/img/NE101_web_ImageAdjustment.png)
 
-#### 拍摄计划配置
+#### Scheduled Image Capturing Configuration
 
-![拍摄设置界面](/img/NE101_web_cap_setting.png)
+![cap setting](/img/NE101_web_cap_setting.png)
 
-**工作模式**：
+**Operation Mode**：
 
-1. **定时抓拍**：设置具体时间点
-2. **间隔拍摄**：设置循环周期（5分钟-24小时）
-3. **外触发模式**：通过PIR触发
-4. **手动模式**：按键触发拍摄
+1. **Timer Shooting**: Set a specific time point
+2. **Interval Shooting**: Set the cycle period (5 minutes-24 hours)
+3. **External trigger mode**: Triggered by PIR
+4. **Manual Mode**: Press the button to trigger shooting
 
-#### 网络与数据
+#### Network Connection and Data Reporting
 
-![网络连接界面](/img/NE101_web_WLANConnection.png)
+![network connection](/img/NE101_web_WLANConnection.png)
 
-**网络测试(串口连接)**：
+**Network test (serial port connection)**：
 
 ```bash
-# 通过串口执行ping测试示例
+# Example of ping test through serial port
 ping www.example.com -c 4
 ```
 
-![网络测试示意图](/img/NE101_ping.png)
+![network testing](/img/NE101_ping.png)
 
-**数据上报**：
+**Data Reporting**：
 
-1. 配置MQTT服务器参数
-2. 使用MQTTX工具验证数据流
-3. 查看上报状态
+1. Configure MQTT server parameters
+2. Use MQTTX tool to verify data flow
+3. Check the reporting status
 
-![数据上报配置界面](/img/NE101_web_DataReport.png)
-![MQTT数据流示例](/img/NE101_MQTT.png)
+![datareport](/img/NE101_web_DataReport.png)
+![MQTT data](/img/NE101_MQTT.png)
 
-**MQTTX使用说明：**
+**MQTTX User Manual：**
 
-1. 打开 MQTTX，点击 `新建连接`。
+1. Open MQTTX, and click `Set up new connection`.
 
-2. 设置连接参数：
+2. Configure connection parameters：
    
-   - **Host**：服务器地址`xxx.xxx.xxx.xxx`
-   - **Port**：服务器端口`xxx`
-   - **Client ID**：任意字符串，例如 `mqttx-client-01`
-   - **Topic**：例如`camera1`
-   - **Username / Password**：根据服务器配置
+   - **Host**：Server address`xxx.xxx.xxx.xxx`
+   - **Port**：Server port`xxx`
+   - **Client ID**：Any letter, for example `mqttx-client-01`
+   - **Topic**：For example `camera1`
+   - **Username / Password**：Set up according to the server
 
-3. 点击连接后，订阅 Topic `camera1`。
+3. Click connect, then subscribe Topic `camera1`。
 
-**数据格式说明：**
+**Data Format Description：**
 
-设备发送的 MQTT 消息 payload 内容为 JSON 格式，如下所示：
+The MQTT message payload content sent by the device is in JSON format, as shown below:
 
 ```json
 {
@@ -138,54 +138,54 @@ ping www.example.com -c 4
 }
 ```
 
-**字段说明：**
+**Field description：**
 
-- `ts`：时间戳（毫秒）
-- `devName`：设备名称
-- `devMac`：设备 MAC 地址
-- `battery`：电池电量（百分比）
-- `snapType`：图像采集类型（如 `Button`, `Timer`, `Alarm in` 等）
-- `localtime`：本地时间（字符串格式）
-- `imageSize`：图像大小（单位：字节）
-- `image`：Base64 编码的 JPEG 图像数据，前缀为 `data:image/jpeg;base64,`
+- `ts`：timestamp (milliseconds)
+- `devName`：device name
+- `devMac`：device MAC address
+- `battery`：battery level (percentage)
+- `snapType`：image capture type（for example `Button`, `Timer`, `Alarm in`, etc.）
+- `localtime`：local time (string format)
+- `imageSize`：image size (unit: bytes)
+- `image`：Base64 encoded JPEG image data, prefixed by`data:image/jpeg;base64,`
 
-**可视化建议：**
+**Visualization Suggestion：**
 
-使用 Base64 图像数据可在网页或工具中快速预览图像：
+Use Base64 image data to quickly preview images on web pages or tools:
 
 ```html
 <img src="data:image/jpeg;base64,...">
 ```
 
-也可以将 Base64 数据粘贴至 [Base64图像查看器](https://base64.guru/converter/decode/image) 进行在线预览。
+Or paste Base64 data into [Base64 Image Viewer](https://base64.guru/converter/decode/image) for online preview.
 
-### 功能验证流程
+### Functional Verification Process
 
-1. 进入休眠模式（等待5分钟自动唤醒）
-2. 触发拍摄任务（定时/手动/外触发）
-3. 确认图像质量（分辨率/曝光/对焦）
-4. 验证数据上传（服务器接收确认，确认接收图像是否正常）
+1. Enter sleep mode (wait for 5 minutes to wake up automatically).
+2. Trigger shooting tasks (timer/manual/external trigger).
+3. Confirm image quality (resolution/exposure/focus).
+4. Verify data upload (server receives confirmation to confirm whether the received image is normal).
 
-![抓拍成功提示](/img/NE101_cap_success.png)
+![cap success](/img/NE101_cap_success.png)
 
-## 设备工作模式详解
+## Detailed Explanation of Device Working Mode
 
-| 模式  | 触发条件 | 持续时间  | 主要功能      |
+| Mode  | Trigger Condition | Duration  | Key Features     |
 | --- | ---- | ----- | --------- |
-| 初始化 | 上电自动 | 约1分钟  | 系统自检、时间同步 |
-| 配置  | 按键触发 | 1-5分钟 | 参数设置、状态查看 |
-| 工作  | 计划触发 | 按需启动  | 图像采集、数据上报 |
-| 休眠  | 自动进入 | 按计划   | 低功耗待机     |
+| Initialization | Power on automatically | about 1 minute  | System self-test, time synchronization |
+| Configuration  | Press button | 1-5 minute | Configure parameters, monitor status |
+| Operation  | By pre-set schedule | Calculated by actual practice  | Image capture, data reporting |
+| Sleep mode  | Automatic | By schedule  | Low power consumption standby     |
 
-## 高级功能
+## Premium Functions
 
-### 设备维护
+### Device Maintenance
 
-- **硬件复位**：短按重启键复位
-- **硬件重置**：长按功能键10-11S后重置所有配置信息
-- **设备信息**：在管理界面上可以查看MAC地址/固件版本
-- **无线升级**：管理界面上支持OTA固件更新
+- **Hardware Reset**: Press the reset button shortly to reset.
+- **Hardware Reset**：Press the function key for 10-11s to reset all configuration.
+- **Device Information**：View the MAC address/firmware version on the management interface.
+- **Wireless Upgrade**：Supports OTA firmware update on the management interface.
 
-![OTA升级界面](/img/NE101_ota.png)
+![OTA upgrade](/img/NE101_ota.png)
 
-> **技术支持**：首次使用建议完成全功能测试。
+> **Technical Support**: It is recommended to complete a full functional test for first time use.
