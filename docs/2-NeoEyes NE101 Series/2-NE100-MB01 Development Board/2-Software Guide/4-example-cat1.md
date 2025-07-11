@@ -2,7 +2,7 @@
 
 ## Overview
 
-This section describes how to achieve low-power image capture and transmission in outdoor environments using LTE Cat 1 technology. It is particularly suitable for scenarios without Wi-Fi coverage or gateway devices.
+This guide describes how to achieve low-power image capture and transmission in outdoor environments using LTE Cat 1 technology. It is particularly suitable for scenarios without Wi-Fi coverage or gateway devices.
 
 ### Key Features
 
