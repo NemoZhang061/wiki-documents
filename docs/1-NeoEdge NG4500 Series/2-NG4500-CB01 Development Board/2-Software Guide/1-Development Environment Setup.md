@@ -1,53 +1,52 @@
 # Development Environment Setup
 
-本章详细介绍 **NG4520** 的开发环境搭建流程，包括本地开发环境配置、源码部署、交叉编译、内核与设备树更新，以及远程调试与桌面访问等内容，旨在帮助开发者高效构建适用于嵌入式 AI 边缘计算设备的开发体系。
+This chapter details the development environment setup process for **NG4520**, including local environment configuration, source code deployment, cross-compilation, kernel and device tree updates, as well as remote debugging and desktop access. It aims to help developers efficiently build a development ecosystem for embedded AI edge computing devices.
 
-## 1. 本地源码开发环境搭建
+## 1. Local Source Code Development Environment Setup
 
-### 前提条件
+### Prerequisites
 
-- Ubuntu 主机（推荐 20.04/22.04 LTS，空间>100GB ,用于交叉编译）
-
-- 安装必要开发工具：
+- Ubuntu host (recommended 20.04/22.04 LTS, >100 GB space for cross-compilation
+- Install essential development tools:
 
 ```shell
 sudo apt update 
 sudo apt install git-core build-essential bc flex bison libssl-dev
 ```
 
-### 源码部署
+### Source Code Deployment
 
-1. 下载并解压 Linux_for_Tegra 源码
+1. Download and unzip the Linux_for_Tegra source code.
 
 ```shell
 wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Jetson_Linux_R36.4.0_aarch64.tbz2
 tar xf Jetson_Linux_R36.4.0_aarch64.tbz2 
 ```
 
-2. 下载并解压文件系统
+2. Download and unzip the file system
 
 ```shell
 wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v4.0/release/Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2
 sudo tar xpf Tegra_Linux_Sample-Root-Filesystem_R36.4.0_aarch64.tbz2 -C Linux_for_Tegra/rootfs/
 ```
 
-3. 拉取内核源码
+3. Pulling kernel source code
 
 ```shell
 cd Linux_for_Tegra/source/
 ./source_sync.sh -t jetson_36.4
 ```
 
-4. 部署NVIDIA Tegra组件​​
+4. Deploying NVIDIA Tegra components​​
 
 ```shell
 cd Linux_for_Tegra
 sudo ./apply_binaries.sh
 ```
 
-### 交叉编译工具链部署
+### Cross-compilation toolchain deployment
 
-下载并解压交叉编译工具链
+Download and unzip the cross-compilation toolchain
 
 ```shell
 wget https://developer.nvidia.com/downloads/embedded/l4t/r36_release_v3.0/toolchain/aarch64--glibc--stable-2022.08-1.tar.bz2
@@ -55,9 +54,9 @@ mkdir -p $HOME/l4t-gcc
 tar xf aarch64--glibc--stable-2022.08-1.tar.bz2 -C $HOME/l4t-gcc
 ```
 
-### 编译方法
+### Compilation Method
 
-**环境变量配置**，每次新开终端编译前，需配置如下环境变量：
+**Environmental Variables Configuration**: the following environment variables need to be configured before each new terminal compilation:
 
 ```shell
 cd Linux_for_Tegra/source
@@ -66,41 +65,41 @@ export KERNEL_HEADERS=$PWD/kernel/kernel-jammy-src
 export INSTALL_MOD_PATH=$PWD/Linux_for_Tegra/rootfs/
 ```
 
-**完整编译方法（包含内核、模块、设备树）**
+**Complete compilation method (with kernel, module, device tree)**
 
 ```shell
 ./nvbuild.sh
 ```
 
-**单独编译方法**
+**Separate Compilation Method**
 
-1. 编译内核
+1. Compile the kernel
 
 ```shell
 cd Linux_for_Tegra/source
 ./nvbuild.sh -o $PWD/kernel_output  
 ```
 
-2. 编译Out-of-Tree Modules
+2. Compile Out-of-Tree Modules
 
 ```shell
 cd Linux_for_Tegra/source
 make modules
 
-# 安装模块驱动到rootfs
+# Install the module driver to the rootfs
 sudo -E make modules_install
 ```
 
-3. 编译设备树
+3. Compile device tree
 
 ```shell
 cd Linux_for_Tegra/source
 make dtbs
 ```
 
-### 更新内核和设备树（非刷机方式）
+### Update kernel and device tree (non-flash method)
 
-1. 查看`/boot/extlinux/extlinux.conf`文件，确认当前设备所使用的IMAGE和DTB的路径，如下图中的LINUX和FDT后面的位置信息。
+1.  Review the documentation `/boot/extlinux/extlinux.conf` to confirm the paths to the IMAGE and DTB currently used by the device, as shown below with the location information behind LINUX and FDT.
 
 ```shell
 TIMEOUT 30
@@ -117,37 +116,37 @@ LABEL primary
       OVERLAYS /boot/tegra234-p3767-camera-p3768-imx678-C.dtbo
 ```
 
-2. 将原始的内核镜像进行备份
+2. Make a backup of the original kernel image
 
 ```shell
 sudo cp /boot/Image /boot/Image.backup
 sudo cp /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb.backup
 ```
 
-3. 通过`scp`命令将编译好的IMAGE和DTB，拷贝到上述的路径进行替换即可
+3. Copy the compiled IMAGE and DTB via the `scp` command to the above paths and replace them.
 
 ```shell
 sudo cp $HOME/Image /boot/Image.backup
 sudo cp $HOME/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dtb/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb
 ```
 
-## 2. 远程调试方法
+## 2. Remote debugging method 
 
-### 前置条件
+### Pre-conditions
 
-需要完成对AIBOX的**网络配置**，配置步骤如下：
+The **Network Configuration** for the AIBOX needs to be completed with the following configuration steps:
 
-1. 点击桌面右上角 **Ethernet** → 选择 **"Wired Settings"**
+1. Click on the top right corner of the desktop **Ethernet** → select **"Wired Settings"**
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting.png)
 
-2. 在弹出的网络设置窗口中，选择当前的有线网络连接。
+2. In the Network Settings pop-up window, select the current wired network connection.
 
-3. 点击 `齿轮` 图标进入详细设置
+3. Click on the `gear` icon to enter detailed settings
    
-   - 在 `IPv4` 标签页下，选择 `Manual`（手动）配置。
+   - Under the `IPv4` tab, select `Manual` configuration.
    
-   - 输入静态 IP 地址、子网掩码和网关。例如：
+   - Enter the static IP address, subnet mask, and gateway. For example:
      
      - **Address**: `192.168.231.100` 
      
@@ -155,45 +154,44 @@ sudo cp $HOME/kernel_tegra234-NG45XX-p3768-0000+p3767-0003-nv-super.dtb /boot/dt
      
      - **Gateway**: `192.168.231.1` 
    
-   - 在 DNS 部分，输入 DNS 服务器地址，例如 `8.8.8.8` 和 `8.8.4.4`。
+   - In the DNS section, enter the DNS server address, for example: `8.8.8.8` 和 `8.8.4.4`
    
-   - 点击 `Apply` 保存设置。
+   - Click `Apply` save settings.
 
 ![](/img/NG45XX_SOFTWARE/Driver/NG45XX_Setting_Network.png)
 
-4. 配置完成后，重启网络以应用新的设置。
+4. When the configuration is complete, reboot the network to apply the new settings.
 
-**网络验证**
+**Network Authentication**
 
-5. 打开终端，通过以下指令确认网络是否正常
+5. Open a terminal and verify that the network is working by using the following commands
 
 ```shell
 ping google.com
 ```
 
-### SSH访问
+### SSH Access
 
-1. windows电脑下，按`win+R`，打开“运行”对话框
+1. On a Windows computer, press `win+R` to open the `Run` dialog box.
 
-2. 输入 `powershell`，然后按 ​**​Enter键​**​
+2. Input `powershell`，and then press ​**​Enter​**​
 
-3. 然后通过ssh连接到AIBOX，参考下述指令如下：
+3. Connect to AIBOX via SSH using the following commands:
 
 ```shell
-# 连接到AIBOX
+# Connect to AIBOX
 ssh username@aibox-ip
-# 示例如下：
-ssh  milesight@192.168.1.100
+# Example:
+ssh milesight@192.168.1.100
 
-# 执行远程命令
+# Execute remote command
 ssh username@aibox-ip "uname -a"
-# 用例如下：
-ssh  milesight@192.168.1.100 "uname -a"
-```
+# Usage example:
+ssh milesight@192.168.1.100 "uname -a"
 
-### RDP远程桌面访问
+### RDP remote desktop access
 
-1. 启动JETSON终端，安装如下内容：
+1. Start the JETSON terminal and install the following：
 
 ```shell
 sudo apt update
@@ -202,18 +200,18 @@ sudo systemctl enable xrdp
 sudo systemctl start xrdp
 ```
 
-2. 在 Windows 上打开“远程桌面连接”，输入 Jetson 的 IP 地址
+2. Open Remote Desktop Connection on Windows and enter Jetson's IP address.
 
-3. 点击“连接”，输入账号密码
+3. Click “Connect” and enter your account password.
    
    ![Remote_Desktop_Login](/img/Remote_Desktop_Login.png)
 
-4. 如下图，则为说明进入成功
+4. The following picture shows that the access is successful:
    ![Remote_Desktop](/img/Remote_Desktop.png)
 
-    5. 补充：如出现闪退问题，可参考以下步骤进行修改 
+5.Additional Notes: Resolving Application Crash Issues
 
-配置startwm.sh文件，使用`sudo vi /etc/xrdp/startwm.sh`指令打开文件，并将里面内容替换为如下内容：
+To resolve potential crash issues, modify the`sudo vi /etc/xrdp/startwm.sh` configuration file，replace the file content with the following:
 
 ```shell
 if test -r /etc/profile; then
@@ -226,12 +224,13 @@ unset XDG_RUNTIME_DIR
 exec /bin/sh /usr/bin/gnome-session
 ```
 
-替换完成后，通过以下指令重启服务：
+Save the file and restart the XRDP service with the command：
 
 ```shell
 sudo systemctl restart xrdp.service
 ```
 
-## 参考
+
+## Reference
 
 [Kernel Customization — NVIDIA Jetson Linux Developer Guide 1 documentation](https://docs.nvidia.com/jetson/archives/r36.2/DeveloperGuide/SD/Kernel/KernelCustomization.html)
