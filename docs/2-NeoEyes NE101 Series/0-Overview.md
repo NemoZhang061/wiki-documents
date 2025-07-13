@@ -4,152 +4,152 @@ import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import ApplicationScenarios from '@site/src/components/ApplicationScenarios';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-# Product Info
+# Product Information
 
-## 产品介绍
+## Product Introduction
 ![NE101](/img/Overview/NE101/NE101.png)
 
-CamThink Event Camera NeoEyes NE101 是一款基于事件触发抓拍的低功耗智能相机，采用模块化设计理念，具有**超低功耗**的特点。相机支持开发者扩展多种触发拍照方式（PIR/雷达/声音等），可搭配不同传感器模块实现**事件监测图像抓取**根据触发条件自主唤醒并进行图像采集，极大节省功耗。其**开放式硬件架构**允许开发者根据实际需求灵活扩展功能模块，快速完成从原型到商业产品的落地。
+CamThink Event-triggered Camera NeoEyes NE101 is a low-power consumption camera based on event-triggered mechanisms. It adopts a modular design concept and features **ultra-low power consumption**. The camera supports developers to expand multiple photography trigger methods (PIR/radar/sound, etc.), and can be equipped with different sensor modules to achieve **event monitoring image capture**and autonomously wake up and collect images based on trigger conditions, greatly extending the battery life. Its **open-architecture hardware** allows developers to flexibly expand functional modules according to actual needs and quickly complete the implementation from prototype to commercial product.
 
-### 硬件特性信息
->NeoEyes NE101产品由前盖、镜头模组、主板、通讯模块、电池模块等多个功能单元组成。各模块间通过标准化接口连接，便于拆装与维护，支持开发者按需替换、升级或定制特定模块。
-- **分层式结构设计**：采用前/中/后分离的模块化布局，便于快速拆装与功能扩展，支持用户按需DIY改装。如需获取结构设计文件，请联系我们获取。
-- **多样化安装支持**：结构主体预留丰富的安装孔位，兼容多种支架和外壳扩展方案。配合 CamThink 提供的[「产品配件」](#产品配件)，可灵活部署于不同使用场景。
-- **相机模组可选**：主板支持CPI、USB相机模组，可更换不同规格的镜头，用于满足不同场景的图像采集需求，相机模组更换和支持规格详见[「可换相机模组」](#可换相机模组)。
-- **通讯方案可选**：支持WiFi、Cat-1、WiFi-Halow通讯方案切换，满足不同场景通讯需求，通讯模组更换和支持规格详见[「通讯方案扩展」](#通讯方案扩展)。
-- **供电方案可选**：默认支持电池仓方案供电，4节AA电池即可工作，也可通过主板Type-C进行有线供电。
-- **硬件开放性**：提供结构设计文件用于DIY外壳（可3D打印）或自定义扩展，提供完整开源固件，具备开箱即用功能：低功耗模式、设备唤醒、MQTT数据传输、补光控制、定时拍摄、图像参数调整、网络管理。开发和烧录请参见[「开发指南」](./2-NE100-MB01%20Development%20Board/0-Dev%20Guide.md)
+### Hardware Specifications
+>NeoEyes NE101 camera consists of multiple functional units such as front cover, camera module, motherboard, communication module, and battery. Each module is connected through standardized interfaces, which is convenient for disassembly, assembly and maintenance, and supports developers to replace, upgrade or customize specific modules as needed.
+- **Layered structure design**: NE101 adopts a modular layout with front/middle/rear separation, which facilitates quick disassembly and function expansion, and supports users’ on-demand DIY modification. If you need to obtain structural design documents, please contact us for the resource.
+- **Diversified installation support**: The main structure of NE101 reserves abundant installation holes and is compatible with a variety of brackets and mounting solutions.With the [「product accessories」](#产品配件)provided by CamThink, it can be flexibly deployed in different scenarios.
+- **Optional camera modules**: The NE101 motherboard supports CPI and USB camera modules, and allows customers to replace lenses with different specifications to meet the image collection requirements differ by scenes. For further details on camera module replacement and support, please refer to[「Interchangeable Camera Modules」](#可换相机模组).
+- **Optional communication solutions**: NE101 supports WiFi, Cat-1, and WiFi-Halow communication solution switching to meet communication needs in different scenarios. For details on communication module replacement and support specifications, please refer to [「Communication Expansion Solution」](#通讯方案扩展).  
+- **Optional power supply solution**: NE101 supports battery power by default. It can work with 4 x AA batteries, or Type-C charging through the motherboard. 
+- **Hardware openness**: Fully open to provide the structural design files for DIY housing (3D printable) or customized extensions, also provide complete open source firmware, allowing developers to start quickly with useful functions such as: low-power mode, device wake-up, MQTT data transmission, fill-light control, scheduled shooting, image parameter adjustment, and network management. Details on development and flashing, please refer to [「Development Guide」](./2-NE100-MB01%20Development%20Board/0-Dev%20Guide.md).
 
 ![NE101](/img/Overview/NE101/Module.png)
 
 
-### 超低功耗支持
->NeoEyes NE101采用先进的低功耗设计理念，适用于周期性图像采集等对续航有严格要求的应用场景，官方软件默认即支持低功耗工作模式，开发者也可基于基础工程灵活扩展功能。
-- **超长续航表现**：在Wi-Fi通信模式下，默认低功耗配置可支持每日拍摄5次，续航超3年（理论值），极大降低运维频率，适用于野外或无持续供电环境，更多功耗测试表现详见下方表格：
+### Ultra-low Power Consumption Support
+>NeoEyes NE101 adopts an advanced low-power design concept and is suitable for application scenarios with strict battery life requirements such as periodic image collection. The official software supports low-power working mode by default, and developers can also flexibly expand functions based on basic projects.
+- **Long Standby Battery Life**: In Wi-Fi communication mode, the default low-power configuration can support 10 shots per day, with a battery life of more than 3 years (theoretical value), which greatly reduces the frequency of maintenance and is suitable for outdoor or non-continuous power supply environments. For more power consumption test performance, please see the table below:
 <!-- 
-  | 通信方式 | 6V电池续航 | 7.2V锂亚电池续航 | 使用建议 |
+  | Communication Methods | 6V Battery Life | 7.2V Lithium Battery Life | User Suggestions |
   |---------|------------|-----------------|----------|
-  | Wi-Fi | 2.39年 | 6.20年 | 在7.2V高能电池条件下表现最佳，适合大多数中近距离部署需求 |
-  | Halow Wi-Fi | 1.46年 | 4.30年 | 兼顾续航与远距离通信，适合偏远或障碍环境 |
-  | Cat.1 | 0.83年 | 2.08年 | 虽支持广域蜂窝网络，但在极低功耗场景中建议搭配外部供电优化使用策略 |
-  > 注：测试条件为每日拍摄10次，电池使用率70%。6V电池为标配AA电池，7.2V锂亚电池为4节38.8Wh规格，其中**锂亚电池暂不支持当前的标准电池仓安装，若有需要可联系我们**。 -->
+  | Wi-Fi | 2.39 years | 6.20 years | Performs best under 7.2V high-energy battery conditions, mostly suitable for medium and short range deployment needs. |
+  | Halow Wi-Fi | 1.46 years | 4.30 years | Balance both battery life and long-distance communication, it is suitable for remote or obstacle environments. |
+  | Cat.1 | 0.83 years | 2.08 years | Supports cellular networks to cover wide-area communication, but it is recommended to use an external power supply to optimize the power consumption. |
+  > Note: The test conditions are 10 shots per day with 70% battery usage. We use a 6V battery as a standard AA battery, and use a 4-cell 38.8Wh specification 7.2V lithium battery. Please note that **currently the lithium battery does not come with the standard battery setup. If necessary, please contact us**.-->
 
-- **传感器感知低功耗扩展支持**：支持图像触发模式下的事件唤醒抓拍运行机制（如PIR、雷达、温度等），在非工作状态下进入深度休眠，充分保障系统在不同触发频率下的功耗可控，关于如何扩展传感器事件抓拍的传感器连接的开发案例详见：[「PIR示例」](./2-NE100-MB01%20Development%20Board/2-Software%20Guide/3-example-pir.md)
+- **Low Power Consumption Sensor Expansion Support**: NE101 supports event-triggered image capture mechanisms (such as PIR, radar, temperature, etc.), and it maintains deep sleep mode in non-working status, fully ensuring the controllable system power consumption under different trigger frequencies. For details on the development cases of how to expand the sensor connection for event-triggered image capture, please refer to: [「PIR Example」](./2-NE100-MB01%20Development%20Board/2-Software%20Guide/3-example-pir.md)
 
-- **开源固件，支持商用**：固件源码完全开源，支持免费商用与二次开发，固件提供图像采集、低功耗管理、数据通信等开箱即用功能，开发者可在此基础上快速扩展应用逻辑，缩短从原型到落地的开发周期。关于固件功能及开发者指引详见：[「超低功耗相机示例」](./3-Application%20Guide/0-low-power-image-acquisition.md)
+- **Open Source Firmware and Commercialization Support**: The firmware source code of NE101 is completely open source, supporting free commercial use and secondary development. The firmware provides ready-to-use functions such as image capture, low-power management, and data communication. On this basis, developers can quickly expand application logic and shorten the development cycle from prototype to implementation. For details on firmware functions and developer guidelines, please refer to:[「Ultra-low power camera example」](./3-Application%20Guide/0-low-power-image-acquisition.md)
 
 ![Wireless communication](/img/Overview/NE101/Conet.png)
 
-### 硬件接口扩展
->NeoEyes NE101支持根据硬件使用场景扩展硬件能力，关于各种物理接口的使用可见[「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)
-- **16Pin IO接口**：主板背部预留16pin座子，带有GPIOs、DI、DO等接口，支持接入各种传感器触发拍摄（资源使用取决于通信模块和USB相机的占用情况），具体IO资源详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
-- **电源接口**：主板背面留有2pin电源座子，支持电池仓连接供电，主板正面下方带有Type-C接口可支持有线连接直供电（整机使用需要下方开孔引出）。
-- **Micro TF卡槽**：可用于存储扩展，适用于本地图像或数据存储。
-- **调试接口**：Type-C和UART用于开发串口调试使用。
-- **补光灯**：补光灯和光敏支持，适合在近距离黑暗环境中采集图像使用。
-- **Alam接口**：2Pin Wafer支持Alarm输入。
-- **PIR接口**：4Pin Wafer支持PIR传感器连接。
+### Hardware Interface Extension
+>NeoEyes NE101 supports expandable hardware capabilities based on hardware usage scenarios. For information on the use of various physical interfaces, please refer to[「Hardware Guide」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)
+- **16-pin IO Interface**: There is a 16pin connector reserved on the back of the motherboard, with GPIOs, DI, DO and other interfaces, which supports access to various sensors to trigger shooting (resource usage depends on the occupancy of the communication module and USB camera). For specific IO resources, please refer to[「Hardware Guide - Hardware Connection - 16-pin GPIO Expansion」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
+- **Power Interface**: There is a 2-pin power socket on the back of the motherboard, which supports battery connection for power supply. There is a Type-C interface on the bottom of the motherboard that supports a wired connection for direct power supply (In the case of NE101, it needs to open a hole to let the wire through).
+- **Micro TF Card Slot**: It can be used for storage expansion, suitable for local image or data storage.
+- **Debugging Interface**: Type-C and UART are used for serial port debugging during development. 
+- **Fill Light**：Fill light and photosensitive support, suitable for collecting images in close-range dark environments.
+- **Alam Interface**: 2-pin Wafer supports Alarm input.
+- **PIR Interface**：4-pin wafer connector for PIR sensor integration.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Board/NE100-MB01_1.png')} alt="主板正面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Board/NE100-MB01_2.png')} alt="主板背面" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-### 通讯方案扩展
->NeoEyes NE101默认支持WiFi通讯传输数据，支持选用LTE Cat-1、WiFi-Halow通讯模块，模块与主板正面pin座子连接即可支持LTE Cat-1或WiFi-Halow通讯，易于硬件的通讯方案更换和扩展，关于模组的更换使用可见[「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)。
-- **接口与兼容性**：标准PIN座连接，位于主板正面，支持免驱动识别。
-- **Cat-1模块规格**：移远EG912U-GL（全球非北美地区）和移远EG915Q-NA（北美地区），支持LTE FDD/TDD和GSM等，尺寸60mm x 60mm。
-- **WiFi HaLow模块规格**：移远FGH100M，基于IEEE 802.11ah协议，用于长距离低功耗连接，支持868MHz/915MHz，尺寸60mm x 60mm。
+### Communication Expansion Solution
+>NeoEyes NE101 supports Wi-Fi communication to transmit data by default, and offers optional selection of LTE Cat-1 and Wi-Fi Halow communication modules. Plugging the module to the pin socket on the front of the motherboard to enable the LTE Cat-1 or Wi-Fi Halow communication. It is easy to replace and expand the hardware communication solution. For the replacement and use of modules, please refer to the[「Hardware Guide」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md).
+- **Interface and Compatibility**: Standard pin connector, located on the front of the motherboard, supports driver-free identification.
+- **Cat.1 Module Specifications**: Quectel EG912UGL, supports LTE FDD/TDD and GSM（global frequency bands expect for North America）, dimension at 60mm x 60mm.
+- **Wi-Fi HaLow Module Specifications**：Quectel FGH100M, compliant with IEEE 802.11ah protocol, using for long-distance low power consumption scenarios, dimension at 60mm x 60mm.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/cat1PCBA.jpg')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/wifihalow.jpg')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-### 可换相机模组
-> NeoEyes NE101 采用模块化相机设计，支持用户根据实际应用场景灵活更换不同参数的镜头模组，以适配不同的拍摄角度和对焦距离需求。关于模组更换与使用详见 [「硬件指南」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md)。
+### Interchangeable Camera Module
+> NeoEyes NE101 adopts a modular camera design, allowing users to flexibly replace lens modules with different parameters that meet diverse requirements of shooting angles and focusing distances in various scenarios. For details on module replacement and use, please refer to [「Hardware Guide」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/0-Components%20Overview.md).
 
-#### 硬件特性优势
-- **灵活部署**：可根据部署高度、空间大小和识别目标，选择最适配的镜头模组。
-- **低成本升级**：仅需更换镜头模组即可显著提升视觉效果，无需更换主板。
+#### Unique Hardware Advantages
+- **Flexible Deployment:** Developer can select the most suitable lens module based on deployment height, space size and identification target.
+- **Cost-effective Upgrade**: Significantly improve the visual effect by only replacing the lens module without changing the motherboard.
 
-#### 支持的相机模组规格
+#### Supported Camera Module Specifications
 <table style={{ width: '100%', tableLayout: 'fixed' }}>
   <thead>
     <tr>
-      <th style={{ width: '20%' }}>类型</th>
-      <th style={{ width: '20%' }}>型号</th>
-      <th style={{ width: '20%' }}>视角</th>
-      <th style={{ width: '20%' }}>对焦距离</th>
-      <th style={{ width: '20%' }}>应用场景</th>
+      <th style={{ width: '20%' }}>Category</th>
+      <th style={{ width: '20%' }}>Item No.</th>
+      <th style={{ width: '20%' }}>Angle</th>
+      <th style={{ width: '20%' }}>Focus Distance</th>
+      <th style={{ width: '20%' }}>Application Scenarios</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td rowSpan="4">CPI相机</td>
+      <td rowSpan="4">CPI Camera</td>
       <td>OV5640</td>
       <td>60°</td>
       <td>15cm</td>
-      <td>近距离拍摄</td>
+      <td>Close-range shooting</td>
     </tr>
     <tr>
       <td>OV5640</td>
       <td>60°</td>
       <td>4m</td>
-      <td>标准距离拍摄</td>
+      <td>Standard distance shooting</td>
     </tr>
     <tr>
       <td>OV5640</td>
       <td>120°</td>
       <td>8cm</td>
-      <td>近距离广角拍摄</td>
+      <td>Close-range and wide-angle shooting</td>
     </tr>
     <tr>
       <td>OV5640</td>
       <td>120°</td>
       <td>3m</td>
-      <td>标准距离广角拍摄</td>
+      <td>Standard distance and wide-angle shooting</td>
     </tr>
     <tr>
-      <td rowSpan="3">USB相机</td>
+      <td rowSpan="3">USB Camera</td>
       <td>SC200AI-51-4M</td>
       <td>51°</td>
       <td>4m</td>
-      <td>标准角度拍摄</td>
+      <td>Standard angle shooting</td>
     </tr>
     <tr>
       <td>SC200AI-88-3M</td>
       <td>88°</td>
       <td>3m</td>
-      <td>大角度拍摄</td>
+      <td>Wide-angle shooting</td>
     </tr>
     <tr>
       <td>SC200AI-137-2M</td>
       <td>137°</td>
       <td>32m</td>
-      <td>广角拍摄</td>
+      <td>Ultra-wide angle shooting</td>
     </tr>
   </tbody>
 </table>
-注：USB相机模组会占用额外IO资源，详见[「硬件指南-硬件连接-16Pin GPIO扩展」](./2-NE100-MB01%20Development%20Board/1-Hardware%20Guide/1-Hardware%20Connection.md)
+Note: The USB camera module will occupy extra I/O resources. For details, please refer to[「Hardware Guide-Hardware Connection-16Pin GPIO Expansion」](./2-Hardware%20Guide/1-Hardware%20Connection.md)
 
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/sensor1.png')} alt="Cat-1 PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/sensor2.png')} alt="WiFi HaLow PCBA" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-### 适用性与部署
->NeoEyes NE101 设计兼顾户外稳定性与灵活部署能力，适用于多种安装环境和场景
-- **前盖镜头钢化玻璃**：镜头前盖采用高透光钢化玻璃，具备出色的防雨水积聚能力，保障长期户外拍摄效果稳定。
-- **无线与户外部署支持**：支持电池供电、低功耗运行，结合 IP67 级防护设计，适用于各种恶劣环境中的长期部署。
-- **灵活的安装方式**：支持墙面、顶部、立杆等多种安装方式，提供丰富的原装支架和外壳扩展组件，满足多样部署需求，支架规格和主要使用常见可见[「产品配件-产品选配配件」](#产品选配配件)
+### Applicability and Deployment
+>NeoEyes NE101 is designed with both outdoor stability and deployment flexibility, making it suitable for a variety of installation environments and scenarios.
+- **Tempered Glass Lens Cover**: The front cover of the lens is made of high-transmittance tempered glass, which has excellent resistance to water accumulation and ensures long-term stable outdoor shooting performance.
+- **Wireless and Outdoor Deployment Support**: NE101 supports battery power supply, low power consumption operation, combined with IP67 protection design, suitable for long-term deployment in various harsh environments.
+- **Flexible Installations**: NE101 supports various installation methods such as wall mounting, desktop mounting, pole installation, etc., and provides a wide range of original brackets and house extension components to meet various deployment needs. Common bracket specifications and main uses can be found in[Product Accessories-Product Optional Accessories](#Product Optional Accessories).
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/1.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/5.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-## 产品信息
-### 产品规格
-NE101整机产品规格如下：
+## Product Information
+### Product Specification
+NE101 camera specifications:
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/NE101.png')} alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/Overview/NE101/ProductBL.png')} alt="NE101" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
@@ -158,7 +158,7 @@ NE101整机产品规格如下：
 <table style={{ width: '100%', tableLayout: 'fixed' }}>
   <thead>
     <tr>
-      <th style={{ width: '20%' }}>产品型号</th>
+      <th style={{ width: '20%' }}>Product Item No.</th>
       <th style={{ width: '16%' }}>NE101</th>
       <th style={{ width: '16%' }}>NE101-L01GL</th>
       <th style={{ width: '16%' }}>NE101-L02NA</th>
@@ -168,10 +168,10 @@ NE101整机产品规格如下：
   </thead>
   <tbody style={{ textAlign: 'center' }}>
     <tr>
-      <td style={{ width: '20%' }}><strong>通信</strong></td>
-      <td style={{ width: '16%' }}>WiFi</td>
-      <td style={{ width: '16%' }}>Cat.1（支持全球除北美地区外的其他地区）</td>
-      <td style={{ width: '16%' }}>Cat.1（支持北美地区）</td>
+      <td style={{ width: '20%' }}<strong>Communication</strong></td>
+      <td style={{ width: '16%' }}>Wi-Fi</td>
+      <td style={{ width: '16%' }}>Cat.1（Supports global frequency bands except for North America）</td>
+      <td style={{ width: '16%' }}>Cat.1（Supports North America）</td>
       <td style={{ width: '16%' }}>WiFi-HaLow（868MHz）</td>
       <td style={{ width: '16%' }}>WiFi-HaLow（915MHz）</td>
     </tr>
@@ -188,58 +188,58 @@ NE101整机产品规格如下：
       <td colSpan="5">16MB</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>相机模组</strong></td>
+      <td style={{ width: '20%' }}><strong>Camera module</strong></td>
       <td colSpan="5">
-        <p>Default OV5640 Module（120° FOV 3m focus ）</p>
-        <span>More lenses available</span> 
+         <p>OV5640 Module, selectable 120°/60°FOV and near/far focus options</td>
+            <span>More lenses available</span> 
       </td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>补光灯</strong></td>
-      <td colSpan="5">支持</td>
+      <td style={{ width: '20%' }}><strong>Fill light</strong></td>
+      <td colSpan="5">supported</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>蓝牙</strong></td>
-      <td colSpan="5">支持</td>
+      <td style={{ width: '20%' }}><strong>Bluetooth</strong></td>
+      <td colSpan="5">supported</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>按键</strong></td>
-      <td colSpan="5"> Snap（主机侧面）, Boot(位于主板), Reset(位于主板)</td>
+      <td style={{ width: '20%' }}><strong>Button</strong></td>
+      <td colSpan="5"> Snap(Side of the camera), Boot(located on the motherboard), Reset(located on the motherboard)</td>
     </tr>
         <tr>
-      <td style={{ width: '20%' }}><strong>存储</strong></td>
-      <td colSpan="5">Micro-TF（位于主板）</td>
+      <td style={{ width: '20%' }}><strong>Storage</strong></td>
+      <td colSpan="5">Micro-TF（located on the motherboard）</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>告警接口</strong></td>
-      <td colSpan="5">Alarm *1（位于主板）</td>
+      <td style={{ width: '20%' }}><strong>Alarm interface</strong></td>
+      <td colSpan="5">Alarm *1（located on the motherboard）</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>扩展IO</strong></td>
-      <td colSpan="5">UART *1、16Pin IO *1（位于主板）</td>
+      <td style={{ width: '20%' }}><strong>Expandable IO</strong></td>
+      <td colSpan="5">UART *1, 16Pin IO *1（located on the motherboard）</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>供电</strong></td>
-      <td colSpan="5">电池供电,Type-C供电支持（位于主板）</td>
+      <td style={{ width: '20%' }}><strong>Power supply</strong></td>
+      <td colSpan="5">Battery powered, Type-C powered（located on the motherboard）</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>工作温度</strong></td>
+      <td style={{ width: '20%' }}><strong>Operational temperature</strong></td>
       <td colSpan="5">-20°C ~ 50°C</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>工作湿度</strong></td>
+      <td style={{ width: '20%' }}><strong>Operational humidity</strong></td>
       <td colSpan="5">0% ~ 90% RH</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>防护等级</strong></td>
+      <td style={{ width: '20%' }}><strong>IP grade</strong></td>
       <td colSpan="5">IP67</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>认证</strong></td>
+      <td style={{ width: '20%' }}><strong>Certification</strong></td>
       <td colSpan="5">CE / FCC / RoHs</td>
     </tr>
     <tr>
-      <td style={{ width: '20%' }}><strong>外形尺寸</strong></td>
+      <td style={{ width: '20%' }}><strong>Dimension</strong></td>
       <td colSpan="5">77mm × 77mm × 48mm</td>
     </tr>
   </tbody>
@@ -248,73 +248,73 @@ NE101整机产品规格如下：
 
 # Brackets and Usage
 
-本产品提供多种支架配件，支持多种安装方式，可满足多种场景使用需求。
+NE101 provides a number of bracket accessories, supports multiple installation methods, and can meet the needs of various scenarios.
 
 
-### 产品外形整尺寸
+### Product Dimension
 
 ![NE_Series_OutlineSize.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_OutlineSize.png)
 
 
 
-### 产品配件
+### Product Accessories
 
-#### 产品标准配件
->CamThink Event Camera NeoEyes NE101产品系列提供的标准配件如下：
+#### Product Standard Accessories
+>CamThink Event Camera NeoEyes NE101 series provides following standard accessories:
 
 <AccessoriesTable
   accessories={[
     {
       image: "/img/Accessories/Battery.png",
-      name: "电池",
+      name: "Battery",
       quantity: "4",
-      description: ["常规5号AA电池"]
+      description: ["AA Battery"]
     }
   ]}
 />
 
-#### 产品选配配件
+#### Product Optional Accessories
 
->CamThink Event Camera NeoEyes NE101产品系列支持选配配件如下：
+>CamThink Event Camera NeoEyes NE101 series provides following optional accessories:
 
 <AccessoriesTable
   accessories={[
     {
       image: "/img/Overview/NE101/Bracket/1.png",
-      name: "底部支架扩展件",
+      name: "Desktop Bracket Extension",
       quantity: "1",
-      description: ["适合顶部安装、底部安装扩展使用"]
+      description: ["Suitable for desktop and top mounting installations"]
     },
     {
       image: "/img/Overview/NE101/Bracket/3.png",
-      name: "背部支架扩展件",
+      name: "Back Bracket Extension",
       quantity: "1",
-      description: ["适合壁装相机时扩展使用"]
+      description: ["Suitable for wall mounting installation"]
     },
     {
       image: "/img/Overview/NE101/Bracket/5.png",
-      name: "杆件支架",
+      name: "Pole Bracket",
       quantity: "1",
-      description: ["适合复杂场景需要多角度调整相机时根据场景扩展使用，套件包含金属杆*2、转换头*2，金属杆可定制"]
+      description: ["Suitable for complex scenes when the camera needs to be adjusted at multiple angles. The kit includes metal poles*2 and conversion heads*2. The metal poles can be customized."]
     },
     {
       image: "/img/Overview/NE101/Bracket/4.png",
-      name: "表盘支架",
+      name: "Dial Bracket",
       quantity: "1",
-      description: ["适合环境光线影响较少的仪表采集固定安装使用"]
+      description: ["Suitable for fixed installation of instrument image collection in a stable light condition."]
     },
     {
       image: "/img/Overview/NE101/Bracket/2.png",
-      name: "水表支架",
+      name: "Meter Bracket",
       quantity: "-",
-      description: ["可提供3D设计文件自行3D打印，非实体支架选配"]
+      description: ["Printable 3D design files can be provided to users for customization, please note that this is a non-physical selection."]
     },
     {
       image: "/img/Overview/NE101/sensor2.png",
-      name: "OV5640相机模组",
+      name: "OV5640 Camera Module",
       quantity: "1",
       description: [
-        "支持4种规格：",
+        "Supports 4 specifications：",
         "60° FOV, 15cm focus",
         "60° FOV, 4m focus",
         "120° FOV, 8cm focus",
@@ -323,10 +323,10 @@ NE101整机产品规格如下：
     },
     {
       image: "/img/Overview/NE101/sensor1.png",
-      name: "SC200AI USB摄像头模组",
+      name: "SC200AI USB Camera Module",
       quantity: "1",
       description: [
-        "支持3种规格：",
+        "Supports 3 specifications：",
         "1080P ,51° FOV, 4m focus",
         "1080P ,88° FOV, 3m focus",
         "1080P ,137° FOV, 2m focus",
@@ -334,103 +334,103 @@ NE101整机产品规格如下：
     },
     {
       image: "/img/Overview/NE101/wifihalow.png",
-      name: "WiFi-Halow通讯模块+天线",
+      name: "Wi-Fi-Halow wireless module and antenna",
       quantity: "1",
-      description: ["可自行通过主板插槽装配，支持868/915频段选择"]
+      description: ["It can be assembled through the motherboard slot, and it supports 868/915 frequency band selection."]
     },
     {
       image: "/img/Overview/NE101/cat1PCBA.png",
-      name: "Cat.1通讯模块+天线",
+      name: "Cat.1 wireless module and antenna",
       quantity: "1",
-      description:["可自行通过主板插槽装配，当前仅支持全球版本可选"]
+      description:["It can be assembled through the motherboard slot, and it supports global version only"]
     },
   ]}
 />
 
-### 产品安装
+### Product Installation
 
-#### 壁装支架及安装示意
+#### Wall Mounting Bracket and Installation Instruction
 
 ![NE_Series_Bracket_Wall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Wall_Mount.png)
 
 ![NE_Series_Wall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Wall_Mount.png)
 
-#### 表盘支架及安装示意
+#### Meter Bracket and Installation Instruction
 
 ![NE_Series_Bracket_Meter_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Meter_Mount.png)
 
 ![NE_Series_Meter_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Meter_Mount.png)
 
-#### 杆件支架及安装示意
+#### Pole Bracket and Installation Instruction
 
 ![NE_Series_Bracket_Rod_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_Rod_Mount.png)
 
 ![NE_Series_Rod_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Rod_Mount.png)
 
-#### 三轴球支架及安装示意
+#### 3-axis Ball Bracket and Installation Instruction
 
 ![NE_Series_Bracket_ShaftBall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_ShaftBall_Mount.png)
 
 ![NE_Series_ShaftBall_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_ShaftBall_Mount.png)
 
-#### 座装支架及安装示意
+#### Desktop Bracket and Installation Instruction
 
 ![NE_Series_Bracket_U_Type_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_Bracket_U_Type_Mount.png)
 
 ![NE_Series_U_Type_Mount.png](/img/Hardware_Guide/Edge_AI_Camera/BracketsAndUsage/NE_Series_U_Type_Mount.png)
 
 
-## 产品应用
+## Product Applications
 
-### 产品适用场景
+### Applicable Scenarios
 
->NE101低功耗智能相机凭借其超低功耗特性和模块化设计，可广泛应用于需要事件触发或周期性图像采集的物联网场景
+>NE101 event-triggered camera adopts a modular design and features ultra-low power consumption, widely used in IoT scenarios that require event triggering or periodic image collection.
 
 <ApplicationScenarios
   imagePosition="center"
   maxDescriptionLines={4}
   categories={[
     {
-      title: "智慧农业",
+      title: "Smart Agriculture",
       items: [
-        {
-          title: "农作物生长监测",
-          description: "通过定时拍摄或环境变化触发，记录农作物生长状态，支持远程监测作物长势，每日拍摄10次情况下可续航3年以上，特别适合偏远农田场景。",
+         {
+          title: "Crop Growth Monitoring",
+          description: "Through timed shooting or triggering by environmental changes, it records the growth status of crops and supports remote monitoring of crop growth. It can last for more than 3 years when shooting 10 times a day, which is especially suitable for remote farmland scenes.",
           image: useBaseUrl("/img/Overview/NE101/zw.jpg")
         },
         {
-          title: "畜牧行为分析", 
-          description: "结合PIR传感器监测牲畜活动，自动抓拍行为图像，帮助及时发现病畜或发情期动物行为，提升养殖管理效率。",
+          title: "Livestock Behavior Analysis", 
+          description: "Combined with PIR sensors to monitor livestock activities and automatically capture behavioral images, it can help owners to detect the behavior of sick animals or animals in estrus timely, and improve the efficiency of breeding management.",
           image: "https://cdn.prod.website-files.com/6479eab6eb2ed5e597810e9e/67ed59d05b90b9b7844d7b8d_66574ab3528f7a863374f263_Abi%2520Animals%2520fig2%2520(1).png"
         }
       ]
     },
     {
-      title: "工业监测",
+      title: "Industrial Monitoring",
       items: [
         {
-          title: "设备仪表读数",
-          description: "定时采集工业仪表数据图像，通过AI算法自动识别数值，准确率99%，替代人工抄表，适用于水表、电表等场景。",
+          title: "Equipment Meter Readings",
+          description: "It regularly collects industrial instrument data images and automatically identifies values through AI algorithms with an accuracy of 99%. It replaces manual meter reading and is suitable for water meters, electricity meters and other scenarios.",
           image: "https://paddlepaddle-static.cdn.bcebos.com/paddle-wechat-image/mmbiz.qpic.cn/mmbiz_jpg/sKia1FKFiafggJl2ia9vZspq5HEUD40PZ45jncMjpzAkFTS2rGdUgKUVRbv6BEv6pVHrUxCgib0EGRGWX8ewYMZL4A/image"
         },
         {
-          title: "设备状态监控",
-          description: "通过振动传感器触发异常状态抓拍，结合温度传感器实现过热预警，支持本地存储和云端同步，预防设备故障。",
+          title: "Equipment Status Monitoring",
+          description: "Vibration sensors are used to trigger abnormal status captures, and temperature sensors are combined to achieve overheating warnings. Local storage and cloud synchronization are supported to prevent equipment failures.",
           image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ2kIJ75qOclzQcDP17foO33PreHzALfI2RUA&s"
         }
       ]
     },
     {
-      title: "户外检测",
+      title: "Outdoor Monitoring",
       items: [
         {
-          title: "入侵检测",
-          description: "搭配PIR/雷达传感器实现低功耗周界防护，检测到移动物体自动唤醒拍摄并上传告警图像，比传统IPC节省90%以上能耗。",
+          title: "Intrusion Detection",
+          description: "It is equipped with PIR/radar sensors to achieve low-power perimeter protection. When moving objects are detected, it automatically wakes up to shoot and upload alarm images. The standby power consumption is only 0.8W, saving more than 90% of power consumption than traditional IPC.",
           image: "https://ai-studio-static-online.cdn.bcebos.com/cd55436715184210b0877245a1b2e88a4ccb3b799e61443f94925578a596eb3f"
         },
         {
-          title: "野生动物监测",
-          description: "在自然保护区部署，通过红外触发拍摄野生动物活动，支持WiFi HaLow远距离传输，最大通讯距离达1km，电池供电可工作2年以上。",
+          title: "Wildlife Monitoring",
+          description: "Deployed in nature reserves, NE101 uses infrared triggering to shoot wild animal activities, supports Wi-Fi HaLow for long-distance transmission, the maximum communication distance is 1km, and the battery power supply can last for more than 2 years.",
           image: "https://cdn.prod.website-files.com/6479eab6eb2ed5e597810e9e/67ed59d05b90b9b7844d7b9b_66574b3555420ad0324a7750_Abi%2520Animals%2520fig6%2520(1).png"
         }
       ]
@@ -438,9 +438,9 @@ NE101整机产品规格如下：
   ]}
 />
 
-### 应用工程示例
+### Application Engineering Examples
 
->NE101系列产品可通过灵活配置满足多样化应用需求，以下是典型应用案例。每个案例都提供详细部署指南，帮助您快速实现项目落地。
+>The NE101 series products can meet diverse application requirements through flexible configuration. The following are typical application cases. Each case provides detailed deployment guides to help you quickly implement the project.
 
 <div
   style={{
@@ -450,19 +450,19 @@ NE101整机产品规格如下：
   }}
 >
   {(() => {
-    const BASE_URL = "./Application%20Guide/";
+    const BASE_URL = "/docs/NeoEyes NE101 Series/Application Guide/";
 
     const examples = [
       { 
-        title: "AI人脸识别", 
-        image: useBaseUrl("/img/NE101_example_human_detect_1.png"), 
-        description: "本示例为如何使用NE101实现一个实时人脸检测的用例，你可以更换成其他所需的AI场景应用。", 
+        title: "AI Facial Recognition", 
+        image: "/img/NE101_example_human_detect_1.png", 
+        description: "This example shows how to use NE101 to implement a real-time facial recognition use case. You can replace it with other AI scenarios.", 
         path: "human-face-detect"
       },
       { 
-        title: "低功耗图像采集", 
-        image: useBaseUrl("/img/Overview/NE101/lowpower.png"), 
-        description: "实现NE101低功耗工作模式，每日10次拍摄情况下电池续航可实现3年及以上，可扩展结合传感器完成事件场景抓拍，本项目提供完整项目工程源代码，支持开发者二次开发扩展能力。", 
+        title: "Low Power Image Collection", 
+        image: "/img/Overview/NE101/lowpower.png", 
+        description: "NE101 supports low-power working mode and maintains 3 years battery life on the setting of 10 shots per day. Its extendability allows the combination of sensors to capture images based on trigger settings. This project provides complete project engineering source code to support developers' secondary development and expansion capabilities.", 
         path: "low-power-image-acquisition"
       }
     ];
@@ -516,14 +516,14 @@ NE101整机产品规格如下：
 </div>
 
 
-## 产品资源
-### 产品教程
+## Product Resource
+### Product Tutorial
 
-关于如何快速使用NE101系列产品可见[「快速开始」](./1-Quick%20Start.md)
+About how to quickly set up NE101 series products[「Quick Start」](./1-Quick%20Start.md)
 
-关于如何使用NE100-MB01主板的相关硬件使用和系统应用开发说明可见[「开发指南」](./2-NE100-MB01%20Development%20Board/0-Dev%20Guide.md)
+About how to use the NE100-MB01 motherboard and its related hardware and system development instructions, please refer to [「Dev Guide」](./2-NE100-MB01%20Development%20Board/0-Dev%20Guide.md)
 
-关于NE101系列产品的应用场景与指南可见[「应用指南」](./3-Application%20Guide/0-low-power-image-acquisition.md)
+About the application scenarios and guidelines for NE101 series products, please refer to[「Application Guide」](./3-Application%20Guide/0-low-power-image-acquisition.md)
 
 <!-- ### 产品资源
 
@@ -532,6 +532,6 @@ NE101整机产品规格如下：
 | 硬件原理图               | [/docs/hardware-schematic](/docs/hardware-schematic)                 |
 | 硬件设计指南             | [/docs/hardware-guide](/docs/hardware-guide)                         | -->
 
-## 技术支持
+## Technical Support
 
 <SupportGrid />
