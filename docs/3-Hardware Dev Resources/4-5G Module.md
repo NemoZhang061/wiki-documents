@@ -1,99 +1,98 @@
-
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-
 # 5G Module
-## 产品特性
-### **核心功能**
-- **网络制式**：支持 **5G NR Sub-6GHz（SA/NSA）**、**LTE-FDD/TDD**、**WCDMA/HSPA+**。
-- **接口类型**：**M.2 Key B**，支持 **PCIe 3.0 x4** 和 **USB 3.1 Gen2**。
-- **GNSS**：集成多模定位（GPS/GLONASS/BeiDou/Galileo/QZSS），支持 **L1+L5 双频**（需 AT 命令或硬件控制）。
-- **HPUE 增强**：支持 **Class 2 功率等级（26 dBm）**，提升小区边缘覆盖。
-- **工业级设计**：工作温度 **-40°C 至 +85°C**，尺寸 **30×52×2.3mm**。
 
-### **型号对比**
-| **型号**      | **支持频段**                                                 | **HPUE 频段**       | **GNSS**      |
+## Module Features
+### **Core function**
+- Network standard: Supported 5G NR Sub-6GHz (SA/NSA)、LTE-FDD/TDD、WCDMA/HSPA+
+- **Interface type**：**M.2 Key B**，**supporting** **PCIe 3.0 x4** 和 **USB 3.1 Gen2**
+- **GNSS**：**Integrated multi-mode positioning (GPS/GLONASS/BeiDou/Galileo/QZSS), supporting L1+L5 dual-band**（AT command or hardware control）
+- **HPUE Enhance**：Supports **Class 2 power level (26 dBm)**, improving cell edge coverage
+- **Industrial-grade Design**: operating temperature **-40°C to +85°C**, dimensions **30×52×2.3mm**
+
+### **Model comparison**
+| **Type**      | **Supported frequency bands**                                                 | **HPUE frequency bands **       | **GNSS**      |
 | ------------- | ------------------------------------------------------------ | ------------------- | ------------- |
-| **RM520N-GL** | 5G: n1/n3/n5/n7/n28/n38/n40/n41/n77/n78/n79;                                             LTE: B1/B3/B5/B7/B8/B20/B28/B38/B40/B41 | n38/n41/n77/n78/n79 | L1+L5（预留） |
+| **RM520N-GL** | 5G: n1/n3/n5/n7/n28/n38/n40/n41/n77/n78/n79;                                             LTE: B1/B3/B5/B7/B8/B20/B28/B38/B40/B41 | n38/n41/n77/n78/n79 | L1+L5（Reserved） |
 | **RM520N-EU** | 5G: n1/n3/n7/n28/n41/n77/n78; LTE: B1/B3/B7/B8/B20/B28/B41   | n41/n77/n78         | L1+L5         |
 | **RM520N-CN** | 5G: n41/n78/n79; LTE: B1/B3/B5/B8/B41                        | n41/n78/n79         | L1+L5         |
 
 ---
 
-## 规格参数
-### **电气特性**
-| **参数**         | **规格**                      |
+## Specifications
+### **Electrical characteristic**
+| **Parameter**         | **Specification**                     |
 | ---------------- | ----------------------------- |
-| **电源电压**     | 3.135V–4.4V（典型 3.7V）      |
-| **5G 峰值功耗**  | 3.5A @ 3.7V（256QAM 调制）    |
-| **LTE 峰值功耗** | 2.0A @ 3.7V（256QAM 调制）    |
-| **工作温度**     | -40°C 至 +85°C（工业级）      |
-| **存储温度**     | -40°C 至 +90°C                |
-| **ESD 防护**     | 接触放电 ±5kV，空气放电 ±10kV |
+| Supply Voltage        | 3.135V - 4.4V (Typ. 3.7V)             |
+| 5G Peak Power Consumption | 3.5A @ 3.7V (256QAM Modulation)     |
+| LTE Peak Power Consumption | 2.0A @ 3.7V (256QAM Modulation)    |
+| Operating Temperature | -40°C to +85°C (Industrial Grade)     |
+| Storage Temperature   | -40°C to +90°C                         |
+| ESD Protection        | Contact Discharge ±5kV, Air Discharge ±10kV |
 
-### **射频性能**
-| **网络类型** | **频段**              | **下行速率** | **上行速率** | **MIMO 配置** |
+### **RF Performance**
+| **Internet Type** | **Frequency Band** | **Downlink Rate** | **Uplink rate** | **MIMO Configuration** |
 | ------------ | --------------------- | ------------ | ------------ | ------------- |
-| **5G NR**    | n41/n78（双载波聚合） | 2.5 Gbps     | 900 Mbps     | 4×4 MIMO      |
+| **5G NR**    | n41/n78（dual carrier aggregation） | 2.5 Gbps     | 900 Mbps     | 4×4 MIMO      |
 | **LTE**      | B41（5CA）            | 2 Gbps       | 200 Mbps     | 4×4 MIMO      |
 
-### **接口规格**
-| **M.2 Key B**    | **规格**                                                     |
+
+### **Interface Specifications**
+| **M.2 Key B**    | **Specifications**                                                     |
 | ---------------- | ------------------------------------------------------------ |
-| **PCIe 3.0**     | 4 通道（x4 Lane），理论带宽 **32 Gbps**，支持 NVMe 协议。    |
-| **USB 3.1 Gen2** | 10 Gbps 速率，兼容 USB 2.0，支持 UVC 协议扩展。              |
-| **(U)SIM**       | 双卡单待，1.8V/3.0V 兼容，支持热插拔（需 AT+QSIMDET 使能）。 |
+| **PCIe 3.0**     | 4 channels（x4 Lane），theoretical bandwidth **32 Gbps**, support NVMe protocol   |
+| **USB 3.1 Gen2** | 10 Gbps rate, compatible with USB 2.0, support UVC protocol extension       |
+| **(U)SIM**       | Dual SIM single standby, 1.8V/3.0V compatible, support hot swap (need AT+QSIMDET to enable) |
 
-##  使用说明
-1. **接口配置**  
 
-   - **PCIe 模式切换**：  
+##  Instructions
+1. **Interface Configuration**  
+
+   - **PCIe Mode Switching**：  
      ```plaintext
-     AT+QCFG="pcie/mode",1    // 切换为 RC 模式
-     AT+QCFG="pcie/bandwidth",1 // 配置 x4 通道
+     AT+QCFG="pcie/mode",1    // switch to RC mode
+     AT+QCFG="pcie/bandwidth",1 // configuring x4 lanes
      ```
-   - **GNSS 控制**：  
+   - **GNSS Control**：  
      ```plaintext
-     AT+QGPS=2          // 启用 L1+L5 双频定位
-     AT+QGPSEND        // 关闭 GNSS
+     AT+QGPS=2          // enable L1+L5 dual-frequency positioning
+     AT+QGPSEND        // turn off GNSS
      ```
 
 ---
 
-## 注意事项
-### **设计关键点**
-1. **电源稳定性**  
-   - 瞬态电压需 ≤50mV（使用低 ESR 电容抑制纹波）。  
-   - 禁止直接切断电源，需通过 `AT+QPOWD` 软关机或拉低 `FULL_CARD_POWER_OFF#` 至少 900ms。
+## Precautions
+### **Key Design Points**
+1. **Power Supply Stability**  
+   - Transient voltage must be ≤50mV (use low ESR capacitors to suppress ripple).  
+   - Never cut power directly. Use `AT+QPOWD` command for soft shutdown or pull `FULL_CARD_POWER_OFF` low for at least 900ms.
 
-2. **ESD 防护**  
-   - 所有接口需添加 TVS 阵列（结电容 ≤10pF）。  
-   - SIM 卡走线长度 ≤200mm，串联 22Ω 电阻抑制 EMI。
+2. **ESD Protection**  
+   - Add TVS arrays to all interfaces (junction capacitance ≤10pF).  
+   - SIM card trace length ≤200mm with 22Ω series resistor for EMI suppression.
 
-3. **散热管理**  
-   - 高负载时需加装导热垫片（导热系数 ≥5W/mK）或散热片（覆盖模块屏蔽罩）。  
-   - 避免与热源相邻，PCB 露铜区域 ≥50%。
-
+3. **Thermal Management**  
+   - Apply thermal pads (thermal conductivity ≥5W/m·K) or heatsinks (covering module shield) during high-load operation.  
+   - Avoid proximity to heat sources. Maintain ≥50% exposed copper area on PCB.
 ---
 
-### **安全与维护**
-- **禁止操作**  
-  - 避免超声波清洗（损坏晶体），使用酒精擦拭需断电。  
-  - 高温环境（>85°C）需降额使用，禁用 HPUE 模式。  
+### **Safety and Maintenance**
+- **Prohibited Actions**  
+  - Avoid ultrasonic cleaning (damages crystals). When using alcohol to wipe, disconnect the power supply.   
+  - In high-temperature environments (>85°C), use with derating and disable HPUE mode.  
 
-- **固件升级**  
-  - 通过 USB 3.1 或 PCIe 接口升级，确保电源稳定（电压 ≥3.3V）。  
-
+- **Firmware Upgrade**  
+  - Upgrade via USB 3.1 or PCIe interface. Ensure a stable power supply (voltage ≥3.3V).  
 ---
 
-**附录**  
-- **机械尺寸**：30.0mm × 52.0mm × 2.3mm（M.2 Key B），散热区域需预留 ≥2.5mm 空间。  
+**Appendix**  
+- **Mechanical Dimensions**：330.0mm × 52.0mm × 2.3mm (M.2 Key B), ≥2.5mm clearance required for heat dissipation area.  
 
-- **关键 AT 命令**：  
+- **Key AT Commands**：  
   ```plaintext
-  AT+CFUN=4        // 进入飞行模式
-  AT+QSCLK=1       // 启用睡眠模式
-  AT+QCFG="data_interface",0,0 // 切换回 USB 模式
+  AT+CFUN=4        // Enter flight mode
+  AT+QSCLK=1       // Enable sleep mode
+  AT+QCFG="data_interface",0,0 // Switch to USB mode
   ```
 
 ---
