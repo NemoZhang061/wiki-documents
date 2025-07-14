@@ -3,17 +3,17 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Quick Start
 
-## 概述
-本教程将详细描述NE101的使用说明，涵盖内容，包括设备基本使用、设备配置、以及设备安装。
+## Overview
+This tutorial will introduce the operation of NE101 event-triggered camera, including the basic use of the camera, camera configuration, and camera installation.
 
-## 产品准备
-在开始前请准备NE101设备、5号AA电池x4、十字螺丝刀x1、以及NE101的相关选配件，例如:Cat-1通讯模块、WiFi-Halow通讯模块，如果你还没有NE101设备，可以通过我们的商城进行获取，请点击[「NE101购买地址」](https://www.camthink.ai)。
+## Product Preparation
+Before starting, please prepare one NE101 camera, four AA batteries, one Phillips screwdriver, and NE101 camera related optional accessories, such as Cat.1 communication module, Wi-Fi Halow communication module. If you do not have NE101 camera yet, you can buy it through our estore, please click[「NE101 Purchase Address」](https://www.camthink.ai).
 
 ![NE101](/img/QuickStart/NE101/ne101_1.png)
 
-## 产品使用
-### 设备开机
-使用螺丝刀拆卸NE101后盖，按照电池仓分布安装电池，等待相机前部的**灯光闪烁亮起**后，表示相机已经**系统启动**，将后盖重新安装回设备，到这里你将完成设备的基本启动，完成后我们可以进行下一步，对设备进行配置。
+## Product Set Up
+### Power On the Camera
+Use a screwdriver to remove the back cover of the NE101, install the batteries according to the distribution of the battery compartment, wait until the light on the front of the camera **flashes and lights up**, indicating that the camera has **system booted**, then reinstall the back cover back to the device. At this point you have completed the basic startup of the device. After completion, we can proceed to the next step to configure the device.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_2.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
@@ -21,111 +21,111 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_5.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-### 设备配置
-对于设备配置，NE101内置WiFi AP提供了一个配置Web供用户对设备的参数和功能进行修改，WiFi AP的SSID名称规则为 **NE101_ABC123**，请保证身边有手机或电脑可以连接NE101提供的WiFi AP来访问Web网页进行配置修改，若成功连接WiFi AP可通过**192.168.1.1**访问配置Web页，接下来将详细说明相关操作步骤。
-#### 1、保证NE101处于开机状态
-你可以手指轻按一下相机右侧的拍照按钮，查看闪光灯是否亮起，如果亮起说明当前机器处于开机状态，如果你是在调试设备，点击拍照按键NE101将会抓取当前页面图像，并通过你配置的MQTT地址上传图像，如果一切配置正常的话，详细配置修改见下方说明。
+### Camera Configuration
+For camera configuration, the built-in Wi-Fi AP of NE101 provides a configuration Web for users to modify the parameters and functions of the camera. The SSID naming rule of the Wi-Fi AP is **NE101_ABC123**. Please ensure that you have a mobile phone or computer nearby to connect to the Wi-Fi AP provided by NE101 to access the Web page for configuration modifications. If the connection is successful, the Wi-Fi AP can access the configuration Web page through **192.168.1.1**. The relevant steps will be explained in detail below.
+#### 1. Ensure NE101 Remains Powered On
+You can press the photo button on the right side of the camera lightly to see if the flash is on. If it is on, it means that the camera is on. If you are debugging the device, press the photo button, and NE101 will capture the image of the current page and upload the image through the MQTT address you configured. If everything is function normally, please see the instructions below for detailed configuration modifications.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_6.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-#### 2、开启NE101 WiFi AP 并在手机或电脑上寻找到它
-NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找对应SSID规则为 **NE101_ABC123**的WiFi AP，点击连接它，你无需输入密码，当你正常链接后，即可通过**192.168.1.1**地址在浏览器中访问到NE101的配置Web页，如果你成功了将看到浏览器上的Web页面。
->**在新的固件版本中为了进一步降低NE101的使用功耗，WiFi AP的唤醒逻辑为长按拍照键3s且灯光闪烁2次，可以参考下方的操作录屏**
+#### 2. Turn on the NE101 Wi-Fi AP and Connect to It on A Phone or Computer
+After the NE101 system starts normally, you can look for the Wi-Fi AP with the corresponding SSID named **NE101_ABC123**, then connect it on your computer or mobile phone without requesting a password. When you connect normally, you can access the NE101 configuration Web page in the browser through the **192.168.1.1** address. If you succeed, you will see the Web page on the browser.
+>**In the latest firmware version, the wake-up logic of Wi-Fi AP is to press and hold the camera button for 3 seconds and wait for the light flashes twice in order to lower the power consumption of NE101. You can refer to the screen recording below.**
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_7.gif')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_9.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_10.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-#### 3、进行设备配置
-如果你进入了设备的配置页面，我们来看看如何修改配置，下方将会根据配置类别和主要作用来分别说明。
+#### 3. Configure the NE101 Camera
+If you enter the device configuration page, let's take a look at how to modify the configuration. We will introduce by configuration category and main functions.
 
-**图像设置**
->如果你使用的是OV5640相机模组，你可以根据实际的场景需求来更改设备的图像设置，可设置的内容为所有，**USB相机模组仅支持补光灯设置**
-- 默认按钮：点击后会重置OV5640相机模组的参数为出厂设置，请谨慎使用。
-- 补光灯模式：支持自动模式、自定义、常开、长开4种模式，请根据你的实际使用场景设置此配置。
-   - 自动模式
-      - 选择自动模式需要额外设置"光照阈值"，"光照阈值"文本右侧数值为当前环境的光照数值，你可通过数值右侧的按钮刷新数据，右侧可拖拽设置阈值，阈值作用为当光照强度低于设置值时自动开启设备补光灯。
-      - 光照强度为补光灯强度，1-100可调整。
-   - 自定义模式
-      - 支持设置时间范围，指的是时间在什么区间内设备会启用补光灯，通常是具有周期性的场景下定期开始补光灯保证图像质量时使用此模式
-      - 光照强度为补光灯强度，1-100可调整。
-   - 常开模式
-      - 补光灯常开，无论什么时候，补光灯均开启，不支持设置光照强度
-   - 常关模式
-      - 补光灯常关，无论什么时候，补光灯均不开启
-- 图像调整功能
-   - 明亮度：0-2可调节
-   - 对比度：0-2可调节
-   - 饱和度：0-2可调节
-   - 水平翻转：画面水平翻转，用于设备实际安装后成像需要水平翻转时使用
-   - 垂直翻转：画面垂直翻转，用于设备实际安装后成像需要垂直翻转时使用
+**Image Settings**
+>If you are using the OV5640 camera module, you can adjust the image settings of the device according to actual scenario requirements. All content is configurable, **The USB camera module only supports fill light settings**
+- Default button: Clicking it then will reset the parameters of the OV5640 camera module to factory settings, please use with caution.
+- Fill light mode: Supports 4 modes, for example, automatic mode, customization, always on and always off. Please set this configuration according to your actual usage scenario.
+   - Automatic mode
+      - Selecting automatic mode requires the additional setting of "Lighting Threshold". The data on the right is the current "Lighting Threshold" value. You can refresh the data through the button to the right of the value. You can set the threshold by adjusting it. The function of the threshold is to automatically turn on the camera's fill light when the light intensity is lower than the set value.
+      - The light intensity is the fill light intensity, which can be adjusted from 1 to 100.
+   - Customization mode
+      - Supports setting the time range, which refers to the time interval to enable the fill light during operation. This mode is usually used to schedule the fill light periodically to ensure image quality.
+      - The light intensity is the fill light intensity, which can be adjusted from 1 to 100.
+   - Always on mode
+      - The fill light is always on. The fill light is on at any time. It does not support setting the light intensity.
+   - Always off mode
+      - The fill light is always off and is not turned on at any time.
+- Image adjustment function
+   - Brightness: 0-2 adjustable
+   - Contrast: 0-2 adjustable
+   - Saturation: 0-2 adjustable
+   - Horizontal flip: The picture is flipped horizontally, used when the imaging needs to be flipped horizontally after the device is actually installed.
+   - Vertical flip: flip the picture vertically, used when the imaging needs to be flipped vertically after the device is actually installed.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_11.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-**抓图设置**
->用于设置NE101设备的抓图功能设置，用户可以根据硬件执行扩展PIR传感器等硬件出发设备抓图
-- 启用排程抓图：开启功能后支持设置设备周期性进行图像抓拍的相关功能设置。
-   - 定时抓图模式：支持设置每天定时抓图或周一至周日具体时间点抓图，时间可以设置00:00 - 23:59，最多支持设置8个抓拍时间用于定时图像抓取。
-   - 间隔抓图模式：支持设置抓图的时间间隔，用于按照时间间隔进行图像抓取，支持按照分钟、小时、天的时间纬度进行设置，最多仅支持1个规则设置。
+**Image Capture Settings**
+>Used to set the image capture function of the NE101 camera. Users can connect to the PIR sensor or other hardware to set the trigger of image capture.
+- Periodically capture mode: After enabling the function, users can set the camera to capture images periodically and other relevant functions.
+   - Scheduled capture mode: It supports scheduled image captures every day at a specific time from Monday to Sunday. The time can be set from 00:00 to 23:59, allowing a maximum of 8 scheduled times.
+   - Interval capture mode: It supports setting the time interval for image capture, which is used to capture images according to time intervals by minutes, hours, and days. It can only support one rule.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_12.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
-- Alarm-In抓图：开启功能后支持，硬件主板背部的Alarm-In座子输入信号用于图像抓拍。
+- Alarm-In image capture: Turn on the function,, the Alarm-In socket on the back of the camera motherboard inputs the signal for image capture.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_18.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
-- 启用按键抓图：开启抓图按键，**此功能建议不要关闭**，用于设备外部右侧的开关按键可操作抓取当前图像使用。
+- Use physical button for image capture: **Suggest not to turn off this function**. The on/off button on the right side of the camera can be used to capture the current image.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_19.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
-**数据上报**
->用于设置NE101的数据上报的MQTT信息，完善下方信息后，点击**Save**按钮即可保存配置
-- Host：用于填写MQTT服务端的域名或IP。
-- MQTT Port：用于填写MQTT订阅端口号，默认为1883。
-- Topic：用于设置此设备上报数据的Topic。
-- Client ID：用于明确此在MQTT服务中的客户端唯一标识。
-- QoS：MQTT QoS设置，支持QoS 0、QoS 1、QoS 2可选。
-- Username：用于设置连接MQTT服务所需校验的用户名。
-- Password：用于设置连接MQTT服务所需校验的用户名对应的密码，需要与上方相同。
+**Data Reporting**
+>Used to configure the MQTT for NE101 data reporting. After completing the information below, click the **Save** button to save the configuration.
+- Host: used to fill in the domain name or IP address of the MQTT server.
+- MQTT Port: used to fill in the MQTT subscription port number, the default setting is 1883.
+- Topic: used to set the Topic for data reported by this camera.
+- Client ID: used to identify the client's unique identifier in the MQTT service.
+- QoS: MQTT QoS settings, supporting QoS 0, QoS 1, and QoS 2 options.
+- Username: used to set the username required for verification to connect to the MQTT service.
+- Password: used to set the password corresponding to the user name required for verification when connecting to the MQTT service. It needs to be the same as above.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_15.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
-**设备管理**
->用于查看NE101当前的设备信息，以及支持导入固件包进行镜像更新
-- 设备名称：支持修改NE101的设备名称，设备名称在设备采集图像数据后跟随图像上报数据进行上传，在JSON数据中的devName信息种显示此名称。
-- MAC地址：设备的MAC地址。
-- SN：设备的唯一标识，通常用于唯一身份判断以及售后服务时提供。
-- 电池：设备当前的电池剩余电量。
-- 硬件版本：当前硬件版本。
-- 固件版本：当前硬件装载的固件版本。
-- 固件更新：点击下方的Browse按钮，可以选择电脑或手机的文件，选取需要升级的镜像文件后，可以点击Upgrade按钮上传进行镜像更新，需要注意**设备更新完成后需要刷新Web页，少数情况需要重新连接NE101的WiFi AP**
+**Device Management**
+>Used to view the current device information of NE101 and support importing firmware packages for mirror updates.
+- Device name: Supports modifying the device name of NE101. The device name is uploaded along with the image data after the device collects image data. This name is displayed in the devName information in the JSON data.
+- MAC address: The MAC address of the device.
+- SN: The unique identifier of the device, usually used for user identification and after-sales service.
+- Battery: The current remaining battery power of the device.
+- Hardware version: Current hardware version.
+- Firmware version: The firmware version currently loaded on the hardware.
+- Firmware update: Click the Browse button below to select the file on your computer or mobile phone. After selecting the mirror file that needs to be upgraded, you can click the Upgrade button to upload it for mirror update. Please note that **the web page needs to be refreshed after the device update is completed, and in rare cases it is necessary to reconnect to the Wi-Fi AP of NE101**.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_14.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
-**网络连接**
->NE101的网络连接设置，根据所选的通讯方案设置内容有所差异，主要有**WiFi、Cat-1、WiFi-Halow**3种通讯方案可设置，下方详细说明这些通讯方案的设置与使用。
-- **WiFi设置**：NE101标准版本自带WiFi，WiFi版本下，可在配置界面中查看当前范围内可检索到的WiFi信号，你可以根据所需连接的WiFi进行选择设置，设备会自动记录WiFi的SSID和密码，如果重复设置NE101连接的WiFi则设备存储的SSID和密码始终是最近一次的。
+**Internet Connection**
+>The network connection settings of NE101 vary according to the selected communication modules. There are mainly 3 communication methods that can be set: **Wi-Fi, Cat.1, and Wi-Fi Halow**. User can refer to the details below for communication settings.
+- **Wi-Fi Settings**: The standard version of NE101 embedded with a Wi-Fi module. In the Wi-Fi version, user can search the Wi-Fi signals within the current range in the configuration interface. User can select settings according to the Wi-Fi that want to connect to. The device will automatically record the SSID and password of the Wi-Fi. If the Wi-Fi connected to NE101 is set repeatedly, the SSID and password stored by the device will always be the most recent one.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_13.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
-- **Cat-1网络设置**：NE101 Cat-1版本支持进行网络的设置，你需要有所在地区可用的sim卡，当前NE101 Cat-1版本支持除北美地区以外的其他地区使用，下方将会说明如何进行Cat-1网络设置。
-   - 使用螺丝刀打开NE101的设备前盖。
-   - 拆卸完成后可以看到设备前面的sim卡槽，在sim卡槽内插入sim卡。
-   - 重新安装设备前盖。
-   - 打开浏览器，进入设备的配置Web页，在浏览器内输入**192.168.1.1**。
-   - 到下方的Cellular配置，按照运营商提供的sim卡信息按照需求输入APN、Username、Password、PIN Code、Authentication Type、AT Commands，你可以点击「Send」按钮测试蜂窝网络，如果正常Cellular Status
-   会变为connect状态，说明网络正常，然后点击save保存信息。
-   - 你可以通过Details按钮来查看网络的详细信息，显示信息可以参考下方图像。
+- **Cat.1 Network Settings**：The NE101 Cat.1 version supports network settings. User needs an activated SIM card in the current region. The current NE101 Cat.1 version supports global frequency bands except for North America. The following will explain how to set up the Cat.1 network.
+   - Use a screwdriver to open the front cover of the NE101.
+   - You can see the SIM card slot, insert the SIM card.
+   - Reinstall the front cover of the device.
+   - Open the browser, enter the device's configuration web page, and enter the information in the browser **192.168.1.1**.
+   - Go to the Cellular configuration, and enter the APN, Username, Password, PIN Code, Authentication Type, and AT Commands as required according to the SIM card information provided by the operator. You can click the "Send" button to test the cellular network. 
+If normal, the Cellular Status will change to the connected status, indicating that the network is functional, and then click save to save the information.
+   - User can view the detailed information of the network through the Details button. For displayed information, please refer to the image below.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_21.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_20.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
@@ -134,34 +134,34 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 </div>
 
 
-- **WiFi Halow网络设置**：NE101 WiFi-Halow版本支持进行网络设置，可以通过Refresh按钮刷新当前的WiFi-Halow网关信号，Region下拉选择对应的区域频段，找对所需要的WiFi-Halow SSID进行连接。
+- **Wi-Fi Halow Network Settings**: The NE101 Wi-Fi Halow version supports network settings. User can refresh the current Wi-Fi Halow gateway signal through the Refresh button. Pull down the Region to select the corresponding regional frequency band, and find the required Wi-Fi Halow SSID to connect.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_24.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_25.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_26.png')} alt="bracket" style={{ height: '200px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
-### 设备调试
-在明确设备的**网络设置**与**数据上报**的配置是正常的情况下，NE101即可进行图像抓拍与传输，进行调试的方式为，点击NE101的拍照按键进行图像采集，通过检查MQTT服务是否接收到设备数据为准查看设备数据来调试设备是否可以正常采集和传输数据到MQTT服务端。
+### Equipment Debugging
+When it is clear that the **network settings** and **data reporting** configurations of the device are normal, NE101 can capture and transmit images. The way to debug is to press the camera button of NE101 to collect images, and check whether the device data can be collected and transmitted to the MQTT server by checking whether the MQTT service has received the device data.
 
-#### MQTTX接收MQTT数据
-为了验证设备的数据上报功能是否正常，可以使用 MQTT 客户端工具（如 [MQTTX](https://mqttx.app/)）进行数据接收测试。
+#### MQTTX Receives MQTT Data
+In order to verify whether the data reporting function of the camera is functional, user can use the MQTT client tool（For example, [MQTTX](https://mqttx.app/)）to conduct data transmitting test.
 
-##### 步骤说明
-> 需要保证MQTTX服务端可被NE101连接
-1. 打开 MQTTX，点击 `新建连接`。
-2. 设置以下连接参数：
+##### Stey by Stey Introduction
+> It is necessary to ensure that the MQTT server can be connected by NE101
+1. Open MQTTX, and click `New Connection`.
+2. Set up the following connection parameters：
    - **Host**：`192.168.44.80`
    - **Port**：`1884`
-   - **Client ID**：任意字符串，例如 `mqttx-client-01`
+   - **Client ID**：any figure, for example `mqttx-client-01`
    - **Topic**：`left`
-   - **Username / Password**：留空
-3. 点击连接后，订阅 Topic `left`。
-4. 可点击设备右侧的拍照按钮进行图像采集。
-5. 设备采集到图像数据后，将通过 MQTT 向该 Topic 发布消息。
+   - **Username / Password**：Leave blank
+3. After clicking the link, subscribe to Topic `left`。
+4. User can press the camera button on the right side of the device to collect images.
+5. After the camera collects the image data, it will publish messages to the Topic through MQTT.
 
-##### 数据格式说明
-设备发送的 MQTT 消息 payload 内容为 JSON 格式，如下所示：
+##### Data Format Description
+The MQTT message payload content sent by the camera is in JSON format, as shown below:
 
 ```json
 {
@@ -178,43 +178,43 @@ NE101系统正常启动后，你可以在电脑或手机的WiFi AP列表寻找�
 }
 ```
 
-#####  字段说明
+#####  Field Description
 
-- `ts`：时间戳（毫秒）
-- `devName`：设备名称
-- `devMac`：设备 MAC 地址
-- `battery`：电池电量（百分比）
-- `snapType`：图像采集类型（如 `Button`, `Scheduled`, `PIR` 等）
-- `localtime`：本地时间（字符串格式）
-- `imageSize`：图像大小（单位：字节）
-- `image`：Base64 编码的 JPEG 图像数据，前缀为 `data:image/jpeg;base64,`
+- `ts`：timestamp (milliseconds)
+- `devName`：device name
+- `devMac`：device MAC address
+- `battery`：battery level (percentage)
+- `snapType`：image collection type（such as `Button`, `Scheduled`, `PIR` etc.）
+- `localtime`：local time (string format)
+- `imageSize`：image size (unit: bytes)
+- `image`：Base64 encoded JPEG image data, prefixed with  `data:image/jpeg;base64,`
 
-#####  可视化建议
+#####  Visualization Suggestion
 
-使用 Base64 图像数据可在网页或工具中快速预览图像：
+Use Base64 image data to quickly preview images on web pages or tools:
 
 ```html
 <img src="data:image/jpeg;base64,...">
 ```
 
-也可以将 Base64 数据粘贴至 [Base64图像查看器](https://base64.guru/converter/decode/image) 进行在线预览。
+you can also copy and paste the Base64 data to [Base64 Image Viewer](https://base64.guru/converter/decode/image) for online preview.
 
-### 设备重置
-设备重置的操作为长按拍照按钮10s后等待灯光快速闪动5次后即表示设备重置成功，重置后设备系统会恢复出厂设置，请谨慎操作，重置成功后设备等待下次灯光亮起表示系统准备完成，您可以参考[「设备配置」](#设备配置)重新对设备进行配置。
+### Camera Reset
+The operation of resetting the camera is to press and hold the camera button for 10 seconds and wait for the light to flash rapidly 5 times, which means the device has been successfully reset. After the reset, the device system will restore to factory settings. Please operate with caution. After the reset is successful, the device will wait for the light to indicate that the system is ready. User can refer to[「Device Configuration」](#设备配置)to reconfigure the camera.
 
 
-## 产品安装
->NE101的产品安装有多种选择，可以选择CamThink提供的丰富支架来进行设备安装，下方将会说明主要的几个可选支架如何进行简单的使用和安装。
-### 底部支架扩展件
-找到NE101侧面的螺丝孔，将支架与设备对齐，对齐后使用螺丝进行固定，固定完成后可以旋转支架调整角度，将支架底部与需要固定安装的位置进行螺丝打孔固定。
+## Product Installation
+>There are many options to install the NE101 event-triggered camera. User can choose from the various bracket options provided by CamThink for equipment installation. The following will explain how to use and install the main optional brackets simply.
+### Desktop Bracket Extensions
+Find the screw holes on the side of NE101, align the bracket with the camera, and fix it with screws after alignment. After the fixation is completed, you can rotate the bracket to adjust the angle, and drill holes for screws to fix the bottom of the bracket to the location where it needs to be installed fixedly.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/1.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
    <img src={useBaseUrl('/img/QuickStart/NE101/ne101_27.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
 
 
-### 背部支架扩展件
-找到NE101侧面的螺丝孔，将支架与设备对齐，对齐后使用螺丝进行固定，找到需要壁挂安装的位置，将支架左右两侧的螺丝孔进行螺丝固定安装。
+### Wall/Back Bracket Extensions
+Find the screw holes on the side of the NE101, align the bracket with the camera, and fix it with screws after alignment. Find the location where wall mounting is required, and screw the screw holes on the left and right sides of the bracket for installation.
 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '0px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Overview/NE101/Bracket/3.png')} alt="bracket" style={{ height: '300px', objectFit: 'contain', margin: '0 auto' }} />
   <img src={useBaseUrl('/img/QuickStart/NE101/ne101_28.png')} alt="bracket" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
