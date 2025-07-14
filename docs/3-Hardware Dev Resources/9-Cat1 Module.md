@@ -2,22 +2,22 @@
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-## 1. 产品特性
-本模组基于EG912U-GL（适用非北美）和EG915Q-NA(适用于北美)开发。
+## 1. Module Description
+This module is developed based on the EG912U-GL (for regions outside North America) and the EG915Q-NA (for North America).
 
-EG912U/EG915Q专为M2M和IoT应用设计的LTE Cat 1模块，支持无缝网络切换与丰富接口，核心特性包括：
+The EG912U series LTE Cat.1 module is specially designed for M2M and IoT applications, it supports seamless network switching and rich interfaces. Key features include:
 
-### EG912U系列模组参数说明
+### EG912U Series Cat.1 Module Specifications
 
-| **Module**  | **EG912U-GL** |
-|:---:|:---:|
-| **网络覆盖** |全球频段（B1/2/3/4/5/7/8/12/13/17/18/19/20/25/26/28/66 LTE-FDD + B34/38/39/40/41 LTE-TDD） |
-| **数据速率** | LTE-FDD: 10Mbps（DL）/5Mbps（UL）LTE-TDD: 8.96Mbps（DL）/3.1Mbps（UL） |
-| **可选功能** | GNSS（GPS/GLONASS/BDS/Galileo/QZSS）蓝牙4.2Wi-Fi Scan |
-| **接口** | 3x UART, USB 2.0, PCM/I2S音频, 2x ADC, SPI/I2C/LCM/摄像头/SD卡（QuecOpen®） |
-| **天线** | 主天线 + GNSS/Wi-Fi天线（可选） |
+| &emsp;&emsp; | **EG912U-GL** | **EG912U-EAL** |
+|:---:|:---:|:---:|
+| **Network Coverage** |Global frequency bands（B1/2/3/4/5/7/8/12/13/17/18/19/20/25/26/28/66 LTE-FDD + B34/38/39/40/41 LTE-TDD） | Europe/Asia-pacific/Latin America（B1/2/3/4/5/7/8/20/28/66 LTE-FDD + B38/40/41 LTE-TDD） |
+| **Data Transmission Rates** | LTE-FDD: 10Mbps（DL）/5Mbps（UL）LTE-TDD: 8.96Mbps（DL）/3.1Mbps（UL） | Same as the global version |
+| **Optional Functions** | GNSS（GPS/GLONASS/BDS/Galileo/QZSS）Bluetooth 4.2 Wi-Fi Scan |Not available |
+| **Interfaces** | 3x UART, USB 2.0, PCM/I2S audio, 2x ADC, SPI/I2C/LCM/Camera/SD card（QuecOpen®） | Same as the global version |
+| **Antenna** | Main antenna + GNSS/Wi-Fi antenna(optional) | Only main antenna |
 
-## Cat-1 (EG912U)模组规格参数
+## Cat.1  (EG912U) Module Specifications
 | 1    | Module                   | Quectel EG912UGL                                             |
 |:----:|:------------------------:|:------------------------------------------------------------:|
 | 2    | LTE-FDD                  | B1/ 2/ 3/ 4/ 5/ 7/ 8/ 12/ 13/ 17/ 18/ 19/ 20/ 25/ 26/ 28/ 66 |
@@ -31,15 +31,15 @@ EG912U/EG915Q专为M2M和IoT应用设计的LTE Cat 1模块，支持无缝网络�
 | 10   | Dimensions               | 60 x 60 mm                                                   |
 | 11   | Certifications           | CE                                                           |
 
-### EG915Q模组参数说明
+### EG915 Q Module Specifications
 |  **Module**  | **EG915Q-NA** |
 |:---:|:---:|
-| **网络覆盖** |B2/B4/B5/B12/B13/B14/B66/B71B2/B4/B5/B12/B13/B14/B66/B71 |
-| **数据速率** | LTE-FDD: 10Mbps（DL）/5Mbps（UL） |
-| **接口** | UART, USB 2.0, PCM, SPI/I2C/LCM/摄像头 |
-| **天线** | 主天线 + GNSS/Wi-Fi天线（可选） |
+| **LTE-FDD** |B2/B4/B5/B12/B13/B14/B66/B71B2/B4/B5/B12/B13/B14/B66/B71 |
+| **Data Transmission Rates** | LTE-FDD: 10Mbps（DL）/5Mbps（UL） |
+| **Interfaces** | UART, USB 2.0, PCM, SPI/I2C/LCM/Camera |
+| **Antenna** | Main antenna + GNSS/Wi-Fi antenna(optional) |
 ---
-## Cat-1 (EG915Q)模组规格参数
+## Cat-1 (EG915Q) Module Specifications
 | 1    | Module                   | Quectel EG915Q-NA                                             |
 |:----:|:------------------------:|:------------------------------------------------------------:|
 | 2    | LTE-FDD                  | B2/B4/B5/B12/B13/B14/B66/B71B2/B4/B5/B12/B13/B14/B66/B71 |
@@ -51,9 +51,9 @@ EG912U/EG915Q专为M2M和IoT应用设计的LTE Cat 1模块，支持无缝网络�
 | 8   | Dimensions               | 60 x 60 mm                                                   |
 | 9   | Certifications           | FCC                                                           |
 
-## 接口说明(J1)
+## Interface Instruction (J1)
 
-模组通过J1接口，与主板通过UART进行通讯连接。接口的定义如下：
+The module communicates with the motherboard through the UART interface by J1 interface. The interface is defined as follows:
 
 | PIN# | Pin Name | Functions          | Pin Type | Pull Up/Down |
 | :---:| :------: | :----------------: | :------: | :-----------:|
@@ -73,7 +73,7 @@ EG912U/EG915Q专为M2M和IoT应用设计的LTE Cat 1模块，支持无缝网络�
 | 14   | 3V3      | 3.3 V power supply | POWER    |              |
 | 15   | VCC_IN   | Power Supply       | POWER    |              |
 | 16   | 3V3      | 3.3 V power supply | POWER    |              |
-## 规格尺寸
+## Dimensions
 
 60*60mm
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
