@@ -3,91 +3,91 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # OV5640 Camera Module
 
-## 产品特性
+## Product Features
 
-### 主要特性
-- **传感器**：OmniVision OV5640 CMOS 传感器（1/4" 尺寸）
-- **分辨率**：2592×1944 像素（500万像素）
-- **光学设计**：支持 60° 和 120° 不同视场角（FOV）版本
-- **调焦距离**：支持 8cm 和 3m 范围内对焦
+### Key Highlights
+- **Sensor**：OmniVision OV5640 CMOS sensor (1/4" optical format)
+- **Resolution**：2592×1944 pixels (5MP)
+- **Optics**： Available in 60° or 120° FOV versions
+- **Focusing Distance**：Supports focusing at 8 cm or 3 m
 
-### 型号对比表
+### Model Comparison Table
 
-| 参数             | OV5640 Module (60°) | OV5640 Module (120°) |
+| Parameter            | OV5640 Module (60°) | OV5640 Module (120°) |
 | ---------------- | ------------------- | -------------------- |
-| **视场角 (FOV)** | 60°                 | 120°                 |
-| **焦距 (mm)**    | 3.97                | 1.79                 |
-| **光圈 (F/No)**  | 2.4                 | 2.0                  |
-| **调焦距离**     | 15cm 或 400cm       | 8cm 或 300cm         |
+| **FOV** | 60°                 | 120°                 |
+| **Focal Lengt (mm)**    | 3.97                | 1.79                 |
+| **Aperture(F/No)**  | 2.4                 | 2.0                  |
+| **Focusing Distance**     | 15cm or 400cm       | 8cm or 300cm         |
 
 ---
 
-## 规格参数
+## Specifications
 
-| 参数            | 描述                       | 备注                 |
+| Parameter         | Description                    |Remarks                |
 | --------------- | -------------------------- | -------------------- |
-| **最大分辨率**  | 2592×1944                  | 支持 JPEG/YUV 输出   |
-| **感光尺寸**    | 1/4"                       | OmniBSI™ 技术        |
-| **像素数**      | 500万                      |                      |
-| **FOV**         | 60° / 120°                 | 可选版本             |
-| **光圈 (F/No)** | 2.4（60°） / 2.0（120°）   | 更大光圈提升低光性能 |
-| **焦距 (mm)**   | 3.97（60°） / 1.79（120°） | 短焦距实现超广角     |
-| **调焦距离**    | 8cm  or  3m                | 支持近景与远景拍摄   |
-| **工作温度**    | -10°C ~ +65°C              | 工业级温控范围       |
+| **Max Resolution**  | 2592×1944                  |  JPEG/YUV 	Supported    |
+| **Optical Format**    | 1/4"                       | OmniBSI™       |
+| **Pixel **      | 5MP                      |                      |
+| **FOV**         | 60° / 120°                 | Optional versions             |
+| **Aperture (F/No)** | 2.4（60°） / 2.0（120°）   | Larger aperture improves low-light performance |
+| **Focal Length (mm)**   | 3.97（60°） / 1.79（120°） | Shorter focal length enables ultra-wide FOV  |
+| **Focusing Distance**    | 8cm  or  3m                | Supports both close-up and distant scenes  |
+| **Operating Temperature**    | -10°C ~ +65°C              | Industrial-grade temperature range      |
 
 ---
 
-## 模组接口线序
+## Module Pinout
 
-| 引脚号 | 信号名称 | 类型 | 功能描述                   |
+| Pin | Signal  | Type | Description                |
 | ------ | -------- | ---- | -------------------------- |
-| 1      | NC       | -    | 未连接                     |
-| 2      | AGND     | 地   | 模拟地                     |
-| 3      | SDA      | I/O  | SCCB 接口数据线            |
-| 4      | AVDD     | 电源 | 模拟供电（2.8V）           |
-| 5      | SCL      | I/O  | SCCB 接口时钟线            |
-| 6      | RESET    | 输入 | 硬件复位（高电平有效）     |
-| 7      | VSYNC    | 输出 | 垂直同步信号               |
-| 8      | PWDN     | 输入 | 电源关闭控制（高电平有效） |
-| 9      | HSYNC    | 输出 | 行有效信号                 |
-| 10     | DVDD     | 电源 | 数字核心供电（1.5V）       |
-| 11     | DOVDD    | 电源 | 数字输出供电（1.8V）       |
-| 12     | D9       | 输出 | 图像数据输出（D9）         |
-| 13     | MCLK     | 输入 | 主时钟输入（24MHz）        |
-| 14     | D8       | 输出 | 图像数据输出（D8）         |
-| 15     | GND      | 地   | 数字地                     |
-| 16     | D7       | 输出 | 图像数据输出（D7）         |
-| 17     | PCLK     | 输出 | 像素时钟信号               |
-| 18     | D6       | 输出 | 图像数据输出（D6）         |
-| 19     | D2       | 输出 | 图像数据输出（D2）         |
-| 20     | D5       | 输出 | 图像数据输出（D5）         |
-| 21     | D3       | 输出 | 图像数据输出（D3）         |
-| 22     | D4       | 输出 | 图像数据输出（D4）         |
-| 23     | NC       | -    | 未连接                     |
-| 24     | NC       | -    | 未连接                     |
+| 1      | NC       | -    | Not Connected                    |
+| 2      | AGND     | Ground   | Analog Ground                     |
+| 3      | SDA      | I/O  | SCCB Data Line |
+| 4      | AVDD     | 	Power | Analog Power (2.8V)           |
+| 5      | SCL      | I/O  | SCCB Clock Line           |
+| 6      | RESET    | Input | 	Hardware Reset (Active High)     |
+| 7      | VSYNC    | Output| Vertical Sync               |
+| 8      | PWDN     | Input | Power Down Control (Active High) |
+| 9      | HSYNC    | Output |Horizontal Sync                |
+| 10     | DVDD     | Power| Digital Core Power （1.5V）       |
+| 11     | DOVDD    | Power | Digital Output Power （1.8V）       |
+| 12     | D9       | Output | Image Data Bit（D9）         |
+| 13     | MCLK     | Input | Master Clock Input （24MHz）        |
+| 14     | D8       | Output | Image Data Bit（D8）         |
+| 15     | GND      | Ground | Digital Ground                     |
+| 16     | D7       | Output | Image Data BitD7）         |
+| 17     | PCLK     | Output | Pixel Clock             |
+| 18     | D6       | Output | Image Data Bit（D6）         |
+| 19     | D2       | Output | Image Data Bit（D2）         |
+| 20     | D5       | Output | Image Data Bit（D5）         |
+| 21     | D3       | Output | Image Data Bit（D3）         |
+| 22     | D4       | Output | Image Data Bit（D4）         |
+| 23     | NC       | -    | Not Connected                    |
+| 24     | NC       | -    | Not Connected                 |
 
 ---
 
-## 使用说明
+## Usage
 
-### 安装步骤
-1. **硬件连接**：
-   - 将 FPC 连接器（38.5×12.5mm，24Pin@0.5mm 间距）接入主板。
-   - 确保电源线（AVDD/DVDD/DOVDD）与地线（AGND/DGND）正确连接。
+### Installation
+1. **Hardware Connection**：
+   - Connect the FPC connector (38.5×12.5 mm, 24-pin @ 0.5 mm pitch) to the host board.
+   - Ensure proper wiring for power (AVDD/DVDD/DOVDD) and ground (AGND/DGND).
 
-2. **初始化配置**：
-   - 通过 SCCB 接口（SDA/SCL）写入寄存器配置（参考 `OV5640 datasheet` 中的 `Register Tables`）。
-   - 设置 FOV、曝光时间、增益等参数。
+2. **Initialization**：
+   - Configure the module via the SCCB interface (SDA/SCL) by writing to registers (refer to the `Register Tables` in`OV5640 datasheet` ）
+   - Set parameters such as FOV, exposure time, and gain.
 
-3. **图像输出**：
-   - 启用 DVP 接口（Digital Video Port），设置数据格式为 YUV422 或 RGB565。
-   - 通过 VSYNC/HREF 同步信号读取图像数据。
+3. **Image Output**：
+   - Enable the DVP (Digital Video Port) interface，Set the data format to YUV422 or RGB565.
+   - Use VSYNC and HREF signals to synchronize and read image frames.
 
-### 注意事项
-- **静电防护**：操作时佩戴防静电手环。
-- **供电稳定性**：确保 AVDD 电压波动 ≤ ±5%。
-- **散热设计**：长时间工作时需考虑散热方案。
+### Notes
+- **ESD Protection**：Always wear an anti-static wrist strap during operation.
+- **Power Stability**：Ensure AVDD voltage fluctuation is within ±5%.
+- **Thermal Considerations**：Adequate heat dissipation is required for prolonged operation.
 
-## 外形尺寸
+## Dimension
 ![NG45_PCBA_IO_Bottom](/img/Hardware_Dev_Resources/OV5640_Module/OV5640_Module_Outline.png)
 
