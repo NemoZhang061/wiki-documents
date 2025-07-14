@@ -2,11 +2,11 @@
 import AccessoriesTable from '@site/src/components/AccessoriesTable';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-#### **产品特性**   
-本产品为高性能USB接口摄像模组，搭载1/2.7英寸200万像素图像传感器，支持1080P 30fps高清视频输出。
+#### **Product Features**   
+This product is a high-performance USB camera module equipped with a 1/2.7-inch 2MP image sensor, capable of delivering 1080P 30fps HD video output.
 
-**主要特性**  
-| 序号| Items                    | Description       |        备注       |
+**Key Specifications**  
+| No.| Items                    | Description       |        Remarks       |
 | ---- | ------------------------ | ----------------- | ------------- |
 | 1    | CMOS Sensor              | SC200AI, 1/2.8"   |               |
 | 2    | Max.Resolution           | 1920*1080         |               |
@@ -21,32 +21,32 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 ---
 
-#### **模组接口线序说明**  
-| **Pin序号** | **信号名称** | **功能定义**    | **备注**         |
+#### **Pin Definition (4-pin USB Interface)**  
+| **Pin** | **v** | **Function**    | **Remarks**         |
 | ----------- | ------------ | --------------- | ---------------- |
-| 1           | VCC          | 5V电源输入      | 最大电流500mA    |
-| 2           | DM           | USB差分信号负极 | 需匹配USB2.0协议 |
-| 3           | DP           | USB差分信号正极 | 需匹配USB2.0协议 |
-| 4           | GND          | 电源地          | 与信号地共用     |
+| 1           | VCC          | 5V Power Input      | Max current 500mA    |
+| 2           | DM           | USB D- Signal | Compliant with USB 2.0 protocol |
+| 3           | DP           | USB D+ Signal | Compliant with USB 2.0 protocol |
+| 4           | GND          | Ground          | Shared with signal ground     |
 
 ---
 
-#### **使用说明**  
-1. **硬件连接**  
-   - 通过4-pin 1.0mm USB接口连接至主机，确保供电稳定。  
-   - 镜头出厂已调焦，避免旋转或拆卸镜头组件。  
+#### **Usage**  
+1. **Hardware Connection**  
+   - Connect to the host via the 4-pin 1.0mm USB interface, Ensure stable power supply during operation.   
+   - The lens is pre-focused at the factory; do not rotate or disassemble the lens module.  
 
-2. **系统兼容性**  
-   - 支持Windows XP/7/8.1/10、macOS、Linux 2.6.2及以上（需内置UVC驱动）。  
-   - 最低配置要求：CPU 1.7GHz，512MB内存，40GB硬盘，XP SP2系统。  
+2. **System Compatibility**  
+   - Supported OS: Windows XP / 7 / 8.1 / 10, macOS, and Linux 2.6.2 or above (requires built-in UVC driver).  
+   - Minimum system requirements：CPU ≥ 1.7GHz, Memory ≥ 512MB, HDD ≥ 40GB, OS: XP SP2 or later.  
 
-3. **注意事项**  
-   - 工作温度需保持在0 ~ 60度范围内，避免冷凝环境。  
-   - 清洁镜头时使用无尘布轻擦，禁止使用腐蚀性溶剂。  
+3. **Notes**  
+   - Operating temperature should be maintained between 0°C and 60°C. Avoid environments with condensation.  
+   - Use a lint-free cloth to clean the lens. Do not use corrosive solvents.  
 
 ---
 
-#### **4. 规格尺寸**  
+#### **4. Dimension **  
 <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '20px', justifyContent: 'center', alignItems: 'center' }}>
   <img src={useBaseUrl('/img/Hardware_Dev_Resources/USB_Module/USB_Module_Size.png')} alt="USB_Module_Size" style={{ height: '400px', objectFit: 'contain', margin: '0 auto' }} />
 </div>
