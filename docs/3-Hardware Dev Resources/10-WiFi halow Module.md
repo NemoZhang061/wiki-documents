@@ -3,11 +3,11 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 
 # Wi-Fi HaLow Module
 
-## 产品特性
-### 方案说明
-此模组基于FGH100M进行设计，FGH100M是IEEE 802.11ah 标准的远距离、低功耗 Wi-Fi HaLow 模块，支持 Sub-1 GHz 频段通信，对应不同国家地区频段会不同，目前可提供868MHz,915MHz两种可选，适用于物联网（IoT）和智能设备场景。
+## Module Key Features
+### Description
+FGH100M is a long-distance, low-power Wi-Fi HaLow module that is compliant with the IEEE 802.11ah protocol. It supports the Sub-1 GHz frequency band and is suitable for IoT and smart device scenarios. Applicable to CamThink NeoEyes NE101 series motherboards.
 
-### 主要特性
+### Key Features
 
 | 1    | Items                  | Description            |
 | ---- | ------------------------ | -------------------------- |
@@ -23,9 +23,9 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 | 12   | Dimensions               | 60 x 60 mm                 |
 | 12   | Certifications           | CE/FCC                     |
 
-## 接口说明(J1)
+## Interfaces Introduction (J1)
 
-模组通过J1接口，与主板通过SPI进行通讯连接。接口的定义如下：
+The module communicates with the motherboard through SPI by J1 interface. The interface is defined as follows:
 
 | PIN# | Pin Name  | Functions          | Pin Type | Pull Up/Down |
 | ---- | --------- | ------------------ | -------- | ------------ |
@@ -46,7 +46,7 @@ import useBaseUrl from '@docusaurus/useBaseUrl';
 | 15   | NC        |                    |          |              |
 | 16   | 3V3       | 3.3 V power supply | POWER    |              |
 
-## 规格尺寸
+## Dimensions
 
 60x60 mm
 60*60mm
